@@ -4,47 +4,81 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    void Interact();
+    void Interact(PlayerInteract playerInteract);
 }
 
 public class PlayerInteract : MonoBehaviour
 {
-    private Camera mainCamera;
-    private float interactionRange = 2f;
+    [SerializeField] float interactionRange = 2f;
+    [SerializeField] float putdownRange = 1f;
+    [SerializeField] Transform objectLiftingTransform;
+    public PickableObject pickedObject { get; private set; }
 
+    //PlayerController playerController;
     void Start()
     {
-        mainCamera = Camera.main;
+        //playerController = GetComponent<PlayerController>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            InteractWithObject();
-        }
-    }
-
-    void InteractWithObject()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(mainCamera.transform.position, mainCamera.transform.forward, interactionRange);
-
-        if (hit.collider != null)
-        {
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-            if (interactable != null)
+            if(InteractWithObject())
             {
-                interactable.Interact();
+
             }
+            else if(pickedObject)
+                PutDownObject();
         }
     }
 
-    private void OnDrawGizmos()
+    public void PickUpObject(PickableObject po)
     {
-        Gizmos.color = Color.red;
-        Vector3 e = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0);
-        //Gizmos.DrawLine(e, (Camera.main.transform.forward * 2) + e);
-
-        Gizmos.DrawSphere(e, 2.0f);
+        if (pickedObject)
+            return;
+        pickedObject = po;
+        pickedObject.StartHolding(objectLiftingTransform);
+        
     }
+    void PutDownObject()
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 difference = new Vector3(mousePos.x,mousePos.y,transform.position.z) - transform.position;
+        Vector3 direction = difference.normalized;
+        Vector3 position = transform.position + (direction * putdownRange);
+
+        pickedObject.StopHolding(position);
+
+        pickedObject = null;
+    }
+
+    bool InteractWithObject()
+    {
+        Physics2D.queriesHitTriggers = true;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+
+        if (hit.collider == null)
+            return false;
+
+        if (hit.collider.TryGetComponent(out IInteractable interactable))
+        {
+            if (Vector2.Distance(hit.collider.transform.position, transform.position) > interactionRange)
+            {
+                //tooltip???
+                return false;
+            }
+            interactable.Interact(this);
+            return true;
+        }
+
+        return false;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, interactionRange);
+    }
+
 }

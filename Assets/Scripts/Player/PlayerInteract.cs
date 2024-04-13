@@ -14,6 +14,8 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] Transform objectLiftingTransform;
     public PickableObject pickedObject { get; private set; }
 
+    public bool pause;
+
     //PlayerController playerController;
     void Start()
     {
@@ -22,6 +24,9 @@ public class PlayerInteract : MonoBehaviour
 
     void Update()
     {
+        if (pause)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             if(InteractWithObject())

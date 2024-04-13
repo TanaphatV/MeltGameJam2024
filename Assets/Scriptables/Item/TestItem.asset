@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cecd9cc6f7ff6147909bb79a97735de, type: 3}
   m_Name: TestItem
   m_EditorClassIdentifier: 
-  wipItem: {fileID: 0}
-  finishedItem: {fileID: 0}
-  itemPrefab: {fileID: 0}
-  timeNeededtoFreeze: 0
+  wipItem: {fileID: 21300000, guid: 67bd45486933fa8448aa7d2390209773, type: 3}
+  finishedItem: {fileID: 21300000, guid: 530d061a589f5f647ae9b5cd960640a3, type: 3}
+  timeNeededtoFreeze: 2
   requiredMaterial:
   - material: {fileID: 0}
     amount: 0

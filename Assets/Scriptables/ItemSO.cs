@@ -7,7 +7,6 @@ public class ItemSO : ScriptableObject
 {
     public Sprite wipItem;
     public Sprite finishedItem;
-    public Item itemPrefab;
     public float timeNeededtoFreeze;
     [Header("Recipe")]
     public List<MaterialContainer> requiredMaterial;

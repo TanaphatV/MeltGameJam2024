@@ -2,17 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+enum ItemStatus
 {
-    // Start is called before the first frame update
-    void Start()
+    WIP,
+    Completed
+}
+
+public class Item : PickableObject
+{
+    ItemStatus status;
+    float timeRequired;
+    float timePassedInFreezer;
+    Sprite completedSprite;
+
+    public void Init(ItemSO itemSO)
     {
-        
+        spriteRenderer.sprite = itemSO.wipItem;
+        timeRequired = itemSO.timeNeededtoFreeze;
+        status = ItemStatus.WIP;
+        completedSprite = itemSO.finishedItem;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void IncrementProgress()
     {
-        
+        timePassedInFreezer += Time.deltaTime;
+        if(timePassedInFreezer >= timeRequired)
+        {
+            spriteRenderer.sprite = completedSprite;
+            status = ItemStatus.Completed;
+        }
     }
 }

@@ -44,3 +44,12 @@ TagManager:
   - name: PickedObject
     uniqueID: 1123313187
     locked: 0
+  - name: Background
+    uniqueID: 3693142565
+    locked: 0
+  - name: Midground
+    uniqueID: 2407027617
+    locked: 0
+  - name: Foreground
+    uniqueID: 3870777991
+    locked: 0

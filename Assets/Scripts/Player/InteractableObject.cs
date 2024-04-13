@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour, IInteractable
 {
-    public void Interact()
+    public void Interact(PlayerController playerController)
     {
-        Debug.Log("Interact");
+        InteractBehavior(playerController);
+    }
+
+    protected virtual void InteractBehavior(PlayerController playerController)
+    {
+        Debug.Log("Interact with " + gameObject.name);
     }
 }

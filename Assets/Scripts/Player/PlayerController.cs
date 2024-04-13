@@ -17,13 +17,6 @@ public class PlayerController : MonoBehaviour
 
         // Calculate movement direction
         movement = new Vector2(moveInputX, moveInputY).normalized;
-
-        // Rotate character to face movement direction (optional)
-        //if (movement != Vector2.zero)
-        //{
-        //    float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
-        //    transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        //}
     }
 
     void FixedUpdate()

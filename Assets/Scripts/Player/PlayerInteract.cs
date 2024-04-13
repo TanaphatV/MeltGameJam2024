@@ -10,10 +10,10 @@ public interface IInteractable
 public class PlayerInteract : MonoBehaviour
 {
     private float interactionRange = 2f;
-
+    PlayerController playerController;
     void Start()
     {
-
+        playerController = GetComponent<PlayerController>();
     }
 
     void Update()
@@ -35,7 +35,7 @@ public class PlayerInteract : MonoBehaviour
             IInteractable interactable = hit.collider.gameObject.GetComponent<IInteractable>();
             if (interactable != null)
             {
-                interactable.Interact();
+                interactable.Interact(playerController);
             }
         }
     }

@@ -41,6 +41,15 @@ public class RecipeListManagerGUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
+            if (selectingIndex > 0)
+            {
+                recipeSocketList[selectingIndex].UnselectAll();
+                selectingIndex--;
+                ChooseMode();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
             if(selectingIndex < recipeSocketList.Count - 1)
             {
                 recipeSocketList[selectingIndex].UnselectAll();
@@ -53,15 +62,6 @@ public class RecipeListManagerGUI : MonoBehaviour
             if (!isSelectNormal)
             {
                 isSelectNormal = !isSelectNormal;
-                ChooseMode();
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            if (selectingIndex > 0)
-            {
-                recipeSocketList[selectingIndex].UnselectAll();
-                selectingIndex++;
                 ChooseMode();
             }
         }

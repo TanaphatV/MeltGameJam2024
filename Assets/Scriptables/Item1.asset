@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cecd9cc6f7ff6147909bb79a97735de, type: 3}
+  m_Name: Item1
+  m_EditorClassIdentifier: 
+  itemName: Champ Stick
+  wipItem: {fileID: 0}
+  finishedItem: {fileID: 0}
+  timeNeededtoFreeze: 0
+  normalQualityRecipe:
+  - material: {fileID: 11400000, guid: a2bc193145bdb3c4aafa3e12a932ca63, type: 2}
+    amount: 3
+  - material: {fileID: 11400000, guid: a2bc193145bdb3c4aafa3e12a932ca63, type: 2}
+    amount: 6
+  highQualityRecipe:
+  - material: {fileID: 11400000, guid: a2bc193145bdb3c4aafa3e12a932ca63, type: 2}
+    amount: 4
+  - material: {fileID: 11400000, guid: a2bc193145bdb3c4aafa3e12a932ca63, type: 2}
+    amount: 7

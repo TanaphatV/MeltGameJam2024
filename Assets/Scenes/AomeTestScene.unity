@@ -4024,6 +4024,8 @@ MonoBehaviour:
   matSocketTemplate: {fileID: 1857116901}
   normalGridLayout: {fileID: 337907311}
   highGridLayout: {fileID: 1358539635}
+  normalQualityButton: {fileID: 92204204}
+  highQualityButton: {fileID: 557958924}
 --- !u!1 &1407433493
 GameObject:
   m_ObjectHideFlags: 0

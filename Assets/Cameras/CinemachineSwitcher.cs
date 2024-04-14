@@ -5,27 +5,19 @@ using Cinemachine;
 
 public class CinemachineSwitcher : MonoBehaviour
 {
-    private Animator animator;
+    [SerializeField] private Animator _cameraAnimator;
 
-    private void Awake()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        animator = GetComponent<Animator>();
-    }
-
-    private void Start()
-    {
-        
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.W))
+        if (collision.tag == "Workshop")
         {
-            animator.Play("InsideWorkshop");
+            //Debug.Log("Enter Workshop");
+            _cameraAnimator.Play("InsideWorkshop");
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        if (collision.tag == "Freezer")
         {
-            animator.Play("InsideFreezer");
+            //Debug.Log("Enter Freezer");
+            _cameraAnimator.Play("InsideFreezer");
         }
     }
 }

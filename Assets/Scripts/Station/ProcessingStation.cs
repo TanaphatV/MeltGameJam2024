@@ -21,9 +21,10 @@ public class ProcessingStation : InteractableObject
         StartCoroutine(InteractRoutine(playerInteract));
     }
 
-    void CreateItem(ItemSO itemSO)
+    void CreateItem(ItemSO itemSO , bool highQuality)
     {
         Item temp = Instantiate(itemBasePrefab);
+        temp.highQuality = highQuality;
         temp.transform.position = transform.position;
         temp.Init(itemSO);
     }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Freezer
+  - Workshop
   layers:
   - Default
   - TransparentFX
@@ -53,4 +54,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 3870777991
+    locked: 0
+  - name: UserInterface
+    uniqueID: 1939125455
     locked: 0

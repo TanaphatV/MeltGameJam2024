@@ -3011,6 +3011,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3434184211339674201, guid: bf5df4b061287fc44b9564803d84988d, type: 3}
+      propertyPath: _cameraAnimator
+      value: 
+      objectReference: {fileID: 1078952423}
     - target: {fileID: 6909287396688399081, guid: bf5df4b061287fc44b9564803d84988d, type: 3}
       propertyPath: _cameraAnimator
       value: 

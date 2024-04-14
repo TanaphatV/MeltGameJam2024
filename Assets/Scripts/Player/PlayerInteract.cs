@@ -24,19 +24,19 @@ public class PlayerInteract : MonoBehaviour
 
     void Update()
     {
-        if (pause)
-            return;
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            if(InteractWithObject())
-            {
-
-            }
-            else if(pickedObject)
-                PutDownObject();
-        }
     }
+
+    public void InteractAction()
+    {
+        if (InteractWithObject())
+        {
+
+        }
+        else if (pickedObject)
+            PutDownObject();
+    }
+        
 
     public void PickUpObject(PickableObject po)
     {

@@ -6,8 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private PlayerInteract playerInteract;
 
     private Vector2 movement;
+
+    public bool isInDungeon = false;
 
     void Update()
     {
@@ -17,6 +20,24 @@ public class PlayerController : MonoBehaviour
 
         // Calculate movement direction
         movement = new Vector2(moveInputX, moveInputY).normalized;
+
+        if (!isInDungeon)
+            WorkShopBehavior();
+        else
+            DungeonBehavior();
+
+    }
+
+    private void WorkShopBehavior()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            playerInteract.InteractAction();
+        }
+    }
+    private void DungeonBehavior()
+    {
+
     }
 
     void FixedUpdate()

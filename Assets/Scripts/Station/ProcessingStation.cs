@@ -35,7 +35,7 @@ public class ProcessingStation : InteractableObject
         yield return new WaitForEndOfFrame();
         if (moldUI == null)
         {
-            moldUI = Instantiate(uiPrefabs, uiPrefabs.transform);
+            moldUI = Instantiate(uiPrefabs);
             int newMinimum = Random.Range(60, 85);
             int newMax = newMinimum + Random.Range(5, 10);
             yield return moldUI.Init(newMinimum, newMax, this);
@@ -44,7 +44,7 @@ public class ProcessingStation : InteractableObject
         yield return new WaitForSeconds(1.0f);
         if (currentItemCraftingStatus == CraftingStatus.Completed)
         {
-            CreateItem(testSO);
+            CreateItem(testSO, true);
             Destroy(moldUI.gameObject);
         }
         else

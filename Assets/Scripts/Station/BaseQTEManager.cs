@@ -13,8 +13,8 @@ public class BaseQTEManager : MonoBehaviour
     [SerializeField] private Image goodScoreImage;
     [SerializeField] private Image failScoreImage;
     [SerializeField] private Image waterSurfaceImage;
-    [SerializeField] private float minimumGoodScore;
-    [SerializeField] private float maximumGoodScore;
+    private float minimumGoodScore;
+    private float maximumGoodScore;
     [SerializeField] private Button nextButton;
     private ProcessingStation station;
 
@@ -24,7 +24,9 @@ public class BaseQTEManager : MonoBehaviour
         isStartMinigame = true;
         goodScoreImage.fillAmount = 1.0f - (minimumGoodScore / 100f);
         failScoreImage.fillAmount = 1.0f - (maximumGoodScore / 100f);
-        yield return StartCoroutine(EnableMouseInput());
+        this.maximumGoodScore = maximumGoodScore;
+        this.minimumGoodScore = minimumGoodScore;
+        yield return EnableMouseInput();
     }
 
     private IEnumerator EnableMouseInput()

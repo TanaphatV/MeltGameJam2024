@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private PlayerInteract playerInteract;
+    [SerializeField] private PlayerCombat playerCombat;
 
     private Vector2 movement;
 
@@ -37,7 +38,10 @@ public class PlayerController : MonoBehaviour
     }
     private void DungeonBehavior()
     {
-
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            playerCombat.Attack();
+        }
     }
 
     void FixedUpdate()

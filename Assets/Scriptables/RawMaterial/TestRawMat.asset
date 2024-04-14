@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7976c39ee5c6d0e4887b6e00270db443, type: 3}
   m_Name: TestRawMat
   m_EditorClassIdentifier: 
-  materialName: 
-  icon: {fileID: 0}
+  materialName: testMat
+  icon: {fileID: 21300000, guid: a4bbd4f66a337ef4cb0e71087b4c6009, type: 3}

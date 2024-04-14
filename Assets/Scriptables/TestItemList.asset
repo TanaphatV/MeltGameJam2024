@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: TestItemList
   m_EditorClassIdentifier: 
   craftableItems:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  pickableOres: []
+  - {fileID: 11400000, guid: 0c3eceab6fa1ea5469f9bcd07e55bae1, type: 2}
+  pickableOres:
+  - {fileID: 11400000, guid: a2bc193145bdb3c4aafa3e12a932ca63, type: 2}

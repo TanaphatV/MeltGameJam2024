@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cecd9cc6f7ff6147909bb79a97735de, type: 3}
   m_Name: TestItem
   m_EditorClassIdentifier: 
+  itemName: testItem
   wipItem: {fileID: 21300000, guid: 67bd45486933fa8448aa7d2390209773, type: 3}
   finishedItem: {fileID: 21300000, guid: 530d061a589f5f647ae9b5cd960640a3, type: 3}
   timeNeededtoFreeze: 2
-  requiredMaterial:
-  - material: {fileID: 0}
-    amount: 0
-  - material: {fileID: 0}
-    amount: 0
+  normalQualityRecipe:
+  - material: {fileID: 11400000, guid: a2bc193145bdb3c4aafa3e12a932ca63, type: 2}
+    amount: 1
+  highQualityRecipe:
+  - material: {fileID: 11400000, guid: a2bc193145bdb3c4aafa3e12a932ca63, type: 2}
+    amount: 2

@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item", menuName = "ScriptableObjects/ItemScriptable")]
 public class ItemSO : ScriptableObject
 {
+    public string itemName;
     public Sprite wipItem;
     public Sprite finishedItem;
     public float timeNeededtoFreeze;

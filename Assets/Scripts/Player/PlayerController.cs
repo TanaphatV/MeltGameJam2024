@@ -8,10 +8,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private PlayerInteract playerInteract;
     [SerializeField] private PlayerCombat playerCombat;
+    [SerializeField] private AnimationController animationController;
 
     private Vector2 movement;
 
     public bool isInDungeon = false;
+
+    bool isFacingRight;
 
     void Update()
     {
@@ -20,13 +23,27 @@ public class PlayerController : MonoBehaviour
         float moveInputY = Input.GetAxisRaw("Vertical");
 
         // Calculate movement direction
+        if (moveInputX > Mathf.Epsilon)
+            isFacingRight = true;
+        else if (moveInputX < -Mathf.Epsilon)
+            isFacingRight = false;
+
         movement = new Vector2(moveInputX, moveInputY).normalized;
+        if(movement.magnitude > Mathf.Epsilon)
+        {
+            animationController.ChangeAnimState("walkSide", isFacingRight);
+        }
 
         if (!isInDungeon)
             WorkShopBehavior();
         else
             DungeonBehavior();
 
+    }
+
+    void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
     private void WorkShopBehavior()
@@ -42,11 +59,5 @@ public class PlayerController : MonoBehaviour
         {
             playerCombat.Attack();
         }
-    }
-
-    void FixedUpdate()
-    {
-        // Move the character
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }

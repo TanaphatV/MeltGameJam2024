@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    public Vector2 attackSize;
     enum Direction
     {
-        Up,
-        Down,
         Left,
         Right
     }
@@ -18,32 +17,16 @@ public class PlayerCombat : MonoBehaviour
         FindMouseDirection();
         Debug.Log(mouseDirection);
 
-        //Collider2D[] hit = Physics2D.OverlapBoxAll(Slash_Zone.position, Slash_Size, 0);//collider array to hit multiple enemies at once
+        Vector3 offset = new Vector3((attackSize.x / 2.0f), 0, 0);
+        Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position - offset + (offset * 2 * (int)mouseDirection), attackSize, 0);//collider array to hit multiple enemies at once
+        foreach(var col in cols)
+        {
+            if (col.TryGetComponent(out IHitable obj))
+            {
+                obj.Hit();
+            }
+        }
 
-        //if (mouse_direction == 0 && Allow_Slash == true)//change the slash collider pos according to direction
-        //{
-        //    Slash_Zone.position = new Vector2(MC_Pos.position.x, MC_Pos.position.y - 0.1f);
-        //    Slash_Size.x = Slash_Size_X;
-        //    Slash_Size.y = Slash_Size_Y;
-        //}
-        //else if (mouse_direction == 1 && Allow_Slash == true)
-        //{
-        //    Slash_Zone.position = new Vector2(MC_Pos.position.x, MC_Pos.position.y + 1.65f);
-        //    Slash_Size.x = Slash_Size_X;
-        //    Slash_Size.y = Slash_Size_Y;
-        //}
-        //else if (mouse_direction == 2 && Allow_Slash == true)
-        //{
-        //    Slash_Zone.position = new Vector2(MC_Pos.position.x + 1f, MC_Pos.position.y + 0.65f);
-        //    Slash_Size.x = Slash_Size_Y + 0.5f;
-        //    Slash_Size.y = Slash_Size_X;
-        //}
-        //else if (mouse_direction == 3 && Allow_Slash == true)
-        //{
-        //    Slash_Zone.position = new Vector2(MC_Pos.position.x - 1f, MC_Pos.position.y + 0.65f);
-        //    Slash_Size.x = Slash_Size_Y + 0.5f;
-        //    Slash_Size.y = Slash_Size_X;
-        //}
     }
 
     void FindMouseDirection()
@@ -52,14 +35,16 @@ public class PlayerCombat : MonoBehaviour
         Vector3 pos = transform.InverseTransformPoint(mousePos);
         float angle = Mathf.Atan2(pos.y, pos.x) * Mathf.Rad2Deg;
 
-        if (angle >= -150 && angle <= -30)
-            mouseDirection = Direction.Down;
-        else if (angle <= 150 && angle > 30)
-            mouseDirection = Direction.Up;
-        else if (angle >= 150 && angle <= 180)
-            mouseDirection = Direction.Left;
-        else if (angle <= 30 && angle >= -30)
+        if (angle >= -90 && angle <= 90)
             mouseDirection = Direction.Right;
+        else
+            mouseDirection = Direction.Left;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Vector3 offset = new Vector3((attackSize.x / 2.0f), 0, 0);
+        Gizmos.DrawWireCube(transform.position - offset + (offset * 2 * (int)mouseDirection), attackSize);
     }
 }
 

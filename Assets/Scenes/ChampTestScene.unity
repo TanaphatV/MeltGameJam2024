@@ -2479,6 +2479,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1220178908661681659, guid: bf5df4b061287fc44b9564803d84988d, type: 3}
+      propertyPath: attackSize.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220178908661681659, guid: bf5df4b061287fc44b9564803d84988d, type: 3}
+      propertyPath: attackSize.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8947257739544460556, guid: bf5df4b061287fc44b9564803d84988d, type: 3}
       propertyPath: m_Name
       value: Player

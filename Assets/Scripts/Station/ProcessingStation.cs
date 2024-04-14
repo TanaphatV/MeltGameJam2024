@@ -16,13 +16,13 @@ public class ProcessingStation : InteractableObject
     public CraftingStatus currentItemCraftingStatus = CraftingStatus.Nothing;
     protected override void InteractBehavior(PlayerInteract playerInteract)
     {
-        CreateItem(testSO);
         //StartCoroutine(InteractRoutine(playerInteract));
     }
 
-    void CreateItem(ItemSO itemSO)
+    void CreateItem(ItemSO itemSO , bool highQuality)
     {
         Item temp = Instantiate(itemBasePrefab);
+        temp.highQuality = highQuality;
         temp.transform.position = transform.position;
         temp.Init(itemSO);
     }

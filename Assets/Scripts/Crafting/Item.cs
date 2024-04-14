@@ -15,6 +15,7 @@ public class Item : PickableObject
     float timePassedInFreezer;
     Sprite completedSprite;
     bool isInFreezer = false;
+    public bool highQuality = false;
 
     private void Update()
     {

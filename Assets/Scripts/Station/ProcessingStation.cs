@@ -2,10 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CraftingStatus
+{
+    Nothing,
+    Completed,
+    Failed
+}
+
 public class ProcessingStation : InteractableObject
 {
     public Item itemBasePrefab;
     [SerializeField] protected ItemSO testSO;
+    public CraftingStatus currentItemCraftingStatus = CraftingStatus.Nothing;
     protected override void InteractBehavior(PlayerInteract playerInteract)
     {
         CreateItem(testSO);
@@ -25,5 +33,6 @@ public class ProcessingStation : InteractableObject
         yield return null;
         //if minigame completed properly, CreateItem
         playerInteract.pause = false;
+        currentItemCraftingStatus = CraftingStatus.Nothing;
     }
 }

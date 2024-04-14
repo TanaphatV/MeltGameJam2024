@@ -5,8 +5,10 @@ using UnityEngine;
 public class ProcessingStation : InteractableObject
 {
     public Item itemBasePrefab;
+    [SerializeField] protected ItemSO testSO;
     protected override void InteractBehavior(PlayerInteract playerInteract)
     {
+        CreateItem(testSO);
         //StartCoroutine(InteractRoutine(playerInteract));
     }
 

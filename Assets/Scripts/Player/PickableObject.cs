@@ -18,14 +18,14 @@ public class PickableObject : InteractableObject
         playerInteract.PickUpObject(this);
     }
 
-    public void StartHolding(Transform parent)
+    public virtual void StartHolding(Transform parent)
     {
         col.enabled = false;
         transform.SetParent(parent);
         transform.localPosition = new Vector3(0, 0, transform.position.z);
         SetSortingLayorHolding();
     }
-    public void StopHolding(Vector3 putDownPos)
+    public virtual void StopHolding(Vector3 putDownPos)
     {
         col.enabled = true;
         transform.SetParent(null);

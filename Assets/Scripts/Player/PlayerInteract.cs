@@ -63,7 +63,7 @@ public class PlayerInteract : MonoBehaviour
         Physics2D.queriesHitTriggers = true;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
-
+        Physics2D.queriesHitTriggers = false;
         if (hit.collider == null)
             return false;
 

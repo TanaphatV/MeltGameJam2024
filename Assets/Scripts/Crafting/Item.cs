@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 enum ItemStatus
 {
@@ -8,7 +9,7 @@ enum ItemStatus
     Completed
 }
 
-public class Item : PickableObject
+public class Item : PickableObject, IBarSubject
 {
     ItemStatus status;
     float timeRequired;
@@ -16,6 +17,8 @@ public class Item : PickableObject
     Sprite completedSprite;
     bool isInFreezer = false;
     public bool highQuality = false;
+
+    public UnityAction<float, float> onTargetValueChanged { get; set; }
 
     private void Update()
     {
@@ -35,12 +38,13 @@ public class Item : PickableObject
         if (status == ItemStatus.Completed)
             return;
         timePassedInFreezer += Time.deltaTime;
-        if(timePassedInFreezer >= timeRequired)
+        if (timePassedInFreezer >= timeRequired)
         {
             spriteRenderer.sprite = completedSprite;
             status = ItemStatus.Completed;
             timePassedInFreezer = timeRequired;
         }
+        onTargetValueChanged(timePassedInFreezer, timeRequired);
     }
 
     public override void StartHolding(Transform parent)

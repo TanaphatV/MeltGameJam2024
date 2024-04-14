@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    enum Direction
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
 
+    Direction mouseDirection;
     public void Attack()
     {
+        FindMouseDirection();
+        Debug.Log(mouseDirection);
 
         //Collider2D[] hit = Physics2D.OverlapBoxAll(Slash_Zone.position, Slash_Size, 0);//collider array to hit multiple enemies at once
 
@@ -42,14 +52,14 @@ public class PlayerCombat : MonoBehaviour
         Vector3 pos = transform.InverseTransformPoint(mousePos);
         float angle = Mathf.Atan2(pos.y, pos.x) * Mathf.Rad2Deg;
 
-        //if (angle >= -150 && angle <= -30)
-        //    mouse_direction = 0;
-        //else if (angle <= 150 && angle > 30)
-        //    mouse_direction = 1;
-        //else if (angle >= 150 && angle <= 180)
-        //    mouse_direction = 3;
-        //else if (angle <= 30 && angle >= -30)
-        //    mouse_direction = 2;
+        if (angle >= -150 && angle <= -30)
+            mouseDirection = Direction.Down;
+        else if (angle <= 150 && angle > 30)
+            mouseDirection = Direction.Up;
+        else if (angle >= 150 && angle <= 180)
+            mouseDirection = Direction.Left;
+        else if (angle <= 30 && angle >= -30)
+            mouseDirection = Direction.Right;
     }
 }
 

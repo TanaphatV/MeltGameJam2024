@@ -40,6 +40,6 @@ public class PickableObject : InteractableObject
 
     public void SetSortingLayorNormal()
     {
-        spriteRenderer.sortingLayerName = "Default";
+        spriteRenderer.sortingLayerName = "Midground";
     }
 }

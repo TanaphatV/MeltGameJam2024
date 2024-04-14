@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemBasePrefab: {fileID: 5910575362512725754, guid: 24f8e76e231673d499ed375fb867b230, type: 3}
+  testSO: {fileID: 11400000, guid: 0c3eceab6fa1ea5469f9bcd07e55bae1, type: 2}
 --- !u!61 &3504599655783292723
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -143,9 +144,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1887939679
+  m_SortingLayer: 2
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.745283, g: 0.17858665, b: 0.17858665, a: 1}
   m_FlipX: 0

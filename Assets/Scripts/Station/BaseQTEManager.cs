@@ -12,21 +12,19 @@ public class BaseQTEManager : MonoBehaviour
     [SerializeField] private Image fillWaterImg;
     [SerializeField] private Image goodScoreImage;
     [SerializeField] private Image failScoreImage;
+    [SerializeField] private Image waterSurfaceImage;
     [SerializeField] private float minimumGoodScore;
     [SerializeField] private float maximumGoodScore;
     [SerializeField] private Button nextButton;
+    private ProcessingStation station;
 
-    private void Start()
+    public IEnumerator Init(float minimumGoodScore, float maximumGoodScore, ProcessingStation s)
     {
-        Init(minimumGoodScore, maximumGoodScore);
+        station = s;
         isStartMinigame = true;
-        StartCoroutine(EnableMouseInput());
-    }
-
-    public void Init(float minimumGoodScore, float maximumGoodScore)
-    {
         goodScoreImage.fillAmount = 1.0f - (minimumGoodScore / 100f);
         failScoreImage.fillAmount = 1.0f - (maximumGoodScore / 100f);
+        yield return StartCoroutine(EnableMouseInput());
     }
 
     private IEnumerator EnableMouseInput()
@@ -44,6 +42,7 @@ public class BaseQTEManager : MonoBehaviour
             yield return null;
         }
         nextButton.gameObject.SetActive(true);
+        yield return null;
     }
 
     void StartHolding()
@@ -65,10 +64,12 @@ public class BaseQTEManager : MonoBehaviour
             if (value > minimumGoodScore && value < maximumGoodScore)
             {
                 Debug.Log("Nice");
+                station.currentItemCraftingStatus = CraftingStatus.Completed;
             }
             else
             {
                 Debug.Log("You fail");
+                station.currentItemCraftingStatus = CraftingStatus.Failed;
             }
             isStartMinigame = false;
         }
@@ -79,13 +80,14 @@ public class BaseQTEManager : MonoBehaviour
         while (isHolding && value < 100f)
         {
             value += Time.deltaTime * 20f;
-            //Debug.Log("Value: " + value);
             fillWaterImg.fillAmount = value / 100f;
+            waterSurfaceImage.fillAmount = value / (100 - (maximumGoodScore - minimumGoodScore));
             yield return null;
         }
         if (value >= 100f)
         {
             isStartMinigame = false;
+            station.currentItemCraftingStatus = CraftingStatus.Failed;
         }
     }
 }

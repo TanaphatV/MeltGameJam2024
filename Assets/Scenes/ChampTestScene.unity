@@ -2411,6 +2411,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProcessingStation
       objectReference: {fileID: 0}
+    - target: {fileID: 3504599655783292720, guid: 9bb01ce3a8bc5af4694c8bad5eaeaeba, type: 3}
+      propertyPath: uiPrefabs
+      value: 
+      objectReference: {fileID: 2108283919836328721, guid: 42951b142b110cb4caca21edd58074a1, type: 3}
     - target: {fileID: 3504599655783292721, guid: 9bb01ce3a8bc5af4694c8bad5eaeaeba, type: 3}
       propertyPath: m_RootOrder
       value: 4

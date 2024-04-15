@@ -712,7 +712,6 @@ RectTransform:
   m_Children:
   - {fileID: 2108283919907051036}
   - {fileID: 2108283921131767995}
-  - {fileID: 2108283919845113595}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -794,11 +793,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b7f71545536bb41a227b450d8c975b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillWaterImg: {fileID: 2108283920150999502}
-  goodScoreImage: {fileID: 2108283921277906873}
-  failScoreImage: {fileID: 2108283921056164607}
-  waterSurfaceImage: {fileID: 2108283920407143912}
-  nextButton: {fileID: 2108283919907051037}
+  qteMoldingPanel: {fileID: 3860438782694331955}
+  qteTempPanel: {fileID: 1598305599235395154}
+  panel: {fileID: 2108283921131767994}
 --- !u!1 &2108283919845113594
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,13 +821,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108283919845113594}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2108283920309874701}
-  m_Father: {fileID: 2108283919836328720}
+  m_Father: {fileID: 2108283921131767995}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1971,7 +1968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2108283921131767995
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1986,6 +1983,7 @@ RectTransform:
   m_Children:
   - {fileID: 2108283920759736071}
   - {fileID: 2108283921498902510}
+  - {fileID: 2108283919845113595}
   m_Father: {fileID: 2108283919836328720}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2886,7 +2884,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3984310405832025596
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2922,6 +2920,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fef119daa3fd44a9a459a2feedb83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fillWaterImg: {fileID: 2108283920150999502}
+  goodScoreImage: {fileID: 2108283921277906873}
+  failScoreImage: {fileID: 2108283921056164607}
+  waterSurfaceImage: {fileID: 2108283920407143912}
+  nextButton: {fileID: 2108283921498902511}
 --- !u!1 &4348349098488096472
 GameObject:
   m_ObjectHideFlags: 0

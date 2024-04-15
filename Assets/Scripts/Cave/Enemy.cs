@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour, IHitable
     [SerializeField] int damage;
     [SerializeField] float detectRange;
     [SerializeField] float moveSpeed;
+    [SerializeField] Rigidbody2D rb;
 
     Transform target;
 
@@ -53,7 +54,8 @@ public class Enemy : MonoBehaviour, IHitable
 
     void Chase()
     {
-        
+        Vector2 direction = target.position - transform.position;
+        rb.MovePosition(rb.position + direction.normalized * moveSpeed * Time.deltaTime);
     }
 
     public void Hit()
@@ -70,5 +72,10 @@ public class Enemy : MonoBehaviour, IHitable
                 playerCombat.Hit(damage);
             }
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, detectRange);
     }
 }

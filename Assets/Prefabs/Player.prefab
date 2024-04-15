@@ -332,6 +332,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSize: {x: 3, y: 5}
+  invulnerabilityDuration: 2
+  invulnFlashingInterval: 0.1
+  spriteRenderer: {fileID: 8947257739156509960}
 --- !u!114 &8889837092336080845
 MonoBehaviour:
   m_ObjectHideFlags: 0

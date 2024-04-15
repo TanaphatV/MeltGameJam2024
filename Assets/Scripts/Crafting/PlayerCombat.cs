@@ -53,10 +53,11 @@ public class PlayerCombat : MonoBehaviour
         {
             spriteRenderer.color = new Color(1, 1, 1, 0.4f);
             yield return new WaitForSeconds(invulnFlashingInterval);
+            timer += invulnFlashingInterval;
             spriteRenderer.color = Color.white;
+            yield return new WaitForSeconds(invulnFlashingInterval);
             timer += invulnFlashingInterval;
         }
-        yield return new WaitForSeconds(invulnerabilityDuration);
         invulnerable = false;
     }
 

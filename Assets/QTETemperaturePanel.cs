@@ -9,7 +9,7 @@ public class QTETemperaturePanel : MonoBehaviour
     [SerializeField] private Button failButton;
     void Start()
     {
-        successButton.onClick.AddListener(()=>);
+        //successButton.onClick.AddListener(()=>);
     }
 
     // Update is called once per frame

@@ -22,6 +22,7 @@ public class PlayerStats : MonoBehaviour
     public int wagonStorage;
     public int damage = 1;
     public int mining = 1;
+    public int maxHp;
     public float reputationGainModifier;
     public float freezerWaitTimeReduction;
 

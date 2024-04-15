@@ -14,5 +14,8 @@ public class BaseQTEManager : MonoBehaviour
         qteTempPanel = FindAnyObjectByType<QTETemperaturePanel>();
     }
 
-    public void 
+    public IEnumerator StartCraftingWeaponGUI()
+    {
+        yield return new WaitForSeconds(0f);
+    }
 }

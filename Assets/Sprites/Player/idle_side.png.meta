@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 36d6ac557e8cde947b091eaee9756bc6
+guid: 9a5b0e8490f73a84da0666b8f2ae99fd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk_side_0
+      name: idle_side_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3a2890a9fc97f345a633cc64ce70933
-      internalID: 1662080965
+      spriteID: e112d562da1589941b729235fea98a46
+      internalID: 1314565993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_side_1
+      name: idle_side_1
       rect:
         serializedVersion: 2
         x: 175
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cfea4181d329cf4d817a167bef1d859
-      internalID: -919201181
+      spriteID: 81fbae24b464dff48bfdfd40299059ab
+      internalID: 773694513
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_side_2
+      name: idle_side_2
       rect:
         serializedVersion: 2
         x: 350
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08ebf2911c5b0104483f5c14029d6068
-      internalID: -1360717291
+      spriteID: 2501d2312759b5145ab790f7530bb9f1
+      internalID: -1340083316
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_side_3
+      name: idle_side_3
       rect:
         serializedVersion: 2
         x: 525
@@ -194,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f55affd71018e804a8136a7e04ab3b33
-      internalID: -401637536
+      spriteID: edfcc516b89f1d540a22605cb19d2c8b
+      internalID: 408656686
       vertices: []
       indices: 
       edges: []
@@ -211,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      walk_side_0: 1662080965
-      walk_side_1: -919201181
-      walk_side_2: -1360717291
-      walk_side_3: -401637536
+      idle_side_0: 1314565993
+      idle_side_1: 773694513
+      idle_side_2: -1340083316
+      idle_side_3: 408656686
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

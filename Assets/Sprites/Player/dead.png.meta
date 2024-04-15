@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 36d6ac557e8cde947b091eaee9756bc6
+guid: e3e6eed882b48b8438820a4467abded4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk_side_0
+      name: dead_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3a2890a9fc97f345a633cc64ce70933
-      internalID: 1662080965
+      spriteID: b3973047e644bc64c8bbfa3189968754
+      internalID: 862002309
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_side_1
+      name: dead_1
       rect:
         serializedVersion: 2
         x: 175
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cfea4181d329cf4d817a167bef1d859
-      internalID: -919201181
+      spriteID: d28209cfb7108a24582d543270ba032a
+      internalID: 1750219972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_side_2
+      name: dead_2
       rect:
         serializedVersion: 2
         x: 350
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08ebf2911c5b0104483f5c14029d6068
-      internalID: -1360717291
+      spriteID: 2021401c6c0308d429332766b73e5e29
+      internalID: -2028905251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_side_3
+      name: dead_3
       rect:
         serializedVersion: 2
         x: 525
@@ -194,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f55affd71018e804a8136a7e04ab3b33
-      internalID: -401637536
+      spriteID: 5f5579bb02e7fd64f8643a86afc5a3a9
+      internalID: -1689807216
       vertices: []
       indices: 
       edges: []
@@ -211,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      walk_side_0: 1662080965
-      walk_side_1: -919201181
-      walk_side_2: -1360717291
-      walk_side_3: -401637536
+      dead_0: 862002309
+      dead_1: 1750219972
+      dead_2: -2028905251
+      dead_3: -1689807216
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

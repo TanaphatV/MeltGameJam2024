@@ -7,6 +7,7 @@ public class BaseQTEManager : MonoBehaviour
 {
     private bool isHolding = false;
     private float value = 0f;
+    private float value2 = 0f;
     private Coroutine holdCoroutine;
     private bool isStartMinigame;
     [SerializeField] private Image fillWaterImg;
@@ -79,11 +80,15 @@ public class BaseQTEManager : MonoBehaviour
 
     IEnumerator HoldCoroutine()
     {
+        float incrementRate1 = maximumGoodScore / 5.0f;
+        float incrementRate2 = 100f / 4.7f;
         while (isHolding && value < 100f)
         {
-            value += Time.deltaTime * 20f;
+            value = Mathf.Clamp(value + incrementRate1 * Time.deltaTime, 0f, 100-(maximumGoodScore-minimumGoodScore));
+            value2 = Mathf.Clamp(value2 + incrementRate2 * Time.deltaTime, 0f, 100f);
+
             fillWaterImg.fillAmount = value / 100f;
-            waterSurfaceImage.fillAmount = value / (100 - (maximumGoodScore - minimumGoodScore));
+            waterSurfaceImage.fillAmount = value2 / 100f;
             yield return null;
         }
         if (value >= 100f)

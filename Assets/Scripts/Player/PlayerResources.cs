@@ -7,6 +7,7 @@ public class PlayerResources : MonoBehaviour
 {
     [SerializeField] ResourceSO resourceSO;
     private Dictionary<string, int> materialDictionary;
+    public int coin;
 
     private void Awake()
     {

@@ -5,12 +5,15 @@ using UnityEngine;
 public class RecipeListManagerGUI : MonoBehaviour
 {
     [SerializeField] private RecipeSocketGUI socketTemplate;
+    [SerializeField] private GameObject gfx;
     [SerializeField] private GameObject verticalLayout;
     [SerializeField] private MainCharacterHUDManager mainHud;
+    [SerializeField] private BaseQTEManager qteManager;
     private ResourceSO resource;
     private List<RecipeSocketGUI> recipeSocketList = new List<RecipeSocketGUI>();
     private int selectingIndex;
     private bool isSelectNormal = true;
+    private ProcessingStation station;
 
     private void Start()
     {
@@ -20,7 +23,7 @@ public class RecipeListManagerGUI : MonoBehaviour
 
     public void InitPanel()
     {
-        if(resource.craftableItems.Count > 0)
+        if (resource.craftableItems.Count > 0)
         {
             //Debug.Log(resource.craftableItems.Count);
             foreach (ItemSO item in resource.craftableItems)
@@ -38,51 +41,67 @@ public class RecipeListManagerGUI : MonoBehaviour
         recipeSocketList[selectingIndex].UnselectAll();
         ChooseMode();
     }
+
+    public void OpenPanel(ProcessingStation s)
+    {
+        station = s;
+        gfx.SetActive(true);
+    }
+    public void ClosePanel()
+    {
+        gfx.SetActive(false);
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (gfx.activeSelf)
         {
-            if (selectingIndex > 0)
+            if (Input.GetKeyDown(KeyCode.W))
             {
-                recipeSocketList[selectingIndex].UnselectAll();
-                selectingIndex--;
-                ChooseMode();
+                if (selectingIndex > 0)
+                {
+                    recipeSocketList[selectingIndex].UnselectAll();
+                    selectingIndex--;
+                    ChooseMode();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                if (selectingIndex < recipeSocketList.Count - 1)
+                {
+                    recipeSocketList[selectingIndex].UnselectAll();
+                    selectingIndex++;
+                    ChooseMode();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                if (!isSelectNormal)
+                {
+                    isSelectNormal = !isSelectNormal;
+                    ChooseMode();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                if (isSelectNormal)
+                {
+                    isSelectNormal = !isSelectNormal;
+                    ChooseMode();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                recipeSocketList[selectingIndex].ButtonInvoke(isSelectNormal);
+                qteManager.OpenPanel(station);
+                ClosePanel();
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                ClosePanel();
             }
         }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            if(selectingIndex < recipeSocketList.Count - 1)
-            {
-                recipeSocketList[selectingIndex].UnselectAll();
-                selectingIndex++;
-                ChooseMode();
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            if (!isSelectNormal)
-            {
-                isSelectNormal = !isSelectNormal;
-                ChooseMode();
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            if (isSelectNormal)
-            {
-                isSelectNormal = !isSelectNormal;
-                ChooseMode();
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            recipeSocketList[selectingIndex].ButtonInvoke(isSelectNormal);
-            mainHud.ToggleRecipeListHUD(false);
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            mainHud.ToggleRecipeListHUD(false);
-        }
+        
     }
 
     private void ChooseMode()

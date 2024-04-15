@@ -13,7 +13,7 @@ public class ProcessingStation : InteractableObject
 {
     public Item itemBasePrefab;
     [SerializeField] protected ItemSO testSO;
-    [SerializeField] private BaseQTEManager qteManager;
+    [SerializeField] private RecipeListManagerGUI recipePanel;
     //private BaseQTEManager moldUI;
     public CraftingStatus currentItemCraftingStatus = CraftingStatus.Nothing;
     protected override void InteractBehavior(PlayerInteract playerInteract)
@@ -32,8 +32,10 @@ public class ProcessingStation : InteractableObject
     IEnumerator InteractRoutine(PlayerInteract playerInteract)
     {
         playerInteract.pause = true;
+        
         yield return new WaitForEndOfFrame();
-        yield return qteManager.StartQTEFlow(this);
+        recipePanel.OpenPanel(this);
+        //yield return 
         //if minigame completed properly, CreateItem
 
         yield return new WaitForSeconds(1.0f);
@@ -41,7 +43,7 @@ public class ProcessingStation : InteractableObject
         {
             CreateItem(testSO, true);
         }
-        playerInteract.pause = false;
+        //playerInteract.pause = false;
         currentItemCraftingStatus = CraftingStatus.Nothing;
     }
 }

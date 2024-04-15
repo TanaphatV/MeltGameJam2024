@@ -21,15 +21,20 @@ public class BaseQTEManager : MonoBehaviour
         }
     }
 
-    public IEnumerator StartQTEFlow(ProcessingStation _ps)
+    public IEnumerator StartQTEFlow()
+    {
+        panel.SetActive(true);
+
+        yield return StartQTEMoldingWeapon();
+
+        station.currentItemCraftingStatus = CraftingStatus.Completed;
+    }
+
+    public void OpenPanel(ProcessingStation _ps)
     {
         station = _ps;
         panel.SetActive(true);
-        yield return StartQTEMoldingWeapon();
-
-        //yield return StartQTEControlTemperature();
-
-        station.currentItemCraftingStatus = CraftingStatus.Completed;
+        StartCoroutine(StartQTEFlow());
     }
 
     public IEnumerator StartQTEMoldingWeapon()

@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     bool isFacingRight;
 
+    public bool pause = false;
+
     private void Start()
     {
         Init();
@@ -39,23 +41,27 @@ public class PlayerController : MonoBehaviour
             isFacingRight = false;
 
         movement = new Vector2(moveInputX, moveInputY).normalized;
+
         if(movement.magnitude > Mathf.Epsilon)
         {
             animationController.ChangeAnimState("walk_side", isFacingRight);
         }
         else
             animationController.ChangeAnimState("idle_side", isFacingRight);
-
-        if (!isInDungeon)
-            WorkShopBehavior();
-        else
-            DungeonBehavior();
+        if(!pause)
+        {
+            if (!isInDungeon)
+                WorkShopBehavior();
+            else
+                DungeonBehavior();
+        }
 
     }
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
+        if(!pause)
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
     }
 
     private void WorkShopBehavior()

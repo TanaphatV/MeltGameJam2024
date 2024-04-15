@@ -28,7 +28,7 @@ public class Item : PickableObject, IBarSubject
     public void Init(ItemSO itemSO)
     {
         spriteRenderer.sprite = itemSO.wipItem;
-        timeRequired = itemSO.timeNeededtoFreeze - PlayerStatsSingleton.instance.freezerWaitTimeReduction;
+        timeRequired = itemSO.timeNeededtoFreeze - PlayerStats.instance.freezerWaitTimeReduction;
         status = ItemStatus.WIP;
         completedSprite = itemSO.finishedItem;
     }

@@ -9,13 +9,14 @@ public class OreVein : MonoBehaviour, IHitable
 
     public void Hit()
     {
-        hitsNeeded -= PlayerStatsSingleton.instance.mining;
+        hitsNeeded -= PlayerStats.instance.mining;
         if (hitsNeeded <= 0)
             Break();
     }
 
     void Break()
     {
+
     }
 
     void Start()

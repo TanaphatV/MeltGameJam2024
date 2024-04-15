@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStatsSingleton : MonoBehaviour
+public class PlayerStats : MonoBehaviour
 {
     #region singleton
-    private static PlayerStatsSingleton _instance;
-    public static PlayerStatsSingleton instance
+    private static PlayerStats _instance;
+    public static PlayerStats instance
     {
         get
         {

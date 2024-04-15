@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class BaseQTEManager : MonoBehaviour
 {
-    private QTEMoldingPanel qteMoldingPanel;
-    private QTETemperaturePanel qteTempPanel;
+    [SerializeField] private QTEMoldingPanel qteMoldingPanel;
+    [SerializeField] private QTETemperaturePanel qteTempPanel;
+    [SerializeField] private GameObject panel;
     private ProcessingStation station;
 
     private void Awake()
     {
-        qteMoldingPanel = FindAnyObjectByType<QTEMoldingPanel>();
-        qteTempPanel = FindAnyObjectByType<QTETemperaturePanel>();
+        //qteMoldingPanel = FindAnyObjectByType<QTEMoldingPanel>();
+        //qteTempPanel = FindAnyObjectByType<QTETemperaturePanel>();
 
         if (qteMoldingPanel == null || qteTempPanel == null)
         {
@@ -23,11 +24,12 @@ public class BaseQTEManager : MonoBehaviour
     public IEnumerator StartQTEFlow(ProcessingStation _ps)
     {
         station = _ps;
+        panel.SetActive(true);
         yield return StartQTEMoldingWeapon();
 
-        station.currentItemCraftingStatus = CraftingStatus.Completed;
+        //yield return StartQTEControlTemperature();
 
-        //station.CreateItem(item, isHighQuality);
+        station.currentItemCraftingStatus = CraftingStatus.Completed;
     }
 
     public IEnumerator StartQTEMoldingWeapon()
@@ -35,17 +37,19 @@ public class BaseQTEManager : MonoBehaviour
         int newMinimum = Random.Range(60, 85);
         int newMax = newMinimum + Random.Range(5, 10);
         qteMoldingPanel.gameObject.SetActive(true);
+        //yield return new WaitForSeconds(0.5f);
         yield return qteMoldingPanel.Init(newMinimum, newMax, this);
         qteMoldingPanel.gameObject.SetActive(false);
 
-        yield return new WaitForEndOfFrame();
+        yield return null;
     }
 
     public IEnumerator StartQTEControlTemperature()
     {
+        Debug.Log("StartQTETEM");
         qteTempPanel.gameObject.SetActive(true);
         qteTempPanel.InitQTEProcess();
-        qteTempPanel.gameObject.SetActive(false);
+        //qteTempPanel.gameObject.SetActive(false);
 
         yield return new WaitForEndOfFrame();
     }

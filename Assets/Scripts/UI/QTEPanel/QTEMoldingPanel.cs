@@ -22,11 +22,19 @@ public class QTEMoldingPanel : MonoBehaviour
     public IEnumerator Init(float minimumGoodScore, float maximumGoodScore, BaseQTEManager bm)
     {
         qteManager = bm;
+
         isStartMinigame = true;
+
+        value = 0f;
+        value2 = 0f;
+        fillWaterImg.fillAmount = 0.0f;
+        waterSurfaceImage.fillAmount = 0f;
+
         goodScoreImage.fillAmount = 1.0f - (minimumGoodScore / 100f);
         failScoreImage.fillAmount = 1.0f - (maximumGoodScore / 100f);
         this.maximumGoodScore = maximumGoodScore;
         this.minimumGoodScore = minimumGoodScore;
+
         yield return EnableMouseInput();
     }
 
@@ -38,56 +46,64 @@ public class QTEMoldingPanel : MonoBehaviour
             {
                 StartHolding();
             }
-            else if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 StopHolding();
             }
             yield return null;
         }
         nextButton.gameObject.SetActive(true);
-        yield return null;
     }
 
     void StartHolding()
     {
         if (holdCoroutine == null)
         {
+            Debug.Log("Hold");
             isHolding = true;
             holdCoroutine = StartCoroutine(HoldCoroutine());
         }
     }
 
-    private IEnumerator StopHolding()
+    void StopHolding()
     {
         isHolding = false;
+        Debug.Log("Stop");
         if (holdCoroutine != null)
         {
             StopCoroutine(holdCoroutine);
             holdCoroutine = null;
+            isStartMinigame = false;
             if (value > minimumGoodScore && value < maximumGoodScore)
             {
-                yield return qteManager.StartQTEControlTemperature();
+                Debug.Log("Nice");
+                StartCoroutine(qteManager.StartQTEControlTemperature());
                 //station.currentItemCraftingStatus = CraftingStatus.Completed;
             }
             else
             {
                 //station.currentItemCraftingStatus = CraftingStatus.Failed;
             }
-            isStartMinigame = false;
+            
         }
+        //yield return null;
     }
 
-    IEnumerator HoldCoroutine()
+
+
+    private IEnumerator HoldCoroutine()
     {
         float incrementRate1 = maximumGoodScore / 5.0f;
         float incrementRate2 = 100f / 4.7f;
         while (isHolding && value < 100f)
         {
+            //Debug.Log(isHolding + value.ToString())
             value = Mathf.Clamp(value + incrementRate1 * Time.deltaTime, 0f, 100 - (maximumGoodScore - minimumGoodScore));
             value2 = Mathf.Clamp(value2 + incrementRate2 * Time.deltaTime, 0f, 100f);
 
             fillWaterImg.fillAmount = value / 100f;
             waterSurfaceImage.fillAmount = value2 / 100f;
+            
             yield return null;
         }
         if (value >= 100f)

@@ -1013,6 +1013,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8947257739544460662, guid: bf5df4b061287fc44b9564803d84988d, type: 3}
+      propertyPath: isInDungeon
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf5df4b061287fc44b9564803d84988d, type: 3}
 --- !u!1 &1633606861
@@ -1046,9 +1050,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 5
   damage: 1
+  knockForce: 0
   detectRange: 1
   moveSpeed: 1
   rb: {fileID: 0}
+  materialDrop:
+    material: {fileID: 0}
+    amount: 0
 --- !u!4 &1633606863
 Transform:
   m_ObjectHideFlags: 0

@@ -32,6 +32,7 @@ public class RecipeListManagerGUI : MonoBehaviour
                 {
                     RecipeSocketGUI newSocket = Instantiate(socketTemplate, verticalLayout.transform);
                     newSocket.InitSocket(item);
+                    newSocket.AddButtonListener(OpenQTEPanel);
                     recipeSocketList.Add(newSocket);
                 }
             }
@@ -93,8 +94,7 @@ public class RecipeListManagerGUI : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 recipeSocketList[selectingIndex].ButtonInvoke(isSelectNormal);
-                qteManager.OpenPanel(station);
-                ClosePanel();
+                OpenQTEPanel();
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -102,6 +102,12 @@ public class RecipeListManagerGUI : MonoBehaviour
             }
         }
         
+    }
+
+    public void OpenQTEPanel()
+    {
+        qteManager.OpenPanel(station, this);
+        ClosePanel();
     }
 
     private void ChooseMode()

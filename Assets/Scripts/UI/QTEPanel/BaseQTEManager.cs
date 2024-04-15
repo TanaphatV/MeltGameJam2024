@@ -9,6 +9,7 @@ public class BaseQTEManager : MonoBehaviour
     [SerializeField] private QTETemperaturePanel qteTempPanel;
     [SerializeField] private GameObject panel;
     private ProcessingStation station;
+    private RecipeListManagerGUI recipePanel;
 
     private void Awake()
     {
@@ -27,11 +28,18 @@ public class BaseQTEManager : MonoBehaviour
 
         yield return StartQTEMoldingWeapon();
 
-        station.currentItemCraftingStatus = CraftingStatus.Completed;
+        
     }
 
-    public void OpenPanel(ProcessingStation _ps)
+    public void BackToRecipeListPanel()
     {
+        recipePanel.OpenPanel(station);
+        panel.SetActive(false);
+    }
+
+    public void OpenPanel(ProcessingStation _ps, RecipeListManagerGUI gui)
+    {
+        recipePanel = gui;
         station = _ps;
         panel.SetActive(true);
         StartCoroutine(StartQTEFlow());
@@ -51,9 +59,10 @@ public class BaseQTEManager : MonoBehaviour
 
     public IEnumerator StartQTEControlTemperature()
     {
-        Debug.Log("StartQTETEM");
+        //Debug.Log("StartQTETEM");
         qteTempPanel.gameObject.SetActive(true);
         qteTempPanel.InitQTEProcess();
+        station.currentItemCraftingStatus = CraftingStatus.Completed;
         //qteTempPanel.gameObject.SetActive(false);
 
         yield return new WaitForEndOfFrame();

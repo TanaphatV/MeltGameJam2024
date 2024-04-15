@@ -59,7 +59,7 @@ public class QTEMoldingPanel : MonoBehaviour
     {
         if (holdCoroutine == null)
         {
-            Debug.Log("Hold");
+            //Debug.Log("Hold");
             isHolding = true;
             holdCoroutine = StartCoroutine(HoldCoroutine());
         }
@@ -68,7 +68,7 @@ public class QTEMoldingPanel : MonoBehaviour
     void StopHolding()
     {
         isHolding = false;
-        Debug.Log("Stop");
+        //Debug.Log("Stop");
         if (holdCoroutine != null)
         {
             StopCoroutine(holdCoroutine);

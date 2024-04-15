@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class RecipeSocketGUI : MonoBehaviour
 {
@@ -65,5 +66,14 @@ public class RecipeSocketGUI : MonoBehaviour
         {
             highQualityButton.onClick.Invoke();
         }
+    }
+
+    public void AddButtonListener(UnityAction action)
+    {
+        normalQualityButton.onClick.RemoveAllListeners();
+        highQualityButton.onClick.RemoveAllListeners();
+
+        normalQualityButton.onClick.AddListener(action);
+        highQualityButton.onClick.AddListener(action);
     }
 }

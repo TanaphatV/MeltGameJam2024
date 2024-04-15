@@ -28,11 +28,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Get input for movement
+
         float moveInputX = Input.GetAxisRaw("Horizontal");
         float moveInputY = Input.GetAxisRaw("Vertical");
 
-        // Calculate movement direction
+
         if (moveInputX > Mathf.Epsilon)
             isFacingRight = true;
         else if (moveInputX < -Mathf.Epsilon)
@@ -41,8 +41,10 @@ public class PlayerController : MonoBehaviour
         movement = new Vector2(moveInputX, moveInputY).normalized;
         if(movement.magnitude > Mathf.Epsilon)
         {
-            animationController.ChangeAnimState("walkSide", isFacingRight);
+            animationController.ChangeAnimState("walk_side", isFacingRight);
         }
+        else
+            animationController.ChangeAnimState("idle_side", isFacingRight);
 
         if (!isInDungeon)
             WorkShopBehavior();
@@ -53,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
     }
 
     private void WorkShopBehavior()

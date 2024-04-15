@@ -52,6 +52,9 @@ TagManager:
   - name: PickedObject
     uniqueID: 1123313187
     locked: 0
+  - name: Player
+    uniqueID: 2081193149
+    locked: 0
   - name: Foreground
     uniqueID: 3870777991
     locked: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OreVein : MonoBehaviour, IHitable
 {
-    public MaterialSO materialSO;
+    public MaterialContainer materialContainer;
     public int hitsNeeded;
 
     public void Hit()
@@ -16,7 +16,8 @@ public class OreVein : MonoBehaviour, IHitable
 
     void Break()
     {
-
+        PlayerResources.instance.AddMaterial(materialContainer.material.materialName, materialContainer.amount);
+        Destroy(gameObject);
     }
 
     void Start()

@@ -6,6 +6,7 @@ public class RecipeListManagerGUI : MonoBehaviour
 {
     [SerializeField] private RecipeSocketGUI socketTemplate;
     [SerializeField] private GameObject verticalLayout;
+    [SerializeField] private MainCharacterHUDManager mainHud;
     private ResourceSO resource;
     private List<RecipeSocketGUI> recipeSocketList = new List<RecipeSocketGUI>();
     private int selectingIndex;
@@ -72,6 +73,15 @@ public class RecipeListManagerGUI : MonoBehaviour
                 isSelectNormal = !isSelectNormal;
                 ChooseMode();
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            recipeSocketList[selectingIndex].ButtonInvoke(isSelectNormal);
+            mainHud.ToggleRecipeListHUD(false);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            mainHud.ToggleRecipeListHUD(false);
         }
     }
 

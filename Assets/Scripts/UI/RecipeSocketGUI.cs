@@ -55,4 +55,15 @@ public class RecipeSocketGUI : MonoBehaviour
         normalQualityButton.GetComponent<Image>().color = Color.white;
         highQualityButton.GetComponent<Image>().color = Color.white;
     }
+    public void ButtonInvoke(bool isNormal)
+    {
+        if (isNormal)
+        {
+            normalQualityButton.onClick.Invoke();
+        }
+        else
+        {
+            highQualityButton.onClick.Invoke();
+        }
+    }
 }

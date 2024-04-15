@@ -1,16 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ResourceUIController : MonoBehaviour
 {
     PlayerResources playerResources;
     private Dictionary<string, int> materialDictionary;
-    // Start is called before the first frame update
+    [SerializeField] private GameObject currentMaterialUITemplate;
+    [SerializeField] private GameObject verticalLayout;
+
     void Awake()
     {
         materialDictionary = playerResources.GetMaterialDictionary();
         playerResources.onMaterialAmountChange += UpdateMaterial;
+
+        foreach (KeyValuePair<string, int> pair in materialDictionary)
+        {
+            string materialName = pair.Key;
+            int materialQuantity = pair.Value;
+
+            GameObject newMat = Instantiate(currentMaterialUITemplate, verticalLayout.transform);
+            newMat.GetComponentInChildren<TextMeshProUGUI>().text = materialQuantity.ToString();
+        }
+        currentMaterialUITemplate.SetActive(false);
     }
 
     void UpdateMaterial(string matName,int amount)
@@ -18,9 +31,4 @@ public class ResourceUIController : MonoBehaviour
         materialDictionary[matName] = amount;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

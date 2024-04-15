@@ -5,12 +5,27 @@ using System;
 
 public class PlayerResources : MonoBehaviour
 {
+    #region singleton
+    private static PlayerResources _instance;
+    public static PlayerResources instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                Debug.Log("Error, instance is null");
+            }
+            return _instance;
+        }
+    }
+    #endregion
     [SerializeField] ResourceSO resourceSO;
     private Dictionary<string, int> materialDictionary;
     public int coin;
-
+    public int reputation;
     private void Awake()
     {
+        _instance = this;
         materialDictionary = new Dictionary<string, int>();
         foreach (var mat in resourceSO.pickableOres)
         {

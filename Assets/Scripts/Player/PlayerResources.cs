@@ -20,48 +20,53 @@ public class PlayerResources : MonoBehaviour
     }
     #endregion
     [SerializeField] ResourceSO resourceSO;
-    private Dictionary<string, int> materialDictionary;
+    private Dictionary<MaterialSO, int> materialDictionary;
 
+    public int hp;
     public int coin;
     public int reputation;
 
-    public UnityAction<string, int> onMaterialAmountChange;
+    public UnityAction<MaterialSO, int> onMaterialAmountChange;
 
     private void Awake()
     {
         _instance = this;
-        materialDictionary = new Dictionary<string, int>();
+        materialDictionary = new Dictionary<MaterialSO, int>();
         foreach (var mat in resourceSO.pickableOres)
         {
-            materialDictionary.Add(mat.materialName, 0);
+            materialDictionary.Add(mat, 0);
         }
     }
-
-    public Dictionary<string, int> GetMaterialDictionary()
+    private void Start()
     {
-        return new Dictionary<string, int>(materialDictionary);
+        hp = PlayerStats.instance.maxHp;
     }
 
-    public bool HaveEnoughMaterial(string materialName, int amount)
+    public Dictionary<MaterialSO, int> GetMaterialDictionary()
     {
-        if (materialDictionary[materialName] >= amount)
+        return new Dictionary<MaterialSO, int>(materialDictionary);
+    }
+
+    public bool HaveEnoughMaterial(MaterialSO material, int amount)
+    {
+        if (materialDictionary[material] >= amount)
             return true;
         return false;
     }
 
-    public void TakeMaterial(string materialName, int amount)
+    public void TakeMaterial(MaterialSO material, int amount)
     {
-        materialDictionary[materialName] -= amount;
-        onMaterialAmountChange(materialName, materialDictionary[materialName]);
-        if (materialDictionary[materialName] < 0)
+        materialDictionary[material] -= amount;
+        onMaterialAmountChange(material, materialDictionary[material]);
+        if (materialDictionary[material] < 0)
         {
             throw new Exception("ERROR: took more material than material amount"); 
         }
     }
 
-    public void AddMaterial(string materialName, int amount)
+    public void AddMaterial(MaterialSO material, int amount)
     {
-        materialDictionary[materialName] += amount;
-        onMaterialAmountChange(materialName, materialDictionary[materialName]);
+        materialDictionary[material] += amount;
+        onMaterialAmountChange(material, materialDictionary[material]);
     }
 }

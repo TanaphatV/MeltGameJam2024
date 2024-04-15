@@ -6,7 +6,7 @@ using TMPro;
 public class ResourceUIController : MonoBehaviour
 {
     PlayerResources playerResources;
-    private Dictionary<string, int> materialDictionary;
+    private Dictionary<MaterialSO, int> materialDictionary;
     [SerializeField] private GameObject currentMaterialUITemplate;
     [SerializeField] private GameObject verticalLayout;
 
@@ -15,9 +15,9 @@ public class ResourceUIController : MonoBehaviour
         materialDictionary = playerResources.GetMaterialDictionary();
         playerResources.onMaterialAmountChange += UpdateMaterial;
 
-        foreach (KeyValuePair<string, int> pair in materialDictionary)
+        foreach (KeyValuePair<MaterialSO, int> pair in materialDictionary)
         {
-            string materialName = pair.Key;
+            MaterialSO material = pair.Key;
             int materialQuantity = pair.Value;
 
             GameObject newMat = Instantiate(currentMaterialUITemplate, verticalLayout.transform);
@@ -26,7 +26,7 @@ public class ResourceUIController : MonoBehaviour
         currentMaterialUITemplate.SetActive(false);
     }
 
-    void UpdateMaterial(string matName,int amount)
+    void UpdateMaterial(MaterialSO matName,int amount)
     {
         materialDictionary[matName] = amount;
     }

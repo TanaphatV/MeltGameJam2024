@@ -16,7 +16,7 @@ public class OreVein : MonoBehaviour, IHitable
 
     void Break()
     {
-        PlayerResources.instance.AddMaterial(materialContainer.material.materialName, materialContainer.amount);
+        PlayerResources.instance.AddMaterial(materialContainer.material, materialContainer.amount);
         Destroy(gameObject);
     }
 

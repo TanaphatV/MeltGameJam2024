@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ResourceUIController : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class ResourceUIController : MonoBehaviour
 
             GameObject newMat = Instantiate(currentMaterialUITemplate, verticalLayout.transform);
             newMat.GetComponentInChildren<TextMeshProUGUI>().text = materialQuantity.ToString();
+            newMat.GetComponentInChildren<Image>().sprite = material.icon;
         }
         currentMaterialUITemplate.SetActive(false);
     }

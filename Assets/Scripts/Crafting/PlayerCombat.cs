@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -10,26 +11,23 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] PlayerController playerController;
+    [SerializeField] AnimationController animationController;
     int hp;
-    enum Direction
-    {
-        Left,
-        Right
-    }
 
     public void Init()
     {
         hp = PlayerStats.instance.maxHp;
     }
 
-    Direction mouseDirection;
+    bool mouseDirectionIsRight;
     public void Attack()
     {
         FindMouseDirection();
-        Debug.Log(mouseDirection);
-
+        playerController.pause = true; ;
+        animationController.onAnimationEnd += OnAttackEnd;
+        animationController.ChangeAnimState("attack_side", mouseDirectionIsRight,true);
         Vector3 offset = new Vector3((attackSize.x / 2.0f), 0, 0);
-        Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position - offset + (offset * 2 * (int)mouseDirection), attackSize, 0);//collider array to hit multiple enemies at once
+        Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position - offset + (offset * 2 * Convert.ToInt32(mouseDirectionIsRight)), attackSize, 0);//collider array to hit multiple enemies at once
         foreach(var col in cols)
         {
             if (col.TryGetComponent(out IHitable obj))
@@ -37,8 +35,19 @@ public class PlayerCombat : MonoBehaviour
                 obj.Hit();
             }
         }
-
     }
+
+    void OnAttackEnd()
+    {
+        playerController.pause = false;
+        animationController.onAnimationEnd -= OnAttackEnd;
+    }
+
+    //IEnumerator AttackIE()
+    //{
+
+    //}
+
     bool invulnerable = false;
     public void Hit(int damage,Vector3 knockForce)
     {
@@ -79,15 +88,15 @@ public class PlayerCombat : MonoBehaviour
         float angle = Mathf.Atan2(pos.y, pos.x) * Mathf.Rad2Deg;
 
         if (angle >= -90 && angle <= 90)
-            mouseDirection = Direction.Right;
+            mouseDirectionIsRight = true;
         else
-            mouseDirection = Direction.Left;
+            mouseDirectionIsRight = false;
     }
 
     private void OnDrawGizmosSelected()
     {
         Vector3 offset = new Vector3((attackSize.x / 2.0f), 0, 0);
-        Gizmos.DrawWireCube(transform.position - offset + (offset * 2 * (int)mouseDirection), attackSize);
+        Gizmos.DrawWireCube(transform.position - offset + (offset * 2 * Convert.ToInt32(mouseDirectionIsRight)), attackSize);
     }
 }
 

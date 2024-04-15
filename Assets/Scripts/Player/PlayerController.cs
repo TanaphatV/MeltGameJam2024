@@ -42,14 +42,15 @@ public class PlayerController : MonoBehaviour
 
         movement = new Vector2(moveInputX, moveInputY).normalized;
 
-        if(movement.magnitude > Mathf.Epsilon)
-        {
-            animationController.ChangeAnimState("walk_side", isFacingRight);
-        }
-        else
-            animationController.ChangeAnimState("idle_side", isFacingRight);
         if(!pause)
         {
+            if (movement.magnitude > Mathf.Epsilon)
+            {
+                animationController.ChangeAnimState("walk_side", isFacingRight);
+            }
+            else
+                animationController.ChangeAnimState("idle_side", isFacingRight);
+
             if (!isInDungeon)
                 WorkShopBehavior();
             else

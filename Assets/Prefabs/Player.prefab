@@ -338,6 +338,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8947257739156509960}
   rb: {fileID: 8947257739544460656}
   playerController: {fileID: 8947257739544460662}
+  animationController: {fileID: 8889837092336080845}
 --- !u!114 &8889837092336080845
 MonoBehaviour:
   m_ObjectHideFlags: 0

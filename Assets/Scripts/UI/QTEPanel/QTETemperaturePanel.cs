@@ -17,4 +17,9 @@ public class QTETemperaturePanel : MonoBehaviour
     {
         
     }
+
+    public IEnumerator InitQTEProcess()
+    {
+        yield return new WaitForSeconds(1.0f);
+    }
 }

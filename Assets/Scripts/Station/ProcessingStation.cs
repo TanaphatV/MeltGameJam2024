@@ -13,7 +13,7 @@ public class ProcessingStation : InteractableObject
 {
     public Item itemBasePrefab;
     [SerializeField] protected ItemSO testSO;
-    [SerializeField] private BaseQTEManager uiPrefabs;
+    [SerializeField] private BaseQTEManager qteManager;
     //private BaseQTEManager moldUI;
     public CraftingStatus currentItemCraftingStatus = CraftingStatus.Nothing;
     protected override void InteractBehavior(PlayerInteract playerInteract)
@@ -21,7 +21,7 @@ public class ProcessingStation : InteractableObject
         StartCoroutine(InteractRoutine(playerInteract));
     }
 
-    void CreateItem(ItemSO itemSO , bool highQuality)
+    public void CreateItem(ItemSO itemSO , bool highQuality)
     {
         Item temp = Instantiate(itemBasePrefab);
         temp.highQuality = highQuality;
@@ -33,24 +33,14 @@ public class ProcessingStation : InteractableObject
     {
         playerInteract.pause = true;
         yield return new WaitForEndOfFrame();
-        //if (moldUI == null)
-        //{
-        //    moldUI = Instantiate(uiPrefabs);
-        //    int newMinimum = Random.Range(60, 85);
-        //    int newMax = newMinimum + Random.Range(5, 10);
-        //    yield return moldUI.Init(newMinimum, newMax, this);
-        //}
+        yield return qteManager.StartQTEFlow(this);
         //if minigame completed properly, CreateItem
+
         yield return new WaitForSeconds(1.0f);
-        //if (currentItemCraftingStatus == CraftingStatus.Completed)
-        //{
-        //    CreateItem(testSO, true);
-        //    Destroy(moldUI.gameObject);
-        //}
-        //else
-        //{
-        //    Destroy(moldUI.gameObject);
-        //}
+        if (currentItemCraftingStatus == CraftingStatus.Completed)
+        {
+            CreateItem(testSO, true);
+        }
         playerInteract.pause = false;
         currentItemCraftingStatus = CraftingStatus.Nothing;
     }

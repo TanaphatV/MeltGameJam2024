@@ -17,11 +17,11 @@ public class QTEMoldingPanel : MonoBehaviour
     private float minimumGoodScore;
     private float maximumGoodScore;
     [SerializeField] private Button nextButton;
-    private ProcessingStation station;
+    private BaseQTEManager qteManager;
 
-    public IEnumerator Init(float minimumGoodScore, float maximumGoodScore, ProcessingStation s)
+    public IEnumerator Init(float minimumGoodScore, float maximumGoodScore, BaseQTEManager bm)
     {
-        station = s;
+        qteManager = bm;
         isStartMinigame = true;
         goodScoreImage.fillAmount = 1.0f - (minimumGoodScore / 100f);
         failScoreImage.fillAmount = 1.0f - (maximumGoodScore / 100f);
@@ -57,7 +57,7 @@ public class QTEMoldingPanel : MonoBehaviour
         }
     }
 
-    void StopHolding()
+    private IEnumerator StopHolding()
     {
         isHolding = false;
         if (holdCoroutine != null)
@@ -66,13 +66,12 @@ public class QTEMoldingPanel : MonoBehaviour
             holdCoroutine = null;
             if (value > minimumGoodScore && value < maximumGoodScore)
             {
-                Debug.Log("Nice");
-                station.currentItemCraftingStatus = CraftingStatus.Completed;
+                yield return qteManager.StartQTEControlTemperature();
+                //station.currentItemCraftingStatus = CraftingStatus.Completed;
             }
             else
             {
-                Debug.Log("You fail");
-                station.currentItemCraftingStatus = CraftingStatus.Failed;
+                //station.currentItemCraftingStatus = CraftingStatus.Failed;
             }
             isStartMinigame = false;
         }
@@ -94,7 +93,7 @@ public class QTEMoldingPanel : MonoBehaviour
         if (value >= 100f)
         {
             isStartMinigame = false;
-            station.currentItemCraftingStatus = CraftingStatus.Failed;
+            //station.currentItemCraftingStatus = CraftingStatus.Failed;
         }
     }
 }

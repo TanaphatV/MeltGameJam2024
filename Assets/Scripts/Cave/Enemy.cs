@@ -13,10 +13,13 @@ public class Enemy : MonoBehaviour, IHitable
     State currentState;
     [SerializeField] int hp;
     [SerializeField] int damage;
+    [SerializeField] float knockForce;
     [SerializeField] float detectRange;
     [SerializeField] float moveSpeed;
     [SerializeField] Rigidbody2D rb;
+    public MaterialContainer materialDrop;
 
+    bool stun = false;
     Transform target;
 
     // Start is called before the first frame update
@@ -28,6 +31,8 @@ public class Enemy : MonoBehaviour, IHitable
     // Update is called once per frame
     void Update()
     {
+        if (stun)
+            return;
         if(currentState == State.patrol)
         {
             Patrol();
@@ -60,16 +65,50 @@ public class Enemy : MonoBehaviour, IHitable
 
     public void Hit()
     {
+        Debug.Log("Hit");
+        if(hp <= 0)
+            return;
+        
         hp -= PlayerStats.instance.damage;
+        Vector3 direction = transform.position - target.position;
+        StartCoroutine(HitStunIE());
+        rb.AddForce(direction.normalized * PlayerStats.instance.knockForce,ForceMode2D.Impulse);
+        if (hp <= 0)
+        {
+            Death();
+        }
+
+    }
+
+    IEnumerator HitStunIE()
+    {
+        stun = true;
+        yield return new WaitForSeconds(0.9f);
+        stun = false;
+    }
+
+    void Death()
+    {
+        PlayerResources.instance.AddMaterial(materialDrop.material, materialDrop.amount);
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        PlayerCollision(collision);
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        PlayerCollision(collision);
+    }
+    void PlayerCollision(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
         {
-            if(collision.gameObject.TryGetComponent(out PlayerCombat playerCombat))
+            if (collision.gameObject.TryGetComponent(out PlayerCombat playerCombat))
             {
-                playerCombat.Hit(damage);
+                Vector2 direction = playerCombat.transform.position - transform.position;
+                playerCombat.Hit(damage,direction.normalized * knockForce);
             }
         }
     }

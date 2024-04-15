@@ -8,6 +8,8 @@ public class PlayerCombat : MonoBehaviour
     public float invulnerabilityDuration;
     public float invulnFlashingInterval;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] PlayerController playerController;
     int hp;
     enum Direction
     {
@@ -38,12 +40,21 @@ public class PlayerCombat : MonoBehaviour
 
     }
     bool invulnerable = false;
-    public void Hit(int damage)
+    public void Hit(int damage,Vector3 knockForce)
     {
         if (invulnerable)
             return;
         hp -= damage;
+        StartCoroutine(HitStunIE());
+        rb.AddForce(knockForce, ForceMode2D.Impulse);
         StartCoroutine(InvulnerabilityIE());
+    }
+    IEnumerator HitStunIE()
+    {
+        playerController.pause = true;
+        yield return new WaitForSeconds(0.9f);
+        playerController.pause = false;
+
     }
     IEnumerator InvulnerabilityIE()
     {

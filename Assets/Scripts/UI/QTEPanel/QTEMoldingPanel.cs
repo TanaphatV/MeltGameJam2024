@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BaseQTEManager : MonoBehaviour
+public class QTEMoldingPanel : MonoBehaviour
 {
     private bool isHolding = false;
     private float value = 0f;
@@ -84,7 +84,7 @@ public class BaseQTEManager : MonoBehaviour
         float incrementRate2 = 100f / 4.7f;
         while (isHolding && value < 100f)
         {
-            value = Mathf.Clamp(value + incrementRate1 * Time.deltaTime, 0f, 100-(maximumGoodScore-minimumGoodScore));
+            value = Mathf.Clamp(value + incrementRate1 * Time.deltaTime, 0f, 100 - (maximumGoodScore - minimumGoodScore));
             value2 = Mathf.Clamp(value2 + incrementRate2 * Time.deltaTime, 0f, 100f);
 
             fillWaterImg.fillAmount = value / 100f;

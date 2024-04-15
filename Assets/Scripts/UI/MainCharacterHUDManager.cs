@@ -14,6 +14,14 @@ public class MainCharacterHUDManager : MonoBehaviour
     [SerializeField] private GameObject moneyHUD;
     [SerializeField] private GameObject materialList;
     [SerializeField] private GameObject recipeList;
+    private BaseQTEManager qteMoldManager;
+    private QTETemperaturePanel qteTempPanel;
+
+    private void Start()
+    {
+        qteMoldManager = FindAnyObjectByType<BaseQTEManager>();
+        qteTempPanel = FindAnyObjectByType<QTETemperaturePanel>();
+    }
 
     public void ToggleRecipeListHUD(bool isOpen)
     {
@@ -21,19 +29,24 @@ public class MainCharacterHUDManager : MonoBehaviour
         moneyHUD.SetActive(!isOpen);
     }
 
+    public void Startl()
+    {
+
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            if (recipeList.activeSelf)
-            {
-                ToggleRecipeListHUD(false);
-            }
-            else
-            {
-                ToggleRecipeListHUD(true);
-            }
+        //if (Input.GetKeyDown(KeyCode.J))
+        //{
+        //    if (recipeList.activeSelf)
+        //    {
+        //        ToggleRecipeListHUD(false);
+        //    }
+        //    else
+        //    {
+        //        ToggleRecipeListHUD(true);
+        //    }
             
-        }
+        //}
     }
 }

@@ -5,10 +5,19 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     public Vector2 attackSize;
+    public float invulnerabilityDuration;
+    public float invulnFlashingInterval;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    int hp;
     enum Direction
     {
         Left,
         Right
+    }
+
+    public void Init()
+    {
+        hp = PlayerStats.instance.maxHp;
     }
 
     Direction mouseDirection;
@@ -27,6 +36,28 @@ public class PlayerCombat : MonoBehaviour
             }
         }
 
+    }
+    bool invulnerable = false;
+    public void Hit(int damage)
+    {
+        if (invulnerable)
+            return;
+        hp -= damage;
+        StartCoroutine(InvulnerabilityIE());
+    }
+    IEnumerator InvulnerabilityIE()
+    {
+        invulnerable = true;
+        float timer = 0;
+        while(timer < invulnerabilityDuration)
+        {
+            spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+            yield return new WaitForSeconds(invulnFlashingInterval);
+            spriteRenderer.color = Color.white;
+            timer += invulnFlashingInterval;
+        }
+        yield return new WaitForSeconds(invulnerabilityDuration);
+        invulnerable = false;
     }
 
     void FindMouseDirection()

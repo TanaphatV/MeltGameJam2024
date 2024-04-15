@@ -16,17 +16,6 @@ public class PlayerInteract : MonoBehaviour
 
     public bool pause;
 
-    //PlayerController playerController;
-    void Start()
-    {
-        //playerController = GetComponent<PlayerController>();
-    }
-
-    void Update()
-    {
-
-    }
-
     public void InteractAction()
     {
         if (InteractWithObject())

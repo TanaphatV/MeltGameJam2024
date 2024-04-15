@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 8947257739544460663}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d3f30a787524c7409affaaeb1864ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSize: {x: 0, y: 0}
+  attackSize: {x: 3, y: 5}
 --- !u!114 &8889837092336080845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +358,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142ca898e3a30f14fbb36a17c46c5501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceSO: {fileID: 0}
+  resourceSO: {fileID: 11400000, guid: 66779279b3574e64e9fff45ea7a22bed, type: 2}
+  hp: 0
+  coin: 0
+  reputation: 0
 --- !u!114 &3434184211339674201
 MonoBehaviour:
   m_ObjectHideFlags: 0

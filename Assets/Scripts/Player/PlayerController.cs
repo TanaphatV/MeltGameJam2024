@@ -16,6 +16,16 @@ public class PlayerController : MonoBehaviour
 
     bool isFacingRight;
 
+    private void Start()
+    {
+        Init();
+    }
+
+    private void Init()
+    {
+        playerCombat.Init();
+    }
+
     void Update()
     {
         // Get input for movement

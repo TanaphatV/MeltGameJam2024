@@ -388,6 +388,22 @@ PrefabInstance:
       propertyPath: testMat
       value: 
       objectReference: {fileID: 11400000, guid: a2bc193145bdb3c4aafa3e12a932ca63, type: 2}
+    - target: {fileID: 1055803261027514509, guid: f0ea615d70e27a54b8014138f6ea2548, type: 3}
+      propertyPath: IsDebugingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055803261027514509, guid: f0ea615d70e27a54b8014138f6ea2548, type: 3}
+      propertyPath: testMatList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055803261027514509, guid: f0ea615d70e27a54b8014138f6ea2548, type: 3}
+      propertyPath: testMatList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: a2bc193145bdb3c4aafa3e12a932ca63, type: 2}
+    - target: {fileID: 1055803261027514509, guid: f0ea615d70e27a54b8014138f6ea2548, type: 3}
+      propertyPath: testMatList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c95ed5a228066064d8eb74e9a2a46338, type: 2}
     - target: {fileID: 4109079331210692201, guid: f0ea615d70e27a54b8014138f6ea2548, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -645,6 +661,10 @@ PrefabInstance:
       propertyPath: recipePanel
       value: 
       objectReference: {fileID: 289330080}
+    - target: {fileID: 3504599655783292720, guid: 9bb01ce3a8bc5af4694c8bad5eaeaeba, type: 3}
+      propertyPath: itemToCreate
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c3eceab6fa1ea5469f9bcd07e55bae1, type: 2}
     - target: {fileID: 3504599655783292721, guid: 9bb01ce3a8bc5af4694c8bad5eaeaeba, type: 3}
       propertyPath: m_RootOrder
       value: 2

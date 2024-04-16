@@ -12,10 +12,17 @@ public enum CraftingStatus
 public class ProcessingStation : InteractableObject
 {
     public Item itemBasePrefab;
-    [SerializeField] protected ItemSO testSO;
+    protected ItemSO itemToCreate;
     [SerializeField] private RecipeListManagerGUI recipePanel;
+
     //private BaseQTEManager moldUI;
     public CraftingStatus currentItemCraftingStatus = CraftingStatus.Nothing;
+
+    private void Start()
+    {
+        itemToCreate = null;
+        recipePanel.onSelectedItemToCreate += SetItemToCreate;
+    }
     protected override void InteractBehavior(PlayerInteract playerInteract)
     {
         StartCoroutine(InteractRoutine(playerInteract));
@@ -27,6 +34,12 @@ public class ProcessingStation : InteractableObject
         temp.highQuality = highQuality;
         temp.transform.position = transform.position;
         temp.Init(itemSO);
+    }
+
+    private void SetItemToCreate(ItemSO itemSo)
+    {
+        Debug.Log("SetItemToCreate");
+        itemToCreate = itemSo;
     }
 
     IEnumerator InteractRoutine(PlayerInteract playerInteract)
@@ -45,10 +58,10 @@ public class ProcessingStation : InteractableObject
         Debug.Log(currentItemCraftingStatus);
         if (currentItemCraftingStatus == CraftingStatus.Completed)
         {
-            CreateItem(testSO, true);
+            Debug.Log(itemToCreate);
+            CreateItem(itemToCreate, true);
         }
-        playerInteract.SetPlayerPause(false);
-        //playerInteract.pause = false;
+        playerInteract.pause = false;
         currentItemCraftingStatus = CraftingStatus.Nothing;
     }
 }

@@ -16,9 +16,12 @@ public class RecipeSocketGUI : MonoBehaviour
     [SerializeField] private Button normalQualityButton;
     [SerializeField] private Button highQualityButton;
 
+    private ItemSO itemSO;
+    public ItemSO GetItemSO => itemSO;
     private List<MaterialSocketGUI> matSocketList = new List<MaterialSocketGUI>();
     public void InitSocket(ItemSO itemSO)
     {
+        this.itemSO = itemSO;
         itemName.text = itemSO.itemName;
         itemImg.sprite = itemSO.finishedItem;
         foreach (MaterialContainer mat in itemSO.normalQualityRecipe)
@@ -68,12 +71,16 @@ public class RecipeSocketGUI : MonoBehaviour
         }
     }
 
-    public void AddButtonListener(UnityAction action)
+    public void AddButtonListenerNormal(UnityAction action)
     {
         normalQualityButton.onClick.RemoveAllListeners();
-        highQualityButton.onClick.RemoveAllListeners();
-
         normalQualityButton.onClick.AddListener(action);
+        highQualityButton.onClick.RemoveAllListeners();
         highQualityButton.onClick.AddListener(action);
+    }
+
+    public void AddButtonListenerHigh(UnityAction action)
+    {
+        
     }
 }

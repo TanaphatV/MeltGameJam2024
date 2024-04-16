@@ -20,6 +20,7 @@ public class QTETemperaturePanel : MonoBehaviour
 
     public IEnumerator InitQTEProcess()
     {
-        yield return new WaitForSeconds(1.0f);
+        Debug.Log("QTETempProcessing");
+        yield return new WaitForEndOfFrame();
     }
 }

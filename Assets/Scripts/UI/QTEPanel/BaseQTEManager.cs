@@ -13,9 +13,6 @@ public class BaseQTEManager : MonoBehaviour
 
     private void Awake()
     {
-        //qteMoldingPanel = FindAnyObjectByType<QTEMoldingPanel>();
-        //qteTempPanel = FindAnyObjectByType<QTETemperaturePanel>();
-
         if (qteMoldingPanel == null || qteTempPanel == null)
         {
             Debug.LogError("Can't find object QTEPanel");
@@ -50,20 +47,22 @@ public class BaseQTEManager : MonoBehaviour
         int newMinimum = Random.Range(60, 85);
         int newMax = newMinimum + Random.Range(5, 10);
         qteMoldingPanel.gameObject.SetActive(true);
-        //yield return new WaitForSeconds(0.5f);
         yield return qteMoldingPanel.Init(newMinimum, newMax, this);
         qteMoldingPanel.gameObject.SetActive(false);
 
-        yield return null;
+        yield return new WaitForEndOfFrame();
     }
 
     public IEnumerator StartQTEControlTemperature()
     {
-        //Debug.Log("StartQTETEM");
+        Debug.Log("StartQTETEM");
         qteTempPanel.gameObject.SetActive(true);
-        qteTempPanel.InitQTEProcess();
+        yield return qteTempPanel.InitQTEProcess();
+
+        Debug.Log("fff");
         station.currentItemCraftingStatus = CraftingStatus.Completed;
-        //qteTempPanel.gameObject.SetActive(false);
+
+       //Debug.Log(station.currentItemCraftingStatus);
 
         yield return new WaitForEndOfFrame();
     }

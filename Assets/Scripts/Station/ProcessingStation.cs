@@ -32,13 +32,17 @@ public class ProcessingStation : InteractableObject
     IEnumerator InteractRoutine(PlayerInteract playerInteract)
     {
         playerInteract.pause = true;
-        
+        currentItemCraftingStatus = CraftingStatus.Nothing;
+
         yield return new WaitForEndOfFrame();
         recipePanel.OpenPanel(this);
-        //yield return 
-        //if minigame completed properly, CreateItem
 
-        yield return new WaitForSeconds(1.0f);
+        //if minigame completed properly, CreateItem
+        while (currentItemCraftingStatus == CraftingStatus.Nothing)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        Debug.Log(currentItemCraftingStatus);
         if (currentItemCraftingStatus == CraftingStatus.Completed)
         {
             CreateItem(testSO, true);

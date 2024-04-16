@@ -319,7 +319,7 @@ MonoBehaviour:
   interactionRange: 2
   putdownRange: 1
   objectLiftingTransform: {fileID: 1587516628}
-  pause: 0
+  playerController: {fileID: 8947257739544460662}
 --- !u!114 &1220178908661681659
 MonoBehaviour:
   m_ObjectHideFlags: 0

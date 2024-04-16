@@ -54,10 +54,21 @@ public class PlayerInteract : MonoBehaviour
             Item temp = (Item)pickedObject;
             pickedObject = null;
             return temp;
-
         }
         else
             return null;
+    }
+
+    public Item GetHoldingItem()
+    {
+        if (pickedObject == null)
+            return null;
+        if (pickedObject is not Item)
+            return null; 
+        
+        Item temp = (Item)pickedObject;
+        pickedObject = null;
+        return temp;
     }
 
     public void SetPlayerPause(bool pause)

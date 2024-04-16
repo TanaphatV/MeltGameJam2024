@@ -47,13 +47,10 @@ TagManager:
     uniqueID: 3693142565
     locked: 0
   - name: Midground
-    uniqueID: 2407027617
+    uniqueID: 2081193149
     locked: 0
   - name: PickedObject
     uniqueID: 1123313187
-    locked: 0
-  - name: Player
-    uniqueID: 2081193149
     locked: 0
   - name: Foreground
     uniqueID: 3870777991

@@ -27,6 +27,7 @@ public class ReputationManager : MonoBehaviour
     }
     public ReputationRank currentRank { get; private set; }
     public float reputation;
+    public float maxReputation;
     public float specialOrderMultiplier;
 
     private void Awake()

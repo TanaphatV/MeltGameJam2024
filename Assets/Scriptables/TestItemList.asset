@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   craftableItems:
   - {fileID: 11400000, guid: cbedc1f114e85b945a3fbd8624fa52e3, type: 2}
-  pickableOres: []
+  pickableOres:
+  - {fileID: 11400000, guid: a2bc193145bdb3c4aafa3e12a932ca63, type: 2}

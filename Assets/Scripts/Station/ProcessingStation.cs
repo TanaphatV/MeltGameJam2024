@@ -61,7 +61,7 @@ public class ProcessingStation : InteractableObject
             Debug.Log(itemToCreate);
             CreateItem(itemToCreate, true);
         }
-        playerInteract.pause = false;
+        playerInteract.SetPlayerPause(false);
         currentItemCraftingStatus = CraftingStatus.Nothing;
     }
 }

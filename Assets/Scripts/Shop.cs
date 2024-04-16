@@ -10,6 +10,12 @@ public class Shop : InteractableObject
     public List<ShopUpgrade> freezer;
     public List<ShopUpgrade> reputation;
     public List<ShopUpgrade> minigame;
+    [SerializeField] private ShopWindowManager shopWindow;
+
+    private void Start()
+    {
+        
+    }
 
     protected override void InteractBehavior(PlayerInteract playerInteract)
     {
@@ -19,6 +25,8 @@ public class Shop : InteractableObject
     IEnumerator InteractIE(PlayerInteract playerInteract)
     {
         playerInteract.SetPlayerPause(true);
+        shopWindow.OpenPanel();
+        shopWindow.Init(this);
         yield return null;
     }
 }

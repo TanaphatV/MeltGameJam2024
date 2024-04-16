@@ -44,6 +44,10 @@ public class ProcessingStation : InteractableObject
 
     IEnumerator InteractRoutine(PlayerInteract playerInteract)
     {
+        if(playerInteract == null)
+        {
+            Debug.LogError("No PlayerInteract has been assigned!");
+        }
         playerInteract.SetPlayerPause(true);
         currentItemCraftingStatus = CraftingStatus.Nothing;
 
@@ -61,7 +65,7 @@ public class ProcessingStation : InteractableObject
             Debug.Log(itemToCreate);
             CreateItem(itemToCreate, true);
         }
-        playerInteract.pause = false;
+        playerInteract.SetPlayerPause(false);
         currentItemCraftingStatus = CraftingStatus.Nothing;
     }
 }

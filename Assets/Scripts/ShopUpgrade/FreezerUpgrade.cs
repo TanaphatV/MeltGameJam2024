@@ -8,5 +8,6 @@ public class FreezerUpgrade : ShopUpgrade
     public override void UpgradeEffect()
     {
         PlayerStats.instance.freezerWaitTimeReduction += waitTimeReduction;
+        //if wait time reduction reach limit set it to 3 secconds;
     }
 }

@@ -110,7 +110,6 @@ public class RecipeListManagerGUI : MonoBehaviour
 
     public void OpenQTEPanel()
     {
-        
         onSelectedItemToCreate(recipeSocketList[selectingIndex].GetItemSO);
         qteManager.OpenPanel(station, this);
         ClosePanel();

@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   socketTemplate: {fileID: 9112486055048038574}
-  gfx: {fileID: 0}
+  gfx: {fileID: 9112486054284640875}
   verticalLayout: {fileID: 9112486054673171184}
   mainHud: {fileID: 0}
   qteManager: {fileID: 0}

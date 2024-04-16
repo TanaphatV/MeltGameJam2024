@@ -15,7 +15,6 @@ public class ResourceUIController : MonoBehaviour
 
     void Start()
     {
-        currentMoney.text = PlayerResources.instance.coin.ToString() + "$";
 
         if (IsDebugingMode)
         {
@@ -36,6 +35,11 @@ public class ResourceUIController : MonoBehaviour
             newMat.GetComponentInChildren<Image>().sprite = material.icon;
         }
         currentMaterialUITemplate.SetActive(false);
+    }
+
+    private void Update()
+    {
+        currentMoney.text = PlayerResources.instance.coin.ToString() + "$";
     }
 
     void AddTester()

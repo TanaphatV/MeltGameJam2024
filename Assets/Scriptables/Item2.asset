@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cecd9cc6f7ff6147909bb79a97735de, type: 3}
-  m_Name: Item1
+  m_Name: Item2
   m_EditorClassIdentifier: 
-  itemName: Ice Sword Test
-  wipItem: {fileID: 21300000, guid: ed076080c182efa4ebff6f007fb44307, type: 3}
-  finishedItem: {fileID: 21300000, guid: ee7157b52cb4ab04b8ae7c9ba9bca3a9, type: 3}
-  timeNeededtoFreeze: 2
+  itemName: Champ's Torpedo
+  wipItem: {fileID: 21300000, guid: 3492e9eb6292141eb942d0c9beface29, type: 3}
+  finishedItem: {fileID: 21300000, guid: f47213af7e996497b96c4b5df3e6b613, type: 3}
+  timeNeededtoFreeze: 1
   normalQualityRecipe:
   - material: {fileID: 11400000, guid: a2bc193145bdb3c4aafa3e12a932ca63, type: 2}
-    amount: 3
+    amount: 1
   highQualityRecipe:
   - material: {fileID: 11400000, guid: a2bc193145bdb3c4aafa3e12a932ca63, type: 2}
-    amount: 2
+    amount: 1
   - material: {fileID: 11400000, guid: c95ed5a228066064d8eb74e9a2a46338, type: 2}
-    amount: 5
+    amount: 1

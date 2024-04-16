@@ -7,17 +7,20 @@ using UnityEngine.UI;
 public class ResourceUIController : MonoBehaviour
 {
     private Dictionary<MaterialSO, int> materialDictionary;
+    public bool IsDebugingMode = false;
     [SerializeField] private GameObject currentMaterialUITemplate;
     [SerializeField] private GameObject verticalLayout;
     [SerializeField] private TextMeshProUGUI currentMoney;
-    [SerializeField] private MaterialSO testMat;
+    [SerializeField] private List<MaterialSO> testMatList = new List<MaterialSO>();
 
     void Start()
     {
         currentMoney.text = PlayerResources.instance.coin.ToString() + "$";
 
-        //PlayerResources.instance.GetMaterialDictionary().Add(testMat, 10);
-        PlayerResources.instance.AddMaterial(testMat, 10);
+        if (IsDebugingMode)
+        {
+            AddTester();
+        }
 
         materialDictionary = PlayerResources.instance.GetMaterialDictionary();
         PlayerResources.instance.onMaterialAmountChange += UpdateMaterial;
@@ -33,6 +36,14 @@ public class ResourceUIController : MonoBehaviour
             newMat.GetComponentInChildren<Image>().sprite = material.icon;
         }
         currentMaterialUITemplate.SetActive(false);
+    }
+
+    void AddTester()
+    {
+        foreach (MaterialSO mat in testMatList)
+        {
+            PlayerResources.instance.AddMaterial(mat, 10);
+        }
     }
 
     void UpdateMaterial(MaterialSO matName,int amount)

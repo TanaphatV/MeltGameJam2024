@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RecipeListManagerGUI : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class RecipeListManagerGUI : MonoBehaviour
     private bool isSelectNormal = true;
     private ProcessingStation station;
 
+    public UnityAction<ItemSO> onSelectedItemToCreate;
+
     private void Start()
     {
         resource = RecipeSingletonManager.Instance.GetResource;
@@ -23,18 +26,20 @@ public class RecipeListManagerGUI : MonoBehaviour
 
     public void InitPanel()
     {
+        int i = 0;
         if (resource.craftableItems.Count > 0)
         {
-            //Debug.Log(resource.craftableItems.Count);
             foreach (ItemSO item in resource.craftableItems)
             {
                 if(item != null)
                 {
+                    int curIndex = i;
                     RecipeSocketGUI newSocket = Instantiate(socketTemplate, verticalLayout.transform);
                     newSocket.InitSocket(item);
-                    newSocket.AddButtonListener(OpenQTEPanel);
+                    newSocket.AddButtonListenerNormal(() => OpenQTEPanel());
                     recipeSocketList.Add(newSocket);
                 }
+                i++;
             }
         }
         socketTemplate.gameObject.SetActive(false);
@@ -101,11 +106,12 @@ public class RecipeListManagerGUI : MonoBehaviour
                 ClosePanel();
             }
         }
-        
     }
 
     public void OpenQTEPanel()
     {
+        
+        onSelectedItemToCreate(recipeSocketList[selectingIndex].GetItemSO);
         qteManager.OpenPanel(station, this);
         ClosePanel();
     }

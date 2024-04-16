@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cecd9cc6f7ff6147909bb79a97735de, type: 3}
   m_Name: Item2
   m_EditorClassIdentifier: 
-  itemName: Champ's Torpedo
+  itemName: Champ's Stick
   wipItem: {fileID: 21300000, guid: 3492e9eb6292141eb942d0c9beface29, type: 3}
   finishedItem: {fileID: 21300000, guid: f47213af7e996497b96c4b5df3e6b613, type: 3}
   timeNeededtoFreeze: 1

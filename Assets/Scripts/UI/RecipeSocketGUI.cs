@@ -45,13 +45,13 @@ public class RecipeSocketGUI : MonoBehaviour
     public void SelectNormalQuality()
     {
         highQualityButton.GetComponent<Image>().color = Color.white;
-        normalQualityButton.GetComponent<Image>().color = Color.blue;
+        normalQualityButton.GetComponent<Image>().color = Color.cyan;
     }
 
     public void SelectHighQuality()
     {
         normalQualityButton.GetComponent<Image>().color = Color.white;
-        highQualityButton.GetComponent<Image>().color = Color.blue;
+        highQualityButton.GetComponent<Image>().color = Color.cyan;
     }
 
     public void UnselectAll()

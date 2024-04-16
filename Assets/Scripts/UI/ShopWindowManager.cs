@@ -60,9 +60,9 @@ public class ShopWindowManager : MonoBehaviour
     private IEnumerator ProgressBar(Image img, float start, float end)
     {
         float elapsedTime = 0.0f;
-        while (elapsedTime < 1.0f) // Remove the semicolon here
+        while (elapsedTime < 0.5f) // Remove the semicolon here
         {
-            float t = elapsedTime / 1.0f; // Normalize elapsedTime to be between 0 and 1
+            float t = elapsedTime / 0.5f; // Normalize elapsedTime to be between 0 and 1
             float fillAmount = Mathf.Lerp(start, end, t);
             img.fillAmount = fillAmount;
             elapsedTime += Time.deltaTime;

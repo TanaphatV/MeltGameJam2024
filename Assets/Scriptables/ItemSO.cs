@@ -9,6 +9,7 @@ public class ItemSO : ScriptableObject
     public Sprite wipItem;
     public Sprite finishedItem;
     public float timeNeededtoFreeze;
+    public int marketPrice;
     [Header("Recipe")]
     public List<MaterialContainer> normalQualityRecipe;
     public List<MaterialContainer> highQualityRecipe;

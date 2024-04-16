@@ -47,6 +47,19 @@ public class PlayerInteract : MonoBehaviour
         pickedObject = null;
     }
 
+    public Item TakeItem()
+    {
+        if (pickedObject is Item)
+        {
+            Item temp = (Item)pickedObject;
+            pickedObject = null;
+            return temp;
+
+        }
+        else
+            return null;
+    }
+
     public void SetPlayerPause(bool pause)
     {
         playerController.pause = pause;

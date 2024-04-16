@@ -11,12 +11,13 @@ enum ItemStatus
 
 public class Item : PickableObject, IBarSubject
 {
+    public ItemSO itemSo { get; private set; }
     ItemStatus status;
     float timeRequired;
     float timePassedInFreezer;
-    Sprite completedSprite;
     bool isInFreezer = false;
     public bool highQuality = false;
+    public int price;
 
     public UnityAction<float, float> onTargetValueChanged { get; set; }
 
@@ -27,10 +28,10 @@ public class Item : PickableObject, IBarSubject
     }
     public void Init(ItemSO itemSO)
     {
+        this.itemSo = itemSO;
         spriteRenderer.sprite = itemSO.wipItem;
         timeRequired = itemSO.timeNeededtoFreeze - PlayerStats.instance.freezerWaitTimeReduction;
         status = ItemStatus.WIP;
-        completedSprite = itemSO.finishedItem;
     }
 
     public void IncrementProgress()
@@ -40,7 +41,7 @@ public class Item : PickableObject, IBarSubject
         timePassedInFreezer += Time.deltaTime;
         if (timePassedInFreezer >= timeRequired)
         {
-            spriteRenderer.sprite = completedSprite;
+            spriteRenderer.sprite = itemSo.finishedItem;
             status = ItemStatus.Completed;
             timePassedInFreezer = timeRequired;
         }

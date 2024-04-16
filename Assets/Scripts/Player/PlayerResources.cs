@@ -59,6 +59,17 @@ public class PlayerResources : MonoBehaviour
         return false;
     }
 
+    public bool HaveEnoughMulitpleMaterial(List<MaterialContainer> materialContainers)
+    {
+        foreach (var materialContainer in materialContainers)
+        {
+            if (!HaveEnoughMaterial(materialContainer))
+                return false;
+        }
+        return true;
+    }
+
+
 
     public void TakeMaterial(MaterialSO material, int amount)
     {
@@ -78,6 +89,15 @@ public class PlayerResources : MonoBehaviour
         {
             throw new Exception("ERROR: took more material than material amount");
         }
+    }
+
+    public bool TakeMulitpleMaterial(List<MaterialContainer> materialContainers)
+    {
+        foreach (var materialContainer in materialContainers)
+        {
+            TakeMaterial(materialContainer);
+        }
+        return true;
     }
 
     public void AddMaterial(MaterialSO material, int amount)

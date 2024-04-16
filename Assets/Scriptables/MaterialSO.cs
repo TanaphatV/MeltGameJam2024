@@ -7,6 +7,7 @@ public class MaterialSO : ScriptableObject
 {
     public string materialName;
     public Sprite icon;
+    public int reputaionReward;
 }
 
 [System.Serializable]

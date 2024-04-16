@@ -24,7 +24,6 @@ public class PlayerResources : MonoBehaviour
 
     public int hp;
     public int coin;
-    public int reputation;
 
     public UnityAction<MaterialSO, int> onMaterialAmountChange;
 

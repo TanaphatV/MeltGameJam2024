@@ -32,8 +32,27 @@ public class ProcessingStation : InteractableObject
     {
         Item temp = Instantiate(itemBasePrefab);
         temp.highQuality = highQuality;
+        temp.reputationReward = ReputationRewardCalculation(itemSO, highQuality);
         temp.transform.position = transform.position;
         temp.Init(itemSO);
+    }
+
+    int ReputationRewardCalculation(ItemSO itemSO,bool highQuality)
+    {
+        int reward = 0;
+        if(highQuality)
+        {
+            foreach (var mat in itemSO.highQualityRecipe)
+                reward += mat.material.reputaionReward * mat.amount;
+        }
+        else
+        {
+            foreach (var mat in itemSO.normalQualityRecipe)
+                reward += mat.material.reputaionReward * mat.amount;
+        }
+
+        return reward;
+        
     }
 
     private void SetItemToCreate(ItemSO itemSo)

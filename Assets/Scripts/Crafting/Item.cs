@@ -18,6 +18,8 @@ public class Item : PickableObject, IBarSubject
     bool isInFreezer = false;
     public bool highQuality = false;
     public int price;
+    public int reputationReward;
+    public int marketPrice { get; private set; }
 
     public UnityAction<float, float> onTargetValueChanged { get; set; }
 
@@ -33,6 +35,9 @@ public class Item : PickableObject, IBarSubject
         timeRequired = itemSO.timeNeededtoFreeze - PlayerStats.instance.freezerWaitTimeReduction;
         if (timeRequired <= 0)
             timeRequired = 3;
+        marketPrice = itemSO.marketPrice;
+        if (highQuality)
+            marketPrice = itemSO.highQualityPrice;
         status = ItemStatus.WIP;
     }
 
@@ -40,7 +45,8 @@ public class Item : PickableObject, IBarSubject
     {
         if (status == ItemStatus.Completed)
             return;
-        timePassedInFreezer += Time.deltaTime;
+        if(!TimeManager.instance.pause)
+            timePassedInFreezer += Time.deltaTime;
         if (timePassedInFreezer >= timeRequired)
         {
             spriteRenderer.sprite = itemSo.finishedItem;

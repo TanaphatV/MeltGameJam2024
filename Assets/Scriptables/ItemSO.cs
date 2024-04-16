@@ -10,6 +10,8 @@ public class ItemSO : ScriptableObject
     public Sprite finishedItem;
     public float timeNeededtoFreeze;
     public int marketPrice;
+    public int highQualityPrice;
+    public int reputationReward;
     [Header("Recipe")]
     public List<MaterialContainer> normalQualityRecipe;
     public List<MaterialContainer> highQualityRecipe;

@@ -45,7 +45,7 @@ public class ShopWindowManager : MonoBehaviour
         wagonSpaceButton.onClick.AddListener(() => UpgradeWagonSpace(shop.wagon[wagonLv - 1] as StorageUpgrade));
         pickaxeButton.onClick.AddListener(() => UpgradePickaxe(shop.pickAxe[pickaxeLv - 1] as PickaxeUpgrade));
         freezeReduceButton.onClick.AddListener(() => UpgradeFreezeReduce(shop.freezer[freezeLv - 1] as FreezerUpgrade));
-        reputaButton.onClick.AddListener(() => UpgradeReputationGain(shop.reputation[pickaxeLv - 1] as ReputationUpgrade));
+        reputaButton.onClick.AddListener(() => UpgradeReputationGain(shop.reputation[reputaLv - 1] as ReputationUpgrade));
         minigameButton.onClick.AddListener(() => UpgradeMinigameDifficult(shop.minigame[minigameLv - 1] as ShopUpgrade));
     }
     public void Init(Shop shop)
@@ -145,7 +145,7 @@ public class ShopWindowManager : MonoBehaviour
 
             if (reputaLv <= shop.reputation.Count)
             {
-                reputaButton.onClick.AddListener(() => UpgradeReputationGain(shop.reputation[pickaxeLv - 1] as ReputationUpgrade));
+                reputaButton.onClick.AddListener(() => UpgradeReputationGain(shop.reputation[reputaLv - 1] as ReputationUpgrade));
                 reputaCostText.text = shop.reputation[reputaLv - 1].cost.ToString();
             }
             else

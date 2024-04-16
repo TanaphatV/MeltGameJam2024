@@ -68,7 +68,6 @@ public class QTEMoldingPanel : MonoBehaviour
     void StopHolding()
     {
         isHolding = false;
-        //Debug.Log("Stop");
         if (holdCoroutine != null)
         {
             StopCoroutine(holdCoroutine);
@@ -78,15 +77,13 @@ public class QTEMoldingPanel : MonoBehaviour
             {
                 Debug.Log("Nice");
                 StartCoroutine(qteManager.StartQTEControlTemperature());
-                //station.currentItemCraftingStatus = CraftingStatus.Completed;
             }
             else
             {
-                //station.currentItemCraftingStatus = CraftingStatus.Failed;
+                qteManager.GetStation.currentItemCraftingStatus = CraftingStatus.Failed;
             }
             
         }
-        //yield return null;
     }
 
 
@@ -97,7 +94,6 @@ public class QTEMoldingPanel : MonoBehaviour
         float incrementRate2 = 100f / 4.7f;
         while (isHolding && value < 100f)
         {
-            //Debug.Log(isHolding + value.ToString())
             value = Mathf.Clamp(value + incrementRate1 * Time.deltaTime, 0f, 100 - (maximumGoodScore - minimumGoodScore));
             value2 = Mathf.Clamp(value2 + incrementRate2 * Time.deltaTime, 0f, 100f);
 

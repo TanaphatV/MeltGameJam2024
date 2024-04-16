@@ -11,6 +11,10 @@ public class BaseQTEManager : MonoBehaviour
     private ProcessingStation station;
     private RecipeListManagerGUI recipePanel;
 
+    #region GETTER
+    public ProcessingStation GetStation => station;
+    #endregion
+
     private void Awake()
     {
         if (qteMoldingPanel == null || qteTempPanel == null)
@@ -39,6 +43,7 @@ public class BaseQTEManager : MonoBehaviour
         recipePanel = gui;
         station = _ps;
         panel.SetActive(true);
+        qteTempPanel.gameObject.SetActive(false);
         StartCoroutine(StartQTEFlow());
     }
 
@@ -55,14 +60,10 @@ public class BaseQTEManager : MonoBehaviour
 
     public IEnumerator StartQTEControlTemperature()
     {
-        Debug.Log("StartQTETEM");
         qteTempPanel.gameObject.SetActive(true);
-        yield return qteTempPanel.InitQTEProcess();
+        yield return qteTempPanel.InitQTEProcess(station);
 
-        Debug.Log("fff");
         station.currentItemCraftingStatus = CraftingStatus.Completed;
-
-       //Debug.Log(station.currentItemCraftingStatus);
 
         yield return new WaitForEndOfFrame();
     }

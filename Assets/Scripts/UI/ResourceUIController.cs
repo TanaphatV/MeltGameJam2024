@@ -6,16 +6,23 @@ using UnityEngine.UI;
 
 public class ResourceUIController : MonoBehaviour
 {
-    PlayerResources playerResources;
     private Dictionary<MaterialSO, int> materialDictionary;
     [SerializeField] private GameObject currentMaterialUITemplate;
     [SerializeField] private GameObject verticalLayout;
+    [SerializeField] private TextMeshProUGUI currentMoney;
+    [SerializeField] private MaterialSO testMat;
 
-    void Awake()
+    void Start()
     {
-        materialDictionary = playerResources.GetMaterialDictionary();
-        playerResources.onMaterialAmountChange += UpdateMaterial;
+        currentMoney.text = PlayerResources.instance.coin.ToString() + "$";
 
+        //PlayerResources.instance.GetMaterialDictionary().Add(testMat, 10);
+        PlayerResources.instance.AddMaterial(testMat, 10);
+
+        materialDictionary = PlayerResources.instance.GetMaterialDictionary();
+        PlayerResources.instance.onMaterialAmountChange += UpdateMaterial;
+
+        Debug.Log(materialDictionary.Count);
         foreach (KeyValuePair<MaterialSO, int> pair in materialDictionary)
         {
             MaterialSO material = pair.Key;

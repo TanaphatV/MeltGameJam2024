@@ -31,7 +31,7 @@ public class ProcessingStation : InteractableObject
 
     IEnumerator InteractRoutine(PlayerInteract playerInteract)
     {
-        playerInteract.pause = true;
+        playerInteract.SetPlayerPause(true);
         currentItemCraftingStatus = CraftingStatus.Nothing;
 
         yield return new WaitForEndOfFrame();
@@ -47,6 +47,7 @@ public class ProcessingStation : InteractableObject
         {
             CreateItem(testSO, true);
         }
+        playerInteract.SetPlayerPause(false);
         //playerInteract.pause = false;
         currentItemCraftingStatus = CraftingStatus.Nothing;
     }

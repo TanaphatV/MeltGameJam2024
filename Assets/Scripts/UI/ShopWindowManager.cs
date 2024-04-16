@@ -7,16 +7,46 @@ using TMPro;
 public class ShopWindowManager : MonoBehaviour
 {
     [SerializeField] private GameObject gfx;
+    #region JUST_VARIABLE
+    [SerializeField] private Button wagonSpaceButton;
+    [SerializeField] private Image wagonSpaceBar;
+    [SerializeField] private TextMeshProUGUI wagonSpaceCostText;
+    [SerializeField] private GameObject wagonSpaceMaxLv;
+
+    [SerializeField] private Button pickaxeButton;
+    [SerializeField] private Image pickaxeBar;
+    [SerializeField] private TextMeshProUGUI pickaxeCostText;
+    [SerializeField] private GameObject pickaxeMaxLv;
+
     [SerializeField] private Button freezeReduceButton;
     [SerializeField] private Image freezeBar;
     [SerializeField] private TextMeshProUGUI costText;
     [SerializeField] private GameObject maxLv;
+
+    [SerializeField] private Button reputaButton;
+    [SerializeField] private Image reputaBar;
+    [SerializeField] private TextMeshProUGUI reputaCostText;
+    [SerializeField] private GameObject reputaMaxLv;
+
+    [SerializeField] private Button minigameButton;
+    [SerializeField] private Image minigameBar;
+    [SerializeField] private TextMeshProUGUI minigameCostText;
+    [SerializeField] private GameObject minigameMaxLv;
+    #endregion
     private Shop shop;
+    private int wagonLv = 1;
+    private int pickaxeLv = 1;
     private int freezeLv = 1;
+    private int reputaLv = 1;
+    private int minigameLv = 1;
 
     private void Start()
     {
+        wagonSpaceButton.onClick.AddListener(() => UpgradeWagonSpace(shop.wagon[wagonLv - 1] as StorageUpgrade));
+        pickaxeButton.onClick.AddListener(() => UpgradePickaxe(shop.pickAxe[pickaxeLv - 1] as PickaxeUpgrade));
         freezeReduceButton.onClick.AddListener(() => UpgradeFreezeReduce(shop.freezer[freezeLv - 1] as FreezerUpgrade));
+        reputaButton.onClick.AddListener(() => UpgradeReputationGain(shop.reputation[pickaxeLv - 1] as ReputationUpgrade));
+        minigameButton.onClick.AddListener(() => UpgradeMinigameDifficult(shop.minigame[minigameLv - 1] as ShopUpgrade));
     }
     public void Init(Shop shop)
     {
@@ -33,6 +63,53 @@ public class ShopWindowManager : MonoBehaviour
         gfx.SetActive(false);
     }
 
+    #region Upgrade
+    public void UpgradeWagonSpace(StorageUpgrade upgrade)
+    {
+        if (IsPlayerHasEnoughCoin(upgrade))
+        {
+            PlayerResources.instance.coin -= upgrade.cost;
+            upgrade.UpgradeEffect();
+            StartCoroutine(ProgressBar(wagonSpaceBar, (25f * (wagonLv - 1)) / 100f, (25f * wagonLv / 100f)));
+            wagonLv++;
+            wagonSpaceButton.onClick.RemoveAllListeners();
+
+            if (wagonLv <= shop.wagon.Count)
+            {
+                wagonSpaceButton.onClick.AddListener(() => UpgradeWagonSpace(shop.wagon[wagonLv - 1] as StorageUpgrade));
+                wagonSpaceCostText.text = shop.wagon[wagonLv - 1].cost.ToString();
+            }
+            else
+            {
+                wagonSpaceCostText.gameObject.SetActive(false);
+                wagonSpaceMaxLv.SetActive(true);
+                wagonSpaceButton.interactable = false;
+            }
+        }
+    }
+    public void UpgradePickaxe(PickaxeUpgrade upgrade)
+    {
+        if (IsPlayerHasEnoughCoin(upgrade))
+        {
+            PlayerResources.instance.coin -= upgrade.cost;
+            upgrade.UpgradeEffect();
+            StartCoroutine(ProgressBar(pickaxeBar, (33.5f * (pickaxeLv - 1)) / 100f, (33.5f * pickaxeLv / 100f)));
+            pickaxeLv++;
+            pickaxeButton.onClick.RemoveAllListeners();
+
+            if (pickaxeLv <= shop.pickAxe.Count)
+            {
+                pickaxeButton.onClick.AddListener(() => UpgradePickaxe(shop.pickAxe[pickaxeLv - 1] as PickaxeUpgrade));
+                pickaxeCostText.text = shop.pickAxe[pickaxeLv - 1].cost.ToString();
+            }
+            else
+            {
+                pickaxeCostText.gameObject.SetActive(false);
+                pickaxeMaxLv.SetActive(true);
+                pickaxeButton.interactable = false;
+            }
+        }
+    }
     public void UpgradeFreezeReduce(FreezerUpgrade upgrade)
     {
         if (IsPlayerHasEnoughCoin(upgrade))
@@ -56,6 +133,54 @@ public class ShopWindowManager : MonoBehaviour
             }
         }
     }
+    public void UpgradeReputationGain(ReputationUpgrade upgrade)
+    {
+        if (IsPlayerHasEnoughCoin(upgrade))
+        {
+            PlayerResources.instance.coin -= upgrade.cost;
+            upgrade.UpgradeEffect();
+            StartCoroutine(ProgressBar(reputaBar, (50f * (reputaLv - 1)) / 100f, (50f * reputaLv / 100f)));
+            reputaLv++;
+            reputaButton.onClick.RemoveAllListeners();
+
+            if (reputaLv <= shop.reputation.Count)
+            {
+                reputaButton.onClick.AddListener(() => UpgradeReputationGain(shop.reputation[pickaxeLv - 1] as ReputationUpgrade));
+                reputaCostText.text = shop.reputation[reputaLv - 1].cost.ToString();
+            }
+            else
+            {
+                reputaCostText.gameObject.SetActive(false);
+                reputaMaxLv.SetActive(true);
+                reputaButton.interactable = false;
+            }
+        }
+    }
+    public void UpgradeMinigameDifficult(ShopUpgrade upgrade)
+    {
+        if (IsPlayerHasEnoughCoin(upgrade))
+        {
+            PlayerResources.instance.coin -= upgrade.cost;
+            upgrade.UpgradeEffect();
+            StartCoroutine(ProgressBar(minigameBar, (100 * (minigameLv - 1)) / 100f, (100 * minigameLv / 100f)));
+            minigameLv++;
+            minigameButton.onClick.RemoveAllListeners();
+
+            if (minigameLv <= shop.minigame.Count)
+            {
+                minigameButton.onClick.AddListener(() => UpgradeMinigameDifficult(shop.minigame[minigameLv - 1] as ShopUpgrade));
+                minigameCostText.text = shop.minigame[minigameLv - 1].cost.ToString();
+            }
+            else
+            {
+                minigameCostText.gameObject.SetActive(false);
+                minigameMaxLv.SetActive(true);
+                minigameButton.interactable = false;
+            }
+        }
+    }
+
+    #endregion
 
     private IEnumerator ProgressBar(Image img, float start, float end)
     {

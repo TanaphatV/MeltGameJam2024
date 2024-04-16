@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cecd9cc6f7ff6147909bb79a97735de, type: 3}
+  m_Name: 3IceHammer
+  m_EditorClassIdentifier: 
+  itemName: Ice Hammer
+  wipItem: {fileID: 21300000, guid: f9ff6fd041d7c40428c12cb11b226259, type: 3}
+  finishedItem: {fileID: 21300000, guid: e2a2394ec7044d544a19859c48e4f17f, type: 3}
+  timeNeededtoFreeze: 30
+  marketPrice: 40
+  highQualityPrice: 80
+  reputationReward: 20
+  normalQualityRecipe:
+  - material: {fileID: 11400000, guid: e2827b85e42cf9f4192f3b7e36672869, type: 2}
+    amount: 5
+  - material: {fileID: 11400000, guid: 98f8786b742e33342b8333192e515ca1, type: 2}
+    amount: 1
+  highQualityRecipe:
+  - material: {fileID: 11400000, guid: e2827b85e42cf9f4192f3b7e36672869, type: 2}
+    amount: 5
+  - material: {fileID: 11400000, guid: 98f8786b742e33342b8333192e515ca1, type: 2}
+    amount: 1
+  - material: {fileID: 11400000, guid: 096a2204b8d7d7b4198cca6751eb57ca, type: 2}
+    amount: 1

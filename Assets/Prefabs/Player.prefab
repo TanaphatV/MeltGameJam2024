@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 8947257739156509960}
   - component: {fileID: 5030825198531032918}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,8 +164,8 @@ Transform:
   m_GameObject: {fileID: 8947257739156509962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8947257739544460658}
   m_RootOrder: 1
@@ -208,7 +208,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1887939679
+  m_SortingLayerID: 2081193149
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1662080965, guid: 36d6ac557e8cde947b091eaee9756bc6, type: 3}

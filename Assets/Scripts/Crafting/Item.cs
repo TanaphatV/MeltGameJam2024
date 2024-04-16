@@ -31,6 +31,8 @@ public class Item : PickableObject, IBarSubject
         this.itemSo = itemSO;
         spriteRenderer.sprite = itemSO.wipItem;
         timeRequired = itemSO.timeNeededtoFreeze - PlayerStats.instance.freezerWaitTimeReduction;
+        if (timeRequired <= 0)
+            timeRequired = 3;
         status = ItemStatus.WIP;
     }
 

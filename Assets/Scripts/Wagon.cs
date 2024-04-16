@@ -5,6 +5,10 @@ using UnityEngine;
 public class Wagon : InteractableObject
 {
     List<Item> items = new List<Item>();
+    private void Start()
+    {
+        TimeManager.instance.onDayEnd += SellItem;
+    }
     protected override void InteractBehavior(PlayerInteract playerInteract)
     {
         if(playerInteract.pickedObject is not Item)

@@ -26,6 +26,7 @@ public class PlayerCombat : MonoBehaviour
         playerController.pause = true; ;
         animationController.onAnimationEnd += OnAttackEnd;
         animationController.ChangeAnimState("attack_side", mouseDirectionIsRight,true);
+        playerController.isFacingRight = mouseDirectionIsRight;
         Vector3 offset = new Vector3((attackSize.x / 2.0f), 0, 0);
         Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position - offset + (offset * 2 * Convert.ToInt32(mouseDirectionIsRight)), attackSize, 0);//collider array to hit multiple enemies at once
         foreach(var col in cols)

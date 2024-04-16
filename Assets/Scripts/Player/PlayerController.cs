@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isInDungeon = false;
 
-    bool isFacingRight;
+    public bool isFacingRight;
 
     public bool pause = false;
 

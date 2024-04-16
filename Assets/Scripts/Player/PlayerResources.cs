@@ -52,6 +52,13 @@ public class PlayerResources : MonoBehaviour
             return true;
         return false;
     }
+    public bool HaveEnoughMaterial(MaterialContainer materialContainer)
+    {
+        if (materialDictionary[materialContainer.material] >= materialContainer.amount)
+            return true;
+        return false;
+    }
+
 
     public void TakeMaterial(MaterialSO material, int amount)
     {
@@ -63,11 +70,28 @@ public class PlayerResources : MonoBehaviour
         }
     }
 
+    public void TakeMaterial(MaterialContainer materialContainer)
+    {
+        materialDictionary[materialContainer.material] -= materialContainer.amount;
+        OnMaterialAmountChange(materialContainer.material, materialContainer.amount);
+        if (materialDictionary[materialContainer.material] < 0)
+        {
+            throw new Exception("ERROR: took more material than material amount");
+        }
+    }
+
     public void AddMaterial(MaterialSO material, int amount)
     {
         materialDictionary[material] += amount;
         OnMaterialAmountChange(material, amount);
     }
+
+    public void AddMaterial(MaterialContainer materialContainer)
+    {
+        materialDictionary[materialContainer.material] += materialContainer.amount;
+        OnMaterialAmountChange(materialContainer.material, materialContainer.amount);
+    }
+
 
     void OnMaterialAmountChange(MaterialSO material, int amount)
     {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Shop : InteractableObject
 {
+    [Header("Upgrades")]
     public List<ShopUpgrade> wagon;
     public List<ShopUpgrade> pickAxe;
     public List<ShopUpgrade> freezer;
@@ -12,14 +13,12 @@ public class Shop : InteractableObject
 
     protected override void InteractBehavior(PlayerInteract playerInteract)
     {
-        
+        StartCoroutine(InteractIE(playerInteract));
     }
-}
 
-public class Upgrade
-{
-    public int level;
-    public string description;
-    public int cost;
-
+    IEnumerator InteractIE(PlayerInteract playerInteract)
+    {
+        playerInteract.SetPlayerPause(true);
+        yield return null;
+    }
 }

@@ -12,9 +12,9 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] float interactionRange = 2f;
     [SerializeField] float putdownRange = 1f;
     [SerializeField] Transform objectLiftingTransform;
+    [SerializeField] PlayerController playerController;
     public PickableObject pickedObject { get; private set; }
 
-    public bool pause;
 
     public void InteractAction()
     {
@@ -45,6 +45,11 @@ public class PlayerInteract : MonoBehaviour
         pickedObject.StopHolding(position);
 
         pickedObject = null;
+    }
+
+    public void SetPlayerPause(bool pause)
+    {
+        playerController.pause = pause;
     }
 
     bool InteractWithObject()

@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ReputationRank
+
+[System.Serializable]
+public class ReputationMilestoneBonus
 {
-    unranked,
-    bronze,
-    silver,
-    gold
+    public float requiredReputation;
+    public Sprite icon;
+    public float specialOrderPayMultiplier;
+    public float wagonBuyProbabilityMultiplier;
+
 }
 
 public class ReputationManager : MonoBehaviour
@@ -25,10 +28,12 @@ public class ReputationManager : MonoBehaviour
             return _instance;
         }
     }
-    public ReputationRank currentRank { get; private set; }
-    public float reputation;
+    public int currentRank { get; private set; }
+    private float reputation;
     public float maxReputation;
-    public float specialOrderMultiplier;
+    private ReputationMilestoneBonus currentBonus;
+    public ReputationMilestoneBonus bonus => currentBonus;
+    public List<ReputationMilestoneBonus> mileStoneBonus;
 
     private void Awake()
     {
@@ -41,9 +46,23 @@ public class ReputationManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void IncreaseReputation(float amount)
     {
-        
+        reputation += amount;
+        if(reputation >= mileStoneBonus[currentRank + 1].requiredReputation)
+        {
+            currentRank++;
+            currentBonus = mileStoneBonus[currentRank];
+        }
+
+        if (reputation >= maxReputation)
+        {
+            Win();
+        }
+    }
+
+    void Win()
+    {
+
     }
 }

@@ -52,15 +52,29 @@ public class PlayerCombat : MonoBehaviour
     bool invulnerable = false;
     public void Hit(int damage,Vector3 knockForce)
     {
-        if (invulnerable)
+        if (invulnerable || dead)
             return;
         hp -= damage;
+        if(hp <= 0)
+        {
+            Death();
+            return;
+        }
+
         StartCoroutine(HitStunIE());
         rb.AddForce(knockForce, ForceMode2D.Impulse);
         animationController.ChangeAnimState("hurt_side", mouseDirectionIsRight, true);
         hurtAnim = true;
         StartCoroutine(InvulnerabilityIE());
     }
+    bool dead = false;
+    void Death()
+    {
+        dead = true;
+        playerController.pause = true;
+        animationController.ChangeAnimState("dead",mouseDirectionIsRight);
+    }
+
     IEnumerator HitStunIE()
     {
         playerController.pause = true;

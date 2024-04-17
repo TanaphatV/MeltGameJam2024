@@ -43,7 +43,7 @@ public class ReputationManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentRank = 0;
     }
 
     public void IncreaseReputation(float amount)

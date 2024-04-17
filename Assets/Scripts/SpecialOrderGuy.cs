@@ -9,13 +9,23 @@ public class SpecialOrderGuy : InteractableObject
     // Start is called before the first frame update
     void Start()
     {
-        
+        TimeManager.instance.onDayEnd += RefreshOrder;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void RefreshOrder()
+    {
+        specialOrders = new List<ItemSO>();
+        var itemList = RecipeSingletonManager.Instance.GetResource.craftableItems;
+        for (int i = 0; i < ReputationManager.instance.currentRank + 1; i++)
+        {
+            specialOrders.Add(itemList[Random.Range(0, itemList.Count)]);
+        }
     }
 
     protected override void InteractBehavior(PlayerInteract playerInteract)

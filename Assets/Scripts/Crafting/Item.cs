@@ -12,6 +12,7 @@ enum ItemStatus
 public class Item : PickableObject, IBarSubject
 {
     public ItemSO itemSo { get; private set; }
+    [SerializeField] Transform spriteParent;
     ItemStatus status;
     float timeRequired;
     float timePassedInFreezer;
@@ -59,11 +60,13 @@ public class Item : PickableObject, IBarSubject
     public override void StartHolding(Transform parent)
     {
         isInFreezer = false;
+        spriteParent.transform.Rotate(new Vector3(0, 0, 90));
         base.StartHolding(parent);
     }
 
     public override void StopHolding(Vector3 position)
     {
+        spriteParent.transform.Rotate(new Vector3(0, 0, -90));
         Physics2D.queriesHitTriggers = true;
         RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero);
         Physics2D.queriesHitTriggers = false; 

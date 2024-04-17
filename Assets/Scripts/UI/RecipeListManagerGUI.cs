@@ -13,13 +13,14 @@ public class RecipeListManagerGUI : MonoBehaviour
     [SerializeField] private Button closeButton;
     [SerializeField] private Button prevButton;
     [SerializeField] private Button nextButton;
+    [SerializeField] private ResourceUIController resourceUI;
     private ResourceSO resource;
     private List<RecipeSocketGUI> recipeSocketList = new List<RecipeSocketGUI>();
     private int selectingIndex;
     private bool isSelectNormal = true;
     private ProcessingStation station;
 
-    public UnityAction<ItemSO> onSelectedItemToCreate;
+    public UnityAction<ItemSO, bool> onSelectedItemToCreate;
 
     private void Start()
     {
@@ -40,7 +41,7 @@ public class RecipeListManagerGUI : MonoBehaviour
                     int curIndex = i;
                     RecipeSocketGUI newSocket = Instantiate(socketTemplate, verticalLayout.transform);
                     newSocket.InitSocket(item);
-                    newSocket.AddButtonListenerNormal(() => OpenQTEPanel());
+                    newSocket.AddButtonListenerNormal(() => CheckMaterialResource());
                     recipeSocketList.Add(newSocket);
                 }
                 i++;
@@ -114,7 +115,7 @@ public class RecipeListManagerGUI : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 recipeSocketList[selectingIndex].ButtonInvoke(isSelectNormal);
-                OpenQTEPanel();
+                CheckMaterialResource();
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -123,11 +124,33 @@ public class RecipeListManagerGUI : MonoBehaviour
         }
     }
 
-    public void OpenQTEPanel()
+    public void CheckMaterialResource()
     {
-        onSelectedItemToCreate(recipeSocketList[selectingIndex].GetItemSO);
+        if (PlayerResources.instance.HaveEnoughMulitpleMaterial(recipeSocketList[selectingIndex].GetItemSO.normalQualityRecipe) && isSelectNormal)
+        {
+            ExecuteQTEFlow();
+            PlayerResources.instance.TakeMulitpleMaterial(recipeSocketList[selectingIndex].GetItemSO.normalQualityRecipe);
+            
+        }
+        else if(PlayerResources.instance.HaveEnoughMulitpleMaterial(recipeSocketList[selectingIndex].GetItemSO.highQualityRecipe) && !isSelectNormal)
+        {
+            ExecuteQTEFlow();
+            PlayerResources.instance.TakeMulitpleMaterial(recipeSocketList[selectingIndex].GetItemSO.highQualityRecipe);
+        }
+        else
+        {
+            //Debug.LogError;
+        }
+        
+    }
+
+    private void ExecuteQTEFlow()
+    {
+        //ProcessingStation shortCut;
+        onSelectedItemToCreate(recipeSocketList[selectingIndex].GetItemSO, isSelectNormal);
         qteManager.OpenPanel(station, this);
         ClosePanel();
+        resourceUI.UpdateMaterialList();
     }
 
     private void ChooseMode()

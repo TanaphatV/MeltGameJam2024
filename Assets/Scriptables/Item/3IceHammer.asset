@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: 3IceHammer
   m_EditorClassIdentifier: 
   itemName: Ice Hammer
-  wipItem: {fileID: 21300000, guid: f9ff6fd041d7c40428c12cb11b226259, type: 3}
-  finishedItem: {fileID: 21300000, guid: e2a2394ec7044d544a19859c48e4f17f, type: 3}
+  itemSprite: {fileID: 21300000, guid: e2a2394ec7044d544a19859c48e4f17f, type: 3}
   timeNeededtoFreeze: 30
   marketPrice: 40
   highQualityPrice: 80

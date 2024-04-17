@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: 2IceAxe
   m_EditorClassIdentifier: 
   itemName: Ice Axe
-  wipItem: {fileID: 21300000, guid: f9ff6fd041d7c40428c12cb11b226259, type: 3}
-  finishedItem: {fileID: 21300000, guid: 57df21c27c92fd44091c614fa31f013a, type: 3}
+  itemSprite: {fileID: 21300000, guid: 57df21c27c92fd44091c614fa31f013a, type: 3}
   timeNeededtoFreeze: 30
   marketPrice: 30
   highQualityPrice: 60

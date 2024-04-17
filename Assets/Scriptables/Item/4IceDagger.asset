@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: 4IceDagger
   m_EditorClassIdentifier: 
   itemName: Ice Daggers
-  wipItem: {fileID: 21300000, guid: f9ff6fd041d7c40428c12cb11b226259, type: 3}
-  finishedItem: {fileID: 21300000, guid: 0aa3cf70da4be28408a4aa02a4b72be4, type: 3}
+  itemSprite: {fileID: 21300000, guid: 0aa3cf70da4be28408a4aa02a4b72be4, type: 3}
   timeNeededtoFreeze: 30
   marketPrice: 45
   highQualityPrice: 90

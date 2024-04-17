@@ -95,6 +95,19 @@ public class PlayerInteract : MonoBehaviour
             interactable.Interact(this);
             return true;
         }
+        else if(hit.collider.transform.parent != null)
+        {
+            if(hit.collider.transform.gameObject.TryGetComponent(out IInteractable interact))
+            {
+                if (Vector2.Distance(hit.collider.transform.position, transform.position) > interactionRange)
+                {
+                    //tooltip???
+                    return false;
+                }
+                interact.Interact(this);
+                return true;
+            }
+        }
 
         return false;
     }

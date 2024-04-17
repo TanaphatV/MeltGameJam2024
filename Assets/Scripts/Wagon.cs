@@ -20,17 +20,22 @@ public class Wagon : InteractableObject
 
     protected override void InteractBehavior(PlayerInteract playerInteract)
     {
-        if(playerInteract.pickedObject is not Item)
+        if(playerInteract.pickedObject != null)
         {
-            Debug.Log("Not item");
-            return;
+            if (playerInteract.pickedObject.GetType() != typeof(Item))
+            {
+                Debug.Log("Not item");
+                return;
+            }
+            else
+            {
+                Item item = playerInteract.TakeItem();
+                hud.OpenPanel();
+                hud.InitPanel(item);
+                Destroy(item.gameObject);
+            }
         }
-        else
-        {
-            Item item = playerInteract.TakeItem();
-            hud.OpenPanel();
-            //do something to set price
-        }
+        
     }
 
     public string GetSellChanceMessage(Item item)

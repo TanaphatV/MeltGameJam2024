@@ -38,12 +38,14 @@ public class ReputationManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        currentRank = 0;
+        currentBonus = mileStoneBonus[currentRank];
     }
     #endregion
     // Start is called before the first frame update
     void Start()
     {
-        currentRank = 0;
+
     }
 
     public void IncreaseReputation(float amount)

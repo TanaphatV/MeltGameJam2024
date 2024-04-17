@@ -85,9 +85,18 @@ public class PlayerInteract : MonoBehaviour
         if (hit.collider == null)
             return false;
 
-        if (hit.collider.TryGetComponent(out IInteractable interactable))
+        IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+        if(interactable == null)
         {
-            if (Vector2.Distance(hit.collider.transform.position, transform.position) > interactionRange)
+            if (hit.collider.transform.parent != null)
+            {
+                hit.collider.transform.GetComponentInParent<IInteractable>();
+            }
+        }
+
+        if(interactable != null)
+        {
+            if (Vector2.Distance(hit.collider.ClosestPoint(transform.position), transform.position) > interactionRange)
             {
                 //tooltip???
                 return false;
@@ -95,19 +104,7 @@ public class PlayerInteract : MonoBehaviour
             interactable.Interact(this);
             return true;
         }
-        else if(hit.collider.transform.parent != null)
-        {
-            if(hit.collider.transform.gameObject.TryGetComponent(out IInteractable interact))
-            {
-                if (Vector2.Distance(hit.collider.transform.position, transform.position) > interactionRange)
-                {
-                    //tooltip???
-                    return false;
-                }
-                interact.Interact(this);
-                return true;
-            }
-        }
+       
 
         return false;
     }

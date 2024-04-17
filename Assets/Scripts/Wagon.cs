@@ -5,10 +5,18 @@ using UnityEngine;
 public class Wagon : InteractableObject
 {
     List<Item> items = new List<Item>();
+    public ItemSO itemInDemand { get; private set; }
     private void Start()
     {
         TimeManager.instance.onDayEnd += SellItem;
     }
+
+    void RefreshWagon()
+    {
+        List<ItemSO> itemList = RecipeSingletonManager.Instance.GetResource.craftableItems;
+        itemInDemand = itemList[Random.Range(0, itemList.Count)];
+    }
+
     protected override void InteractBehavior(PlayerInteract playerInteract)
     {
         if(playerInteract.pickedObject is not Item)
@@ -21,6 +29,30 @@ public class Wagon : InteractableObject
             Item item = playerInteract.TakeItem();
             //do something to set price
         }
+    }
+
+    public string GetSellChanceMessage(Item item)
+    {
+        float chance = GetSellProbability(item);
+        if (chance >= 1.0f)
+        {
+            return "This WILL sell!";
+        }
+        else if (chance >= 60)
+        {
+            return "This will probably sell!";
+        }
+        else if (chance >= 30)
+        {
+            return "This might not sell...";
+        }
+        else if (chance >= 1)
+        {
+            return "I REALLY don't like the chance...";
+        }
+        else
+            return "PEOPLE WILL NOT BUY THIS";
+
     }
 
     void SellItem()
@@ -51,8 +83,10 @@ public class Wagon : InteractableObject
             else 
                 break;
         }
-        probability += Random.Range(0.0f, 0.2f);
+        if (item.itemSo == itemInDemand)
+            probability += 0.2f; 
         probability += ReputationManager.instance.bonus.wagonBuyProbabilityIncrease;
         return probability;
+        
     }
 }

@@ -23,7 +23,7 @@ public class RecipeSocketGUI : MonoBehaviour
     {
         this.itemSO = itemSO;
         itemName.text = itemSO.itemName;
-        itemImg.sprite = itemSO.finishedItem;
+        itemImg.sprite = itemSO.itemSprite;
         foreach (MaterialContainer mat in itemSO.normalQualityRecipe)
         {
             MaterialSocketGUI newSocket = Instantiate(matSocketTemplate, normalGridLayout.transform);

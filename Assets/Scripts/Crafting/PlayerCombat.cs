@@ -57,6 +57,8 @@ public class PlayerCombat : MonoBehaviour
         hp -= damage;
         StartCoroutine(HitStunIE());
         rb.AddForce(knockForce, ForceMode2D.Impulse);
+        animationController.ChangeAnimState("hurt_side", mouseDirectionIsRight, true);
+        hurtAnim = true;
         StartCoroutine(InvulnerabilityIE());
     }
     IEnumerator HitStunIE()
@@ -64,13 +66,20 @@ public class PlayerCombat : MonoBehaviour
         playerController.pause = true;
         yield return new WaitForSeconds(0.9f);
         playerController.pause = false;
+        hurtAnim = false;
 
     }
     IEnumerator InvulnerabilityIE()
     {
         invulnerable = true;
         float timer = 0;
-        while(timer < invulnerabilityDuration)
+        while(hurtAnim)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        while (timer < invulnerabilityDuration)
         {
             spriteRenderer.color = new Color(1, 1, 1, 0.4f);
             yield return new WaitForSeconds(invulnFlashingInterval);
@@ -80,6 +89,11 @@ public class PlayerCombat : MonoBehaviour
             timer += invulnFlashingInterval;
         }
         invulnerable = false;
+    }
+    bool hurtAnim = true;
+    void OnHurtEnd()
+    {
+        hurtAnim = false;
     }
 
     void FindMouseDirection()

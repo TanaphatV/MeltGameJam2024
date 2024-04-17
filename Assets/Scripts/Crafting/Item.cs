@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using UnityEngine.VFX;
 enum ItemStatus
 {
     WIP,
@@ -14,6 +14,7 @@ public class Item : PickableObject, IBarSubject
     public ItemSO itemSo { get; private set; }
     [SerializeField] Transform spriteParent;
     [SerializeField] Collider2D physicalCollider;
+    [SerializeField] ParticleSystem sparkle;
     ItemStatus status;
     float timeRequired;
     float timePassedInFreezer;
@@ -39,7 +40,9 @@ public class Item : PickableObject, IBarSubject
             timeRequired = 3;
         marketPrice = itemSO.marketPrice;
         if (highQuality)
+        {
             marketPrice = itemSO.highQualityPrice;
+        }
         status = ItemStatus.WIP;
     }
 
@@ -52,6 +55,8 @@ public class Item : PickableObject, IBarSubject
         if (timePassedInFreezer >= timeRequired)
         {
             spriteRenderer.sprite = itemSo.itemSprite;
+            if (highQuality)
+                sparkle.Play();
             status = ItemStatus.Completed;
             timePassedInFreezer = timeRequired;
         }

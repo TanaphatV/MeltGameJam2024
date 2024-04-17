@@ -9,10 +9,20 @@ public class MaterialSocketGUI : MonoBehaviour
     [SerializeField] private Image materialIcon;
     [SerializeField] private TextMeshProUGUI materialName;
     [SerializeField] private TextMeshProUGUI materialAmount;
-    public void InitSocket(MaterialContainer mat)
+    public bool showName;
+    public void InitSocket(MaterialSO mat,int amount = 0,bool showName = false)
     {
-        materialIcon.sprite = mat.material.icon;
-        materialName.text = mat.material.materialName;
-        materialAmount.text = "x" + mat.amount.ToString();
+        materialIcon.sprite = mat.icon;
+        if (showName)
+            materialName.text = mat.materialName;
+        materialAmount.text = "x" + amount;
+    }
+    public void InitSocket(MaterialContainer mat, bool showName = false)
+    {
+        InitSocket(mat.material, mat.amount,showName);
+    }
+    public void UpdateSocket(int amount)
+    {
+        materialAmount.text = "x" + amount;
     }
 }

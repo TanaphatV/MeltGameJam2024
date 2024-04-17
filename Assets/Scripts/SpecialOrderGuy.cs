@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditor;
 
 [System.Serializable]
 public class SpecialOrder
@@ -14,7 +15,7 @@ public class SpecialOrder
 
 public class SpecialOrderGuy : InteractableObject
 {
-    public List<SpecialOrder> specialOrders = new List<SpecialOrder>();
+    private List<SpecialOrder> specialOrders = new List<SpecialOrder>();
 
     OrderListManagerGUI orderListManagerGUI;
     // Start is called before the first frame update

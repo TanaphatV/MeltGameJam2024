@@ -19,7 +19,7 @@ public class PlayerResources : MonoBehaviour
         }
     }
     #endregion
-    [SerializeField] ResourceSO resourceSO;
+    ResourceSO resourceSO;
     private Dictionary<MaterialSO, int> materialDictionary;
 
     public int hp;
@@ -31,15 +31,16 @@ public class PlayerResources : MonoBehaviour
     {
         _instance = this;
         materialDictionary = new Dictionary<MaterialSO, int>();
-        foreach (var mat in resourceSO.pickableOres)
-        {
-            materialDictionary.Add(mat, 0);
-        }
     }
     private void Start()
     {
         hp = PlayerStats.instance.maxHp;
         TimeManager.instance.onDayEnd += ClearMaterial;
+        resourceSO = RecipeSingletonManager.Instance.GetResource;
+        foreach (var mat in resourceSO.pickableOres)
+        {
+            materialDictionary.Add(mat, 0);
+        }
     }
 
     void ClearMaterial()
@@ -47,6 +48,7 @@ public class PlayerResources : MonoBehaviour
         foreach(var mat in materialDictionary.Keys)
         {
             materialDictionary[mat] = 0;
+            OnMaterialAmountChange(mat);
         }
     }
 
@@ -77,13 +79,17 @@ public class PlayerResources : MonoBehaviour
         }
         return true;
     }
-
+    void OnMaterialAmountChange(MaterialSO material)
+    {
+        if(onMaterialAmountChange != null)
+            onMaterialAmountChange(material,materialDictionary[material]);
+    }
 
 
     public void TakeMaterial(MaterialSO material, int amount)
     {
         materialDictionary[material] -= amount;
-        OnMaterialAmountChange(material, amount);
+        OnMaterialAmountChange(material);
         if (materialDictionary[material] < 0)
         {
             throw new Exception("ERROR: took more material than material amount"); 
@@ -93,7 +99,7 @@ public class PlayerResources : MonoBehaviour
     public void TakeMaterial(MaterialContainer materialContainer)
     {
         materialDictionary[materialContainer.material] -= materialContainer.amount;
-        OnMaterialAmountChange(materialContainer.material, materialContainer.amount);
+        OnMaterialAmountChange(materialContainer.material);
         if (materialDictionary[materialContainer.material] < 0)
         {
             throw new Exception("ERROR: took more material than material amount");
@@ -112,19 +118,13 @@ public class PlayerResources : MonoBehaviour
     public void AddMaterial(MaterialSO material, int amount)
     {
         materialDictionary[material] += amount;
-        OnMaterialAmountChange(material, amount);
+        OnMaterialAmountChange(material);
     }
 
     public void AddMaterial(MaterialContainer materialContainer)
     {
         materialDictionary[materialContainer.material] += materialContainer.amount;
-        OnMaterialAmountChange(materialContainer.material, materialContainer.amount);
+        OnMaterialAmountChange(materialContainer.material);
     }
 
-
-    void OnMaterialAmountChange(MaterialSO material, int amount)
-    {
-        if (onMaterialAmountChange != null)
-            onMaterialAmountChange(material, materialDictionary[material]);
-    }
 }

@@ -6,63 +6,33 @@ using UnityEngine.UI;
 
 public class ResourceUIController : MonoBehaviour
 {
-    //#region Singleton
-    //private static ResourceUIController _instance;
-    //public static ResourceUIController instance
-    //{
-    //    get
-    //    {
-    //        if (_instance == null)
-    //        {
-    //            Debug.Log("Error, instance is null");
-    //        }
-    //        return _instance;
-    //    }
-    //}
-    //#endregion
-    private Dictionary<MaterialSO, int> materialDictionary;
-    public bool IsDebugingMode = false;
-    [SerializeField] private GameObject currentMaterialUITemplate;
     [SerializeField] private GameObject verticalLayout;
     [SerializeField] private TextMeshProUGUI currentMoney;
-    [SerializeField] private List<MaterialSO> testMatList = new List<MaterialSO>();
-    private List<GameObject> matUIList = new List<GameObject>();
+    [SerializeField] private MaterialSocketGUI materialSocketTemplate;
+    private Dictionary<MaterialSO,MaterialSocketGUI> matUIList = new Dictionary<MaterialSO, MaterialSocketGUI>();
 
     void Start()
     {
-
-        if (IsDebugingMode)
-        {
-            AddTester();
-        }
-
-        materialDictionary = PlayerResources.instance.GetMaterialDictionary();
         PlayerResources.instance.onMaterialAmountChange += UpdateMaterial;
-
-        UpdateMaterialList();
+        materialSocketTemplate.gameObject.SetActive(false);
+        Init();
+        //UpdateMaterialList();
     }
 
-    public void UpdateMaterialList()
+    private void Init()
     {
-        //Debug.Log(materialDictionary.Count);
-        foreach (GameObject ui in matUIList)
+        foreach (var material in PlayerResources.instance.GetMaterialDictionary().Keys)
         {
-            Destroy(ui.gameObject);
+            MaterialSocketGUI newMatGUI = Instantiate(materialSocketTemplate, verticalLayout.transform);
+            newMatGUI.InitSocket(material);
+            newMatGUI.gameObject.SetActive(true);
+            matUIList.Add(material,newMatGUI);
         }
-        matUIList.Clear();
-        //Debug.Log(materialDictionary.Count);
-        foreach (KeyValuePair<MaterialSO, int> pair in materialDictionary)
-        {
-            MaterialSO material = pair.Key;
-            int materialQuantity = pair.Value;
+    }
 
-            GameObject newMat = Instantiate(currentMaterialUITemplate, verticalLayout.transform);
-            newMat.GetComponentInChildren<TextMeshProUGUI>().text = materialQuantity.ToString();
-            newMat.GetComponentInChildren<Image>().sprite = material.icon;
-            newMat.gameObject.SetActive(true);
-            matUIList.Add(newMat);
-        }
-        currentMaterialUITemplate.SetActive(false);
+    public RectTransform GetMaterialUIRectTransform(MaterialSO materialSO)
+    {
+        return matUIList[materialSO].gameObject.GetComponent<RectTransform>();
     }
 
     private void Update()
@@ -70,17 +40,9 @@ public class ResourceUIController : MonoBehaviour
         currentMoney.text = PlayerResources.instance.coin.ToString() + "$";
     }
 
-    void AddTester()
-    {
-        foreach (MaterialSO mat in testMatList)
-        {
-            PlayerResources.instance.AddMaterial(mat, 10);
-        }
-    }
-
     void UpdateMaterial(MaterialSO matName,int amount)
     {
-        materialDictionary[matName] = amount;
+        matUIList[matName].UpdateSocket(amount);
     }
 
 }

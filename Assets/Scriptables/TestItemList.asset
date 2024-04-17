@@ -19,6 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a80708efd78bb5f42ac216d5e5a866bd, type: 2}
   - {fileID: 11400000, guid: a32d15630d774da4c8d841ce40d9181c, type: 2}
   pickableOres:
-  - {fileID: 11400000, guid: 98f8786b742e33342b8333192e515ca1, type: 2}
   - {fileID: 11400000, guid: e2827b85e42cf9f4192f3b7e36672869, type: 2}
+  - {fileID: 11400000, guid: 98f8786b742e33342b8333192e515ca1, type: 2}
   - {fileID: 11400000, guid: 096a2204b8d7d7b4198cca6751eb57ca, type: 2}

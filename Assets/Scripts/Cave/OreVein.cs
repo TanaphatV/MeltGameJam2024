@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class OreVein : MonoBehaviour, IHitable
 {
-    public MaterialContainer materialContainer;
+    [SerializeField] MaterialContainer materialContainer;
     public int hitsNeeded;
-
+    [SerializeField] MaterialDrop materialDropPrefab;
     public void Hit()
     {
         hitsNeeded -= PlayerStats.instance.mining;
@@ -16,7 +16,11 @@ public class OreVein : MonoBehaviour, IHitable
 
     void Break()
     {
-        PlayerResources.instance.AddMaterial(materialContainer.material, materialContainer.amount);
+        for(int i = 0; i < materialContainer.amount; i++)
+        {
+            MaterialDrop temp = Instantiate(materialDropPrefab);
+            temp.Init(materialContainer.material);
+        }
         Destroy(gameObject);
     }
 

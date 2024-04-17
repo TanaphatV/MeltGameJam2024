@@ -27,13 +27,13 @@ public class RecipeSocketGUI : MonoBehaviour
         foreach (MaterialContainer mat in itemSO.normalQualityRecipe)
         {
             MaterialSocketGUI newSocket = Instantiate(matSocketTemplate, normalGridLayout.transform);
-            newSocket.InitSocket(mat);
+            newSocket.InitSocket(mat,true);
             matSocketList.Add(newSocket);
         }
         foreach (MaterialContainer mat in itemSO.highQualityRecipe)
         {
             MaterialSocketGUI newSocket = Instantiate(matSocketTemplate, highGridLayout.transform);
-            newSocket.InitSocket(mat);
+            newSocket.InitSocket(mat,true);
             matSocketList.Add(newSocket);
         }
         matSocketTemplate.gameObject.SetActive(false);

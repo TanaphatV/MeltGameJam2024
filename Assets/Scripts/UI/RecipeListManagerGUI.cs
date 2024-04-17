@@ -150,7 +150,7 @@ public class RecipeListManagerGUI : MonoBehaviour
         onSelectedItemToCreate(recipeSocketList[selectingIndex].GetItemSO, isSelectNormal);
         qteManager.OpenPanel(station, this);
         ClosePanel();
-        resourceUI.UpdateMaterialList();
+        //resourceUI.UpdateMaterialList();
     }
 
     private void ChooseMode()

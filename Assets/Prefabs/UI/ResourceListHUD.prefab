@@ -50,8 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d405443c1f35c0047aff36cc4cf2bc5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMaterialUITemplate: {fileID: 4251975729756484332}
   verticalLayout: {fileID: 4251975729761947693}
+  currentMoney: {fileID: 0}
+  materialSocketTemplate: {fileID: 3822192786106358654}
 --- !u!1 &4251975728061243423
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4251975729756484323}
   - component: {fileID: 4251975729756484322}
+  - component: {fileID: 3822192786106358654}
   m_Layer: 5
   m_Name: Material
   m_TagString: Untagged
@@ -328,6 +330,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &3822192786106358654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4251975729756484332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6168daa88121de44fa3a3bffe1e9ed97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialIcon: {fileID: 4251975728875121873}
+  materialName: {fileID: 0}
+  materialAmount: {fileID: 4251975728061243421}
 --- !u!1 &4251975729761947693
 GameObject:
   m_ObjectHideFlags: 0

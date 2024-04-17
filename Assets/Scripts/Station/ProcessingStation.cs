@@ -14,7 +14,7 @@ public class ProcessingStation : InteractableObject
     public Item itemBasePrefab;
     protected ItemSO itemToCreate;
     bool isHigh = false;
-    [SerializeField] private RecipeListManagerGUI recipePanel;
+    private RecipeListManagerGUI recipePanel;
 
     //private BaseQTEManager moldUI;
     public CraftingStatus currentItemCraftingStatus = CraftingStatus.Nothing;
@@ -22,6 +22,7 @@ public class ProcessingStation : InteractableObject
     private void Start()
     {
         itemToCreate = null;
+        recipePanel = FindObjectOfType<RecipeListManagerGUI>();
         recipePanel.onSelectedItemToCreate += SetItemToCreate;
         //recipePanel.onSelectedQuality+=
     }

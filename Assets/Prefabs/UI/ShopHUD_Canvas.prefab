@@ -12377,6 +12377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gfx: {fileID: 4545577166474852093}
+  closeButton: {fileID: 3668710135167961129}
   wagonSpaceButton: {fileID: 419120718416916397}
   wagonSpaceBar: {fileID: 419120719347290340}
   wagonSpaceCostText: {fileID: 419120718429256739}

@@ -24,7 +24,7 @@ public class ResourceUIController : MonoBehaviour
         materialDictionary = PlayerResources.instance.GetMaterialDictionary();
         PlayerResources.instance.onMaterialAmountChange += UpdateMaterial;
 
-        Debug.Log(materialDictionary.Count);
+        //Debug.Log(materialDictionary.Count);
         foreach (KeyValuePair<MaterialSO, int> pair in materialDictionary)
         {
             MaterialSO material = pair.Key;

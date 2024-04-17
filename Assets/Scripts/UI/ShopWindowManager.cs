@@ -7,6 +7,7 @@ using TMPro;
 public class ShopWindowManager : MonoBehaviour
 {
     [SerializeField] private GameObject gfx;
+    [SerializeField] private Button closeButton;
     #region JUST_VARIABLE
     [SerializeField] private Button wagonSpaceButton;
     [SerializeField] private Image wagonSpaceBar;
@@ -47,6 +48,8 @@ public class ShopWindowManager : MonoBehaviour
         freezeReduceButton.onClick.AddListener(() => UpgradeFreezeReduce(shop.freezer[freezeLv - 1] as FreezerUpgrade));
         reputaButton.onClick.AddListener(() => UpgradeReputationGain(shop.reputation[reputaLv - 1] as ReputationUpgrade));
         minigameButton.onClick.AddListener(() => UpgradeMinigameDifficult(shop.minigame[minigameLv - 1] as ShopUpgrade));
+        closeButton.onClick.AddListener(() => GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>().SetPlayerPause(false));
+
     }
     public void Init(Shop shop)
     {

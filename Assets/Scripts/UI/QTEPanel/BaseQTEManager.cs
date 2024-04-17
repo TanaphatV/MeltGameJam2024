@@ -17,6 +17,7 @@ public class BaseQTEManager : MonoBehaviour
 
     private void Awake()
     {
+        panel.SetActive(false);
         if (qteMoldingPanel == null || qteTempPanel == null)
         {
             Debug.LogError("Can't find object QTEPanel");

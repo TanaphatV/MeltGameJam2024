@@ -8,7 +8,6 @@ public class RecipeListManagerGUI : MonoBehaviour
     [SerializeField] private RecipeSocketGUI socketTemplate;
     [SerializeField] private GameObject gfx;
     [SerializeField] private GameObject verticalLayout;
-    [SerializeField] private MainCharacterHUDManager mainHud;
     [SerializeField] private BaseQTEManager qteManager;
     private ResourceSO resource;
     private List<RecipeSocketGUI> recipeSocketList = new List<RecipeSocketGUI>();

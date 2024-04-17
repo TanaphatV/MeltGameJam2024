@@ -30,16 +30,17 @@ public class Wagon : InteractableObject
             else
             {
                 Item item = playerInteract.TakeItem();
+                ItemInfo itemInfo = new ItemInfo(item.itemSo, item.price, item.reputationReward);
                 hud.OpenPanel();
                 hud.InitPanel(item);
-                items.Add(new ItemInfo(item.itemSo,item.price,item.reputationReward));
+                items.Add(itemInfo);
                 Destroy(item.gameObject);
             }
         }
         
     }
 
-    public string GetSellChanceMessage(Item item)
+    public string GetSellChanceMessage(ItemInfo item)
     {
         float chance = GetSellProbability(item);
         if (chance >= 1.0f)
@@ -63,7 +64,7 @@ public class Wagon : InteractableObject
 
     }
 
-    struct ItemInfo
+    public class ItemInfo
     {
         public ItemSO itemSo;
         public int price;

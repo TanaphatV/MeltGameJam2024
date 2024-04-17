@@ -98,7 +98,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.092576504, y: 0.1763795}
+  m_Offset: {x: -0.092576504, y: 0.346283}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5306008, y: 0.02836313}
@@ -109,7 +109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7429059, y: 0.8600991}
+  m_Size: {x: 1.7429059, y: 0.6783417}
   m_EdgeRadius: 0
 --- !u!1 &4543228927107160196
 GameObject:
@@ -193,6 +193,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 9098009593710153750}
   col: {fileID: 2416714376566406913}
   spriteParent: {fileID: 4021903803959968317}
+  physicalCollider: {fileID: 639978915}
   highQuality: 0
   perfectMinigame: 0
   price: 0

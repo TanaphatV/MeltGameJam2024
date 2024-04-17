@@ -13,6 +13,7 @@ public class Item : PickableObject, IBarSubject
 {
     public ItemSO itemSo { get; private set; }
     [SerializeField] Transform spriteParent;
+    [SerializeField] Collider2D physicalCollider;
     ItemStatus status;
     float timeRequired;
     float timePassedInFreezer;
@@ -61,6 +62,7 @@ public class Item : PickableObject, IBarSubject
     {
         isInFreezer = false;
         spriteParent.transform.Rotate(new Vector3(0, 0, 90));
+        physicalCollider.enabled = false;
         base.StartHolding(parent);
     }
 
@@ -69,7 +71,8 @@ public class Item : PickableObject, IBarSubject
         spriteParent.transform.Rotate(new Vector3(0, 0, -90));
         Physics2D.queriesHitTriggers = true;
         RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero);
-        Physics2D.queriesHitTriggers = false; 
+        Physics2D.queriesHitTriggers = false;
+        physicalCollider.enabled = true;
         if (hit && hit.collider.CompareTag("Freezer"))
         {
             isInFreezer = true;

@@ -29,7 +29,7 @@ public class Wagon : InteractableObject
                 Debug.Log("Not item");
                 return;
             }
-            else
+            else if(items.Count < PlayerStats.instance.wagonStorage)
             {
                 Item item = playerInteract.TakeItem();
                 ItemInfo itemInfo = new ItemInfo(item.itemSo, item.price, item.reputationReward);

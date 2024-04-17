@@ -19,7 +19,7 @@ public class PlayerStats : MonoBehaviour
     }
     #endregion
 
-    public int wagonStorage;
+    public int wagonStorage = 6;
     public int damage = 1;
     public float knockForce = 1;
     public int mining = 1;

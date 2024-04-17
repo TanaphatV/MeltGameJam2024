@@ -6,8 +6,7 @@ using UnityEngine;
 public class ItemSO : ScriptableObject
 {
     public string itemName;
-    public Sprite wipItem;
-    public Sprite finishedItem;
+    public Sprite itemSprite;
     public float timeNeededtoFreeze;
     public int marketPrice;
     public int highQualityPrice;

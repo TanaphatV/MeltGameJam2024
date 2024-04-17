@@ -31,7 +31,6 @@ public class Item : PickableObject, IBarSubject
     public void Init(ItemSO itemSO)
     {
         this.itemSo = itemSO;
-        spriteRenderer.sprite = itemSO.wipItem;
         timeRequired = itemSO.timeNeededtoFreeze - PlayerStats.instance.freezerWaitTimeReduction;
         if (timeRequired <= 0)
             timeRequired = 3;
@@ -49,7 +48,7 @@ public class Item : PickableObject, IBarSubject
             timePassedInFreezer += Time.deltaTime;
         if (timePassedInFreezer >= timeRequired)
         {
-            spriteRenderer.sprite = itemSo.finishedItem;
+            spriteRenderer.sprite = itemSo.itemSprite;
             status = ItemStatus.Completed;
             timePassedInFreezer = timeRequired;
         }

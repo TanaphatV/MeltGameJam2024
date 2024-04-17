@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class RecipeListManagerGUI : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class RecipeListManagerGUI : MonoBehaviour
     [SerializeField] private GameObject gfx;
     [SerializeField] private GameObject verticalLayout;
     [SerializeField] private BaseQTEManager qteManager;
+    [SerializeField] private Button closeButton;
+    [SerializeField] private Button prevButton;
+    [SerializeField] private Button nextButton;
     private ResourceSO resource;
     private List<RecipeSocketGUI> recipeSocketList = new List<RecipeSocketGUI>();
     private int selectingIndex;
@@ -20,6 +24,7 @@ public class RecipeListManagerGUI : MonoBehaviour
     private void Start()
     {
         resource = RecipeSingletonManager.Instance.GetResource;
+        closeButton.onClick.AddListener(() => GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>().SetPlayerPause(false));
         InitPanel();
     }
 
@@ -43,8 +48,19 @@ public class RecipeListManagerGUI : MonoBehaviour
         }
         socketTemplate.gameObject.SetActive(false);
 
+        DisplayScrollListButton();
+
         recipeSocketList[selectingIndex].UnselectAll();
         ChooseMode();
+    }
+    private void DisplayScrollListButton()
+    {
+        nextButton.gameObject.SetActive(false);
+        prevButton.gameObject.SetActive(false);
+        if (recipeSocketList.Count > 4 && selectingIndex < recipeSocketList.Count - 1)
+        {
+            nextButton.gameObject.SetActive(true);
+        }
     }
 
     public void OpenPanel(ProcessingStation s)

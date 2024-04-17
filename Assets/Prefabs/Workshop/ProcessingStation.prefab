@@ -231,6 +231,10 @@ PrefabInstance:
       propertyPath: qteManager
       value: 
       objectReference: {fileID: 2957868855437564639}
+    - target: {fileID: 9112486053112669027, guid: 40b942c0c6751144b86c13aa65990eb4, type: 3}
+      propertyPath: closeButton
+      value: 
+      objectReference: {fileID: 2569213636744979905}
     - target: {fileID: 9112486053112669048, guid: 40b942c0c6751144b86c13aa65990eb4, type: 3}
       propertyPath: m_Name
       value: RecipeListHUD_Canvas
@@ -577,6 +581,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40b942c0c6751144b86c13aa65990eb4, type: 3}
+--- !u!114 &2569213636744979905 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2489735671850315273, guid: 40b942c0c6751144b86c13aa65990eb4, type: 3}
+  m_PrefabInstance: {fileID: 84160295324847048}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &9177476904104290475 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9112486053112669027, guid: 40b942c0c6751144b86c13aa65990eb4, type: 3}

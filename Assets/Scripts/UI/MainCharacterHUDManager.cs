@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum MainHUD
 {
@@ -13,40 +14,39 @@ public class MainCharacterHUDManager : MonoBehaviour
 {
     [SerializeField] private GameObject moneyHUD;
     [SerializeField] private GameObject materialList;
-    [SerializeField] private GameObject recipeList;
-    private BaseQTEManager qteMoldManager;
-    private QTETemperaturePanel qteTempPanel;
+    [SerializeField] private GameObject hpHorizontal;
+    [SerializeField] private Image hpIcon;
+
+    private List<Image> hpIconList = new List<Image>();
 
     private void Start()
     {
-        qteMoldManager = FindAnyObjectByType<BaseQTEManager>();
-        qteTempPanel = FindAnyObjectByType<QTETemperaturePanel>();
+        hpIcon.gameObject.SetActive(false);
+
+        for (int i = 0; i < PlayerStats.instance.maxHp; i++)
+        {
+            Image newHpIcon = Instantiate(hpIcon, hpHorizontal.transform);
+            newHpIcon.gameObject.SetActive(true);
+            hpIconList.Add(newHpIcon);
+        }
     }
 
     public void ToggleRecipeListHUD(bool isOpen)
     {
-        recipeList.SetActive(isOpen);
         moneyHUD.SetActive(!isOpen);
-    }
-
-    public void Startl()
-    {
-
     }
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.J))
+        //if (PlayerResources.instance.hp > 0 && PlayerStats.instance.maxHp != 0 && hpIconList.Count < PlayerStats.instance.maxHp)
         //{
-        //    if (recipeList.activeSelf)
-        //    {
-        //        ToggleRecipeListHUD(false);
-        //    }
-        //    else
-        //    {
-        //        ToggleRecipeListHUD(true);
-        //    }
-            
+        //    Image newHpIcon = Instantiate(hpIcon, hpHorizontal.transform);
+        //    newHpIcon.gameObject.SetActive(true);
+        //    hpIconList.Add(newHpIcon);
+        //}else if (PlayerResources.instance.hp < hpIconList.Count)
+        //{
+        //    Destroy(hpIconList[0].gameObject);
+        //    hpIconList.RemoveAt(0);
         //}
     }
 }

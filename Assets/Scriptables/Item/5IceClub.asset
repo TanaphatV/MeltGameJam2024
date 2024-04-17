@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cecd9cc6f7ff6147909bb79a97735de, type: 3}
   m_Name: 5IceClub
   m_EditorClassIdentifier: 
-  itemName: 
-  wipItem: {fileID: 21300000, guid: f9ff6fd041d7c40428c12cb11b226259, type: 3}
-  finishedItem: {fileID: 21300000, guid: 6dfb41bc5528b0242b1fff208217f171, type: 3}
+  itemName: Ice Club
+  itemSprite: {fileID: 21300000, guid: 6dfb41bc5528b0242b1fff208217f171, type: 3}
   timeNeededtoFreeze: 30
   marketPrice: 50
   highQualityPrice: 100

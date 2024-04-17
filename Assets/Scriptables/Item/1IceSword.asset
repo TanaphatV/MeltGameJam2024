@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: 1IceSword
   m_EditorClassIdentifier: 
   itemName: Ice Sword
-  wipItem: {fileID: 21300000, guid: f9ff6fd041d7c40428c12cb11b226259, type: 3}
-  finishedItem: {fileID: 21300000, guid: ee7157b52cb4ab04b8ae7c9ba9bca3a9, type: 3}
+  itemSprite: {fileID: 21300000, guid: ee7157b52cb4ab04b8ae7c9ba9bca3a9, type: 3}
   timeNeededtoFreeze: 30
   marketPrice: 25
   highQualityPrice: 50

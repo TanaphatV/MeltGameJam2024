@@ -16,11 +16,16 @@ MonoBehaviour:
   wipItem: {fileID: 21300000, guid: 3492e9eb6292141eb942d0c9beface29, type: 3}
   finishedItem: {fileID: 21300000, guid: f47213af7e996497b96c4b5df3e6b613, type: 3}
   timeNeededtoFreeze: 1
+  marketPrice: 0
+  highQualityPrice: 0
+  reputationReward: 0
   normalQualityRecipe:
-  - material: {fileID: 11400000, guid: a2bc193145bdb3c4aafa3e12a932ca63, type: 2}
+  - material: {fileID: 11400000, guid: e2827b85e42cf9f4192f3b7e36672869, type: 2}
     amount: 1
+  - material: {fileID: 11400000, guid: 98f8786b742e33342b8333192e515ca1, type: 2}
+    amount: 3
   highQualityRecipe:
-  - material: {fileID: 11400000, guid: a2bc193145bdb3c4aafa3e12a932ca63, type: 2}
-    amount: 1
-  - material: {fileID: 11400000, guid: c95ed5a228066064d8eb74e9a2a46338, type: 2}
+  - material: {fileID: 11400000, guid: 98f8786b742e33342b8333192e515ca1, type: 2}
+    amount: 3
+  - material: {fileID: 11400000, guid: 096a2204b8d7d7b4198cca6751eb57ca, type: 2}
     amount: 1

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SuperIceOre
   m_EditorClassIdentifier: 
   materialName: Super Ice Ore
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: ed076080c182efa4ebff6f007fb44307, type: 3}
   reputaionReward: 10

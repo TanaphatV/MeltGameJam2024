@@ -90,7 +90,7 @@ public class PlayerInteract : MonoBehaviour
         {
             if (hit.collider.transform.parent != null)
             {
-                hit.collider.transform.GetComponentInParent<IInteractable>();
+                interactable = hit.collider.transform.GetComponentInParent<IInteractable>();
             }
         }
 

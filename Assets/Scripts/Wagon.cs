@@ -10,6 +10,8 @@ public class Wagon : InteractableObject
     private void Start()
     {
         TimeManager.instance.onDayEnd += SellItem;
+        TimeManager.instance.onDayEnd += RefreshWagon;
+        RefreshWagon();
     }
 
     void RefreshWagon()

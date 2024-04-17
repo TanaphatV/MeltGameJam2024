@@ -9,7 +9,7 @@ public class ReputationMilestoneBonus
     public float requiredReputation;
     public Sprite icon;
     public float specialOrderPayMultiplier;
-    public float wagonBuyProbabilityMultiplier;
+    public float wagonBuyProbabilityIncrease;
 
 }
 

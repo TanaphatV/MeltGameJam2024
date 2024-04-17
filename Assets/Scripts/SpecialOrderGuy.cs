@@ -27,7 +27,10 @@ public class SpecialOrderGuy : InteractableObject
             {
                 specialOrders.Remove(temp.itemSo);
                 playerInteract.TakeItem();
-                PlayerResources.instance.coin += (int)((temp.marketPrice * 1.5f * ReputationManager.instance.bonus.specialOrderPayMultiplier));
+                int payout = (int)((temp.marketPrice * 1.5f * ReputationManager.instance.bonus.specialOrderPayMultiplier));
+                PlayerResources.instance.coin += payout;
+                if(temp.highQuality)
+                    PlayerResources.instance.coin += payout;
                 ReputationManager.instance.IncreaseReputation(temp.reputationReward);
             }
         }

@@ -30,16 +30,17 @@ public class ProcessingStation : InteractableObject
         StartCoroutine(InteractRoutine(playerInteract));
     }
 
-    public void CreateItem(ItemSO itemSO , bool highQuality)
+    public void CreateItem(ItemSO itemSO , bool highQuality, bool perfectMinigame)
     {
         Item temp = Instantiate(itemBasePrefab);
+        temp.perfectMinigame = perfectMinigame;
         temp.highQuality = highQuality;
-        temp.reputationReward = ReputationRewardCalculation(itemSO, highQuality);
+        temp.reputationReward = ReputationRewardCalculation(itemSO, highQuality, perfectMinigame);
         temp.transform.position = transform.position;
         temp.Init(itemSO);
     }
 
-    int ReputationRewardCalculation(ItemSO itemSO,bool highQuality)
+    int ReputationRewardCalculation(ItemSO itemSO,bool highQuality,bool perfectMinigame)
     {
         int reward = 0;
         if(highQuality)
@@ -52,9 +53,10 @@ public class ProcessingStation : InteractableObject
             foreach (var mat in itemSO.normalQualityRecipe)
                 reward += mat.material.reputaionReward * mat.amount;
         }
+        if (perfectMinigame)
+            reward = (int)((float)reward * 1.2f);
 
         return reward;
-        
     }
 
     private void SetItemToCreate(ItemSO itemSo, bool isNormal)
@@ -85,7 +87,7 @@ public class ProcessingStation : InteractableObject
         if (currentItemCraftingStatus == CraftingStatus.Completed)
         {
             Debug.Log(itemToCreate);
-            CreateItem(itemToCreate, isHigh);
+            CreateItem(itemToCreate, isHigh,true);
         }
         playerInteract.SetPlayerPause(false);
         currentItemCraftingStatus = CraftingStatus.Nothing;

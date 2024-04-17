@@ -28,13 +28,31 @@ public class Wagon : InteractableObject
         int revenue = 0;
         foreach(var item in items)
         {
-            //if(item.price > item.itemSo.marketPrice)
-            //{
-
-            //}
-            revenue += item.price;
+            if(Random.Range(0.0f,1.0f) <= GetSellProbability(item))
+            {
+                revenue += item.price;
+                ReputationManager.instance.IncreaseReputation(item.reputationReward);
+            }
         }
         items = new List<Item>();
         PlayerResources.instance.coin += revenue;
+    }
+
+    float GetSellProbability(Item item)
+    {
+        float priceRatio = (float)item.price / (float)item.itemSo.marketPrice;
+        float probability = 1;
+        for(int i = 0; i < 9; i++)
+        {
+            if (priceRatio > 0.6f + ((float)i * 0.2f))
+            {
+                probability -= 0.2f;
+            }
+            else 
+                break;
+        }
+        probability += Random.Range(0.0f, 0.2f);
+        probability += ReputationManager.instance.bonus.wagonBuyProbabilityIncrease;
+        return probability;
     }
 }

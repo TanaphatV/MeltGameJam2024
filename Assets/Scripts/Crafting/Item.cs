@@ -17,6 +17,7 @@ public class Item : PickableObject, IBarSubject
     float timePassedInFreezer;
     bool isInFreezer = false;
     public bool highQuality = false;
+    public bool perfectMinigame = false;
     public int price;
     public int reputationReward;
     public int marketPrice { get; private set; }

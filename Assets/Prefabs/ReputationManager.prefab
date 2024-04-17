@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &566742851468239798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6359733440652578152}
+  - component: {fileID: 1745316344809477973}
+  m_Layer: 0
+  m_Name: ReputationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6359733440652578152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566742851468239798}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.94973, y: 1.6313171, z: -0.060288083}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1745316344809477973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566742851468239798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12f0abc55505994db2c9da079359f63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxReputation: 750
+  mileStoneBonus:
+  - requiredReputation: 0
+    icon: {fileID: 0}
+    specialOrderPayMultiplier: 0
+    wagonBuyProbabilityMultiplier: 1
+  - requiredReputation: 50
+    icon: {fileID: 0}
+    specialOrderPayMultiplier: 0
+    wagonBuyProbabilityMultiplier: 1.2
+  - requiredReputation: 250
+    icon: {fileID: 0}
+    specialOrderPayMultiplier: 0
+    wagonBuyProbabilityMultiplier: 1.4
+  - requiredReputation: 750
+    icon: {fileID: 0}
+    specialOrderPayMultiplier: 0
+    wagonBuyProbabilityMultiplier: 10

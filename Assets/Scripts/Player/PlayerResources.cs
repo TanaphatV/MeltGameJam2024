@@ -39,6 +39,15 @@ public class PlayerResources : MonoBehaviour
     private void Start()
     {
         hp = PlayerStats.instance.maxHp;
+        TimeManager.instance.onDayEnd += ClearMaterial;
+    }
+
+    void ClearMaterial()
+    {
+        foreach(var mat in materialDictionary.Keys)
+        {
+            materialDictionary[mat] = 0;
+        }
     }
 
     public Dictionary<MaterialSO, int> GetMaterialDictionary()

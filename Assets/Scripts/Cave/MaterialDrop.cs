@@ -9,12 +9,14 @@ public class MaterialDrop : MonoBehaviour
     [SerializeField] float acceleration;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField]MaterialSO material;
+    float speed;
     Vector3 velocity;
-    RectTransform target = null;
+    bool goToUI = false;
+    ResourceUIController resourceUIController;
     // Start is called before the first frame update
     void Start()
     {
-        
+        resourceUIController = FindObjectOfType<ResourceUIController>();
     }
 
     public void Init(MaterialSO material)
@@ -22,21 +24,22 @@ public class MaterialDrop : MonoBehaviour
         this.material = material;
         spriteRenderer.sprite = material.icon;
     }
-
+    float startTime;
     // Update is called once per frame
     void Update()
     {
-        if(target !=null)
+        if(goToUI)
         {
-            
-
-            Vector3 difference = target.TransformPoint(target.rect.center) - transform.position;
+            Vector3 difference = resourceUIController.GetWorldPositionFromMaterialUI(material) - transform.position;
             Vector3 direction = difference.normalized;
-            velocity += direction * acceleration * Time.deltaTime;
-            velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+
+
+
+            speed += acceleration * Time.deltaTime;
+            velocity = Vector3.ClampMagnitude(direction * speed, maxSpeed);
             transform.position += velocity * Time.deltaTime;
-            Debug.Log(difference.magnitude);
-            if(difference.magnitude <= 1)
+
+            if(difference.magnitude <= 4)
             {
                 PlayerResources.instance.AddMaterial(material,1);
                 Destroy(gameObject);
@@ -49,7 +52,8 @@ public class MaterialDrop : MonoBehaviour
             {
                 if (col.CompareTag("Player"))
                 {
-                    target = FindAnyObjectByType<ResourceUIController>().GetMaterialUIRectTransform(material);
+                    startTime = Time.time;
+                    goToUI = true;
                 }
             }
         }

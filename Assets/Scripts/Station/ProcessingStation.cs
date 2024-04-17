@@ -13,6 +13,7 @@ public class ProcessingStation : InteractableObject
 {
     public Item itemBasePrefab;
     protected ItemSO itemToCreate;
+    bool isHigh = false;
     [SerializeField] private RecipeListManagerGUI recipePanel;
 
     //private BaseQTEManager moldUI;
@@ -22,6 +23,7 @@ public class ProcessingStation : InteractableObject
     {
         itemToCreate = null;
         recipePanel.onSelectedItemToCreate += SetItemToCreate;
+        //recipePanel.onSelectedQuality+=
     }
     protected override void InteractBehavior(PlayerInteract playerInteract)
     {
@@ -55,10 +57,11 @@ public class ProcessingStation : InteractableObject
         
     }
 
-    private void SetItemToCreate(ItemSO itemSo)
+    private void SetItemToCreate(ItemSO itemSo, bool isNormal)
     {
-        Debug.Log("SetItemToCreate");
+        //Debug.Log("SetItemToCreate");
         itemToCreate = itemSo;
+        isHigh = !isNormal;
     }
 
     IEnumerator InteractRoutine(PlayerInteract playerInteract)
@@ -82,7 +85,7 @@ public class ProcessingStation : InteractableObject
         if (currentItemCraftingStatus == CraftingStatus.Completed)
         {
             Debug.Log(itemToCreate);
-            CreateItem(itemToCreate, true);
+            CreateItem(itemToCreate, isHigh);
         }
         playerInteract.SetPlayerPause(false);
         currentItemCraftingStatus = CraftingStatus.Nothing;

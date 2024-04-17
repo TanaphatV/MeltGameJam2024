@@ -19,6 +19,8 @@ public class RecipeListManagerGUI : MonoBehaviour
     private int selectingIndex;
     private bool isSelectNormal = true;
     private ProcessingStation station;
+    private int minimumShow;
+    private int maximumshow;
 
     public UnityAction<ItemSO, bool> onSelectedItemToCreate;
 
@@ -47,6 +49,8 @@ public class RecipeListManagerGUI : MonoBehaviour
                 i++;
             }
         }
+        minimumShow = 0;
+        maximumshow = 3;
         socketTemplate.gameObject.SetActive(false);
 
         DisplayScrollListButton();
@@ -58,7 +62,11 @@ public class RecipeListManagerGUI : MonoBehaviour
     {
         nextButton.gameObject.SetActive(false);
         prevButton.gameObject.SetActive(false);
-        if (recipeSocketList.Count > 4 && selectingIndex < recipeSocketList.Count - 1)
+        if(minimumShow != 0)
+        {
+            prevButton.gameObject.SetActive(true);
+        }
+        if(maximumshow != recipeSocketList.Count - 1)
         {
             nextButton.gameObject.SetActive(true);
         }
@@ -84,7 +92,15 @@ public class RecipeListManagerGUI : MonoBehaviour
                 {
                     recipeSocketList[selectingIndex].UnselectAll();
                     selectingIndex--;
+                    if (selectingIndex < minimumShow)
+                    {
+                        minimumShow--;
+                        maximumshow--;
+                        verticalLayout.GetComponent<RectTransform>().localPosition = new Vector3(verticalLayout.GetComponent<RectTransform>().localPosition.x,
+                            verticalLayout.GetComponent<RectTransform>().localPosition.y - 200, verticalLayout.GetComponent<RectTransform>().localPosition.z);
+                    }
                     ChooseMode();
+                    DisplayScrollListButton();
                 }
             }
             if (Input.GetKeyDown(KeyCode.S))
@@ -93,7 +109,15 @@ public class RecipeListManagerGUI : MonoBehaviour
                 {
                     recipeSocketList[selectingIndex].UnselectAll();
                     selectingIndex++;
+                    if (selectingIndex > maximumshow)
+                    {
+                        minimumShow++;
+                        maximumshow++;
+                        verticalLayout.GetComponent<RectTransform>().localPosition = new Vector3(verticalLayout.GetComponent<RectTransform>().localPosition.x,
+                            verticalLayout.GetComponent<RectTransform>().localPosition.y + 200, verticalLayout.GetComponent<RectTransform>().localPosition.z);
+                    }
                     ChooseMode();
+                    DisplayScrollListButton();
                 }
             }
             if (Input.GetKeyDown(KeyCode.A))

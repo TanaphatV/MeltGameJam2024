@@ -25,6 +25,9 @@ public class PlayerResources : MonoBehaviour
     public int hp;
     public int coin;
 
+    [SerializeField] private List<MaterialSO> testMats = new List<MaterialSO>();
+    [SerializeField] private bool isDebugingMode;
+
     public UnityAction<MaterialSO, int> onMaterialAmountChange;
 
     private void Awake()
@@ -37,9 +40,18 @@ public class PlayerResources : MonoBehaviour
         hp = PlayerStats.instance.maxHp;
         TimeManager.instance.onDayEnd += ClearMaterial;
         resourceSO = RecipeSingletonManager.Instance.GetResource;
+        
         foreach (var mat in resourceSO.pickableOres)
         {
             materialDictionary.Add(mat, 0);
+        }
+
+        if (isDebugingMode)
+        {
+            foreach (var mat in testMats)
+            {
+                AddMaterial(mat, 100);
+            }
         }
     }
 

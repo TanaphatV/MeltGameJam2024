@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Wagon : InteractableObject
 {
+    [SerializeField] private WagonPriceDealHUDManager hud;
     List<Item> items = new List<Item>();
     public ItemSO itemInDemand { get; private set; }
     private void Start()
@@ -27,6 +28,7 @@ public class Wagon : InteractableObject
         else
         {
             Item item = playerInteract.TakeItem();
+            hud.OpenPanel();
             //do something to set price
         }
     }

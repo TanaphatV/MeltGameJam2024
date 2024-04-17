@@ -110,7 +110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -54.9, y: 2.4}
+  m_AnchoredPosition: {x: -55.300003, y: 2.800003}
   m_SizeDelta: {x: 0, y: -8.8782}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4738778595303431071
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 5865319804296491464}
   - component: {fileID: 3404177615584857140}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: CustomerPreferText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -479,7 +479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.011299133, y: -0.0030021667}
+  m_AnchoredPosition: {x: 2.0178986, y: -0.51758003}
   m_SizeDelta: {x: -5.0797, y: -5.5808}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2689033456339960421
@@ -1103,7 +1103,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -55.5, y: 0}
+  m_AnchoredPosition: {x: -55.5, y: 1.800003}
   m_SizeDelta: {x: 0, y: -4.4391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1112038688642886639
@@ -1223,7 +1223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000038146973, y: 1.6216}
+  m_AnchoredPosition: {x: 0.000038146973, y: 1.6215973}
   m_SizeDelta: {x: 0, y: 3.2433}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &854897759345184452
@@ -1742,7 +1742,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8730747622639894788}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 863546165889790787}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7872810185084680455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1846,7 +1858,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
   m_sharedMaterial: {fileID: -3905051204768372398, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
@@ -1873,7 +1885,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 72
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2573,6 +2585,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07d6a629e56f9544a808b37326a28352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  qualityText: {fileID: 673396372677419652}
+  itemName: {fileID: 1640110244391223147}
+  inputField: {fileID: 4185086311113598338}
+  customerPreferText: {fileID: 3404177615584857140}
+  gfx: {fileID: 863546165889790787}
 --- !u!1 &8945528258132498495
 GameObject:
   m_ObjectHideFlags: 0
@@ -2585,7 +2602,7 @@ GameObject:
   - component: {fileID: 809421492252205303}
   - component: {fileID: 6982605625616431655}
   m_Layer: 5
-  m_Name: Image
+  m_Name: CustomerSection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

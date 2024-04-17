@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour, IHitable
     [SerializeField] float detectRange;
     [SerializeField] float moveSpeed;
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] MaterialDrop materialDropPrefab;
     public MaterialContainer materialDrop;
 
     bool stun = false;
@@ -89,7 +90,11 @@ public class Enemy : MonoBehaviour, IHitable
 
     void Death()
     {
-        PlayerResources.instance.AddMaterial(materialDrop.material, materialDrop.amount);
+        for (int i = 0; i < materialDrop.amount; i++)
+        {
+            MaterialDrop temp = Instantiate(materialDropPrefab);
+            temp.Init(materialDrop.material);
+        }
         Destroy(gameObject);
     }
 

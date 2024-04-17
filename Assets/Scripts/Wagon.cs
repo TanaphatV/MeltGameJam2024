@@ -5,7 +5,7 @@ using UnityEngine;
 public class Wagon : InteractableObject
 {
     [SerializeField] private WagonPriceDealHUDManager hud;
-    List<Item> items = new List<Item>();
+    List<ItemInfo> items = new List<ItemInfo>();
     public ItemSO itemInDemand { get; private set; }
     private void Start()
     {
@@ -32,6 +32,7 @@ public class Wagon : InteractableObject
                 Item item = playerInteract.TakeItem();
                 hud.OpenPanel();
                 hud.InitPanel(item);
+                items.Add(new ItemInfo(item.itemSo,item.price,item.reputationReward));
                 Destroy(item.gameObject);
             }
         }
@@ -62,6 +63,19 @@ public class Wagon : InteractableObject
 
     }
 
+    struct ItemInfo
+    {
+        public ItemSO itemSo;
+        public int price;
+        public int reputationReward;
+        public ItemInfo(ItemSO itemSo,int price,int reputationReward)
+        {
+            this.itemSo = itemSo;
+            this.price = price;
+            this.reputationReward = reputationReward;
+        }
+    }
+
     void SellItem()
     {
         int revenue = 0;
@@ -73,11 +87,11 @@ public class Wagon : InteractableObject
                 ReputationManager.instance.IncreaseReputation(item.reputationReward);
             }
         }
-        items = new List<Item>();
+        items = new List<ItemInfo>();
         PlayerResources.instance.coin += revenue;
     }
 
-    float GetSellProbability(Item item)
+    float GetSellProbability(ItemInfo item)
     {
         float priceRatio = (float)item.price / (float)item.itemSo.marketPrice;
         float probability = 1;

@@ -9,6 +9,7 @@ public class OreVein : MonoBehaviour, IHitable
     [SerializeField] float dropRadius;
     [SerializeField] MaterialDrop materialDropPrefab;
     [SerializeField] ParticleSystem miningParticle;
+    [SerializeField] ParticleSystem breakParticlePrefab;
     int hitLeft;
 
     public UnityAction onBreak;
@@ -32,7 +33,9 @@ public class OreVein : MonoBehaviour, IHitable
 
     void Break()
     {
-        for(int i = 0; i < materialContainer.amount; i++)
+        ParticleSystem p = Instantiate(breakParticlePrefab);
+        p.transform.position = transform.position + new Vector3(-0.14f, 2.12f, 0);
+        for (int i = 0; i < materialContainer.amount; i++)
         {
             MaterialDrop temp = Instantiate(materialDropPrefab);
             temp.gameObject.transform.position = transform.position;

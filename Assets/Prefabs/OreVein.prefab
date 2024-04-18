@@ -54,6 +54,7 @@ MonoBehaviour:
   dropRadius: 1
   materialDropPrefab: {fileID: 6568529954224307114, guid: 86414512a0f543f45aa48aaf9e4b166c, type: 3}
   miningParticle: {fileID: 9129623402708705196}
+  breakParticlePrefab: {fileID: 2711290324104845896, guid: 144c8c9b4977a7a44bb9ea3c9ee6bf25, type: 3}
 --- !u!61 &3413860190684893149
 BoxCollider2D:
   m_ObjectHideFlags: 0

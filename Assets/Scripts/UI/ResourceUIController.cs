@@ -33,10 +33,6 @@ public class ResourceUIController : MonoBehaviour
     public Vector3 GetWorldPositionFromMaterialUI(MaterialSO materialSO)
     {
         RectTransform rect = matUIList[materialSO].gameObject.GetComponent<RectTransform>();
-        Canvas canvas = rect.GetComponentInParent<Canvas>();
-
-        Vector3 canvasPos = canvas.transform.position;
-        Vector3 worldPosition = rect.TransformPoint(rect.rect.center) + canvasPos;
 
         return rect.position;
     }

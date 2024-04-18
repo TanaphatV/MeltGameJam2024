@@ -31,7 +31,7 @@ public class TimeManager : MonoBehaviour
     }
     void Start()
     {
-        StartCoroutine(TimerIE());
+        //StartCoroutine(TimerIE());
     }
     public string GetTimerText()
     {
@@ -44,7 +44,16 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
+        else
+        {
+            if (onDayEnd != null)
+                onDayEnd();
+            timer = dayLength;
+        }
     }
     IEnumerator TimerIE()
     {

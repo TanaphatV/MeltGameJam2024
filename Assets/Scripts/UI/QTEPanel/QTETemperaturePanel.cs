@@ -23,7 +23,7 @@ public class QTETemperaturePanel : MonoBehaviour
     private float stickMoveSpeed = 1.0f;
     private List<GameObject> cellList = new List<GameObject>();
     private int randomCellArea;
-
+    private int decreaseDifVal = 0;
 
 
     private ProcessingStation station;
@@ -36,13 +36,18 @@ public class QTETemperaturePanel : MonoBehaviour
 
         //Debug.Log("QTETempProcessing");
 
-        GenerateCell(greatCellCount, softCellCount);
+        GenerateCell(greatCellCount + decreaseDifVal+ decreaseDifVal, softCellCount + decreaseDifVal);
 
         yield return StartCoroutine(StickMove(-215, 215));
         yield return new WaitForSeconds(1.0f);
         isStartMinigame = true;
         yield return new WaitForEndOfFrame();
 
+    }
+
+    public void DecreaseDifficulty()
+    {
+        decreaseDifVal = 1;
     }
 
     public void GenerateCell(int greatCellCount, int softCellCount)
@@ -60,13 +65,19 @@ public class QTETemperaturePanel : MonoBehaviour
             {
                 for (int j = 0; j < softCellCount; j++)
                 {
-                    GameObject newSoftCell = Instantiate(softCellSegment, horizontalLayout.transform);
-                    cellList.Add(newSoftCell);
+                    if (cellList.Count < 29)
+                    {
+                        GameObject newSoftCell = Instantiate(softCellSegment, horizontalLayout.transform);
+                        cellList.Add(newSoftCell);
+                    }
                 }
                 for (int k= 0; k < greatCellCount; k++)
                 {
-                    GameObject newGreatCell = Instantiate(greatCellSegment, horizontalLayout.transform);
-                    cellList.Add(newGreatCell);
+                    if (cellList.Count < 29)
+                    {
+                        GameObject newGreatCell = Instantiate(greatCellSegment, horizontalLayout.transform);
+                        cellList.Add(newGreatCell);
+                    }
                 }
                 for (int l = 0; l < softCellCount; l++)
                 {

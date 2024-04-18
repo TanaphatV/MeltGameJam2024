@@ -47,7 +47,7 @@ public class ShopWindowManager : MonoBehaviour
         pickaxeButton.onClick.AddListener(() => UpgradePickaxe(shop.pickAxe[pickaxeLv - 1] as PickaxeUpgrade));
         freezeReduceButton.onClick.AddListener(() => UpgradeFreezeReduce(shop.freezer[freezeLv - 1] as FreezerUpgrade));
         reputaButton.onClick.AddListener(() => UpgradeReputationGain(shop.reputation[reputaLv - 1] as ReputationUpgrade));
-        minigameButton.onClick.AddListener(() => UpgradeMinigameDifficult(shop.minigame[minigameLv - 1] as ShopUpgrade));
+        minigameButton.onClick.AddListener(() => UpgradeMinigameDifficult());
         closeButton.onClick.AddListener(() => GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>().SetPlayerPause(false));
 
     }
@@ -159,26 +159,31 @@ public class ShopWindowManager : MonoBehaviour
             }
         }
     }
-    public void UpgradeMinigameDifficult(ShopUpgrade upgrade)
+    public void UpgradeMinigameDifficult()
     {
-        if (IsPlayerHasEnoughCoin(upgrade))
+        if (PlayerResources.instance.coin >= 500)
         {
-            PlayerResources.instance.coin -= upgrade.cost;
-            upgrade.UpgradeEffect();
-            StartCoroutine(ProgressBar(minigameBar, (100 * (minigameLv - 1)) / 100f, (100 * minigameLv / 100f)));
+            PlayerResources.instance.coin -= 500;
+            //upgrade.UpgradeEffect();
+            StartCoroutine(ProgressBar(minigameBar, 0.0f, 1.0f));
             minigameLv++;
             minigameButton.onClick.RemoveAllListeners();
 
+            //minigameCostText.text = shop.minigame[minigameLv - 1].cost.ToString();
+            FindAnyObjectByType<BaseQTEManager>().DecreseDifficulty();
+
+            //MaxLv
+            minigameCostText.gameObject.SetActive(false);
+            minigameMaxLv.SetActive(true);
+            minigameButton.interactable = false;
+
             if (minigameLv <= shop.minigame.Count)
             {
-                minigameButton.onClick.AddListener(() => UpgradeMinigameDifficult(shop.minigame[minigameLv - 1] as ShopUpgrade));
-                minigameCostText.text = shop.minigame[minigameLv - 1].cost.ToString();
+                
             }
             else
             {
-                minigameCostText.gameObject.SetActive(false);
-                minigameMaxLv.SetActive(true);
-                minigameButton.interactable = false;
+                
             }
         }
     }

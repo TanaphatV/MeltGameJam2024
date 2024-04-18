@@ -18,6 +18,7 @@ public class QTEMoldingPanel : MonoBehaviour
     private float maximumGoodScore;
     [SerializeField] private Button nextButton;
     private BaseQTEManager qteManager;
+    private float decreaseDifVal = 0;
 
     public IEnumerator Init(float minimumGoodScore, float maximumGoodScore, BaseQTEManager bm)
     {
@@ -30,12 +31,17 @@ public class QTEMoldingPanel : MonoBehaviour
         fillWaterImg.fillAmount = 0.0f;
         waterSurfaceImage.fillAmount = 0f;
 
-        goodScoreImage.fillAmount = 1.0f - (minimumGoodScore / 100f);
+        goodScoreImage.fillAmount = 1.0f - ((minimumGoodScore-decreaseDifVal) / 100f);
         failScoreImage.fillAmount = 1.0f - (maximumGoodScore / 100f);
         this.maximumGoodScore = maximumGoodScore;
-        this.minimumGoodScore = minimumGoodScore;
+        this.minimumGoodScore = (minimumGoodScore - decreaseDifVal);
 
         yield return EnableMouseInput();
+    }
+
+    public void DecreaseDifficulty()
+    {
+        decreaseDifVal = 10;
     }
 
     private IEnumerator EnableMouseInput()

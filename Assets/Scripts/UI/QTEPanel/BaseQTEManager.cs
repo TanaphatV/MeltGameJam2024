@@ -24,13 +24,18 @@ public class BaseQTEManager : MonoBehaviour
         }
     }
 
+    public void DecreseDifficulty()
+    {
+        qteMoldingPanel.DecreaseDifficulty();
+        qteTempPanel.DecreaseDifficulty();
+        Debug.Log("Decrease Dif");
+    }
+
     public IEnumerator StartQTEFlow()
     {
         panel.SetActive(true);
 
         yield return StartQTEMoldingWeapon();
-
-        
     }
 
     public void BackToRecipeListPanel()

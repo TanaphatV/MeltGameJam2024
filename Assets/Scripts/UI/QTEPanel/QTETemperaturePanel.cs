@@ -19,7 +19,7 @@ public class QTETemperaturePanel : MonoBehaviour
 
     [SerializeField] private int greatCellCount = 3;
     [SerializeField] private int softCellCount = 2;
-    private bool isStartMinigame = false;
+    //private bool isStartMinigame = false;
     private float stickMoveSpeed = 1.0f;
     private List<GameObject> cellList = new List<GameObject>();
     private int randomCellArea;
@@ -31,7 +31,7 @@ public class QTETemperaturePanel : MonoBehaviour
     public IEnumerator InitQTEProcess(ProcessingStation _ps)
     {
         station = _ps;
-        isStartMinigame = false;
+        //isStartMinigame = false;
         resultPanel.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
 
         //Debug.Log("QTETempProcessing");
@@ -40,7 +40,7 @@ public class QTETemperaturePanel : MonoBehaviour
 
         yield return StartCoroutine(StickMove(-215, 215));
         yield return new WaitForSeconds(1.0f);
-        isStartMinigame = true;
+        //isStartMinigame = true;
         yield return new WaitForEndOfFrame();
 
     }
@@ -106,15 +106,17 @@ public class QTETemperaturePanel : MonoBehaviour
     {
         if(grade > randomCellArea*15 && grade < (randomCellArea+ (softCellCount*2)+greatCellCount)*15)
         {
-            if(grade > (randomCellArea+softCellCount)*15 && grade < (randomCellArea + softCellCount + greatCellCount + 1) * 15)
+            if(grade > (randomCellArea+softCellCount)*15 && grade < (randomCellArea + softCellCount + greatCellCount) * 15)
             {
                 station.currentItemCraftingStatus = CraftingStatus.Completed;
+                station.currentMinigameResult = MinigameResult.Perfect;
                 Debug.Log("Perfect!");
                 StartCoroutine(SuccessSequence());
             }
             else
             {
                 station.currentItemCraftingStatus = CraftingStatus.Completed;
+                station.currentMinigameResult = MinigameResult.Good;
                 StartCoroutine(SuccessSequence());
                 Debug.Log("Good");
             }
@@ -122,6 +124,7 @@ public class QTETemperaturePanel : MonoBehaviour
         else
         {
             station.currentItemCraftingStatus = CraftingStatus.Failed;
+            station.currentMinigameResult = MinigameResult.Fail;
             StartCoroutine(FailSequence());
             Debug.Log("Fail");
         }

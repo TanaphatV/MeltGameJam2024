@@ -66,6 +66,13 @@ public class ShopWindowManager : MonoBehaviour
     {
         gfx.SetActive(false);
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ClosePanel();
+        }
+    }
 
     #region Upgrade
     public void UpgradeWagonSpace(StorageUpgrade upgrade)

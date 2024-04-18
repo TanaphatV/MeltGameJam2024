@@ -578,7 +578,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Forging is Complete!
+  m_text: 'Forging is complete!
 
     Your Ice Weapons are now ready to be sold to
     the market!'
@@ -2277,7 +2277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Put the Weapon Molds in the Freezer to freeze them!
+  m_text: Put the Weapon Molds in the freezer to solidify them!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
   m_sharedMaterial: {fileID: -3905051204768372398, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
@@ -2488,8 +2488,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You can end the day before the timer runs out by  interacting with the
-    bed to go to sleep.
+  m_text: You can end the day before the timer runs out by interacting with the bed
+    to go to sleep.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
   m_sharedMaterial: {fileID: -3905051204768372398, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
@@ -3450,11 +3450,11 @@ RectTransform:
   m_Children:
   - {fileID: 660783978}
   m_Father: {fileID: 2078251911}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -645.99994, y: -432.00003}
+  m_AnchoredPosition: {x: -645, y: -440}
   m_SizeDelta: {x: 190, y: 49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &379460163
@@ -3820,8 +3820,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445798350}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 485.93, y: -469.23, z: -9720}
-  m_LocalScale: {x: 275.4945, y: 275.4945, z: 275.4945}
+  m_LocalPosition: {x: 489, y: -455, z: -9720}
+  m_LocalScale: {x: 208.27383, y: 208.27383, z: 208.27383}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2078251911}
@@ -5180,9 +5180,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Choose an Ice Weapon Recipe and make a
+  m_text: 'Choose an Ice Weapon recipe and make a
 
-    water-filled Weapon Mold.'
+    water-filled Weapon Mold!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
   m_sharedMaterial: {fileID: -3905051204768372398, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
@@ -5924,7 +5924,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '<size=120%>Goober Sightings</size>
 
-    Beware of the Goobers that lives
+    Beware of the Goobers that live
     in the caves!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
@@ -6854,11 +6854,11 @@ RectTransform:
   m_Children:
   - {fileID: 1375953803}
   m_Father: {fileID: 2078251911}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -645.99994, y: -157}
+  m_AnchoredPosition: {x: -645, y: -165.00002}
   m_SizeDelta: {x: 190, y: 49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &883500955
@@ -8079,11 +8079,11 @@ RectTransform:
   m_Children:
   - {fileID: 23204180}
   m_Father: {fileID: 2078251911}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -646, y: -14}
+  m_AnchoredPosition: {x: -645.00006, y: -22.000021}
   m_SizeDelta: {x: 190, y: 49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1048455037
@@ -9814,8 +9814,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<size=150%>HIT ICE, GET ICE!</size>\nIn the caves, earn a bunch of different
-    type of Ice by hitting an Ice Ore \nwith your Pickaxe!"
+  m_text: "<size=150%>HIT ICE, GET ICE!</size>\nIn the caves, mine different types
+    of Ice by hitting an Ice Ore \nwith your Pickaxe!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
   m_sharedMaterial: {fileID: -3905051204768372398, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
@@ -10072,8 +10072,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.5, y: 139}
-  m_SizeDelta: {x: 1368.83, y: 335.3}
+  m_AnchoredPosition: {x: -1.5, y: 108.42}
+  m_SizeDelta: {x: 1368.83, y: 396.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1458772177
 MonoBehaviour:
@@ -10095,12 +10095,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<size=120%>Your objective is to become a Master Icesmith within 1 month!</size>
+  m_text: '<size=120%>You are Ben Digga, your objective is to become a Master Icesmith
+    within 1 month!</size>
 
 
-    By
-    selling weapons and completing Special orders, you will Earn "REP" to advance
-    through the ranks!'
+    By selling weapons and completing Special Orders,
+    you will earn <color=purple>REP</color> to advance through the ranks!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
   m_sharedMaterial: {fileID: -3905051204768372398, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
@@ -10706,7 +10706,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.29436633, g: 0.310701, b: 0.3301887, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -11837,7 +11837,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Simple Ice
+  m_text: Shiny Ice
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
   m_sharedMaterial: {fileID: -3905051204768372398, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
@@ -11947,11 +11947,11 @@ RectTransform:
   m_Children:
   - {fileID: 1741309586}
   m_Father: {fileID: 2078251911}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -645.99994, y: -295}
+  m_AnchoredPosition: {x: -645, y: -303.00003}
   m_SizeDelta: {x: 190, y: 49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1674288403
@@ -12147,8 +12147,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.5, y: 225.12}
-  m_SizeDelta: {x: 716.73, y: 126.64}
+  m_AnchoredPosition: {x: 0, y: 230}
+  m_SizeDelta: {x: 817.74, y: 126.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1683587203
 MonoBehaviour:
@@ -12172,7 +12172,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Interact with "Katze", the Merchant.
 
-    See avaliable upgrades!'
+    See available upgrades!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
   m_sharedMaterial: {fileID: -3905051204768372398, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
@@ -12199,8 +12199,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.49
-  m_fontSizeBase: 33.49
+  m_fontSize: 38.6
+  m_fontSizeBase: 38.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12779,8 +12779,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -889, y: 538}
-  m_SizeDelta: {x: 1165.33, y: 292.62}
+  m_AnchoredPosition: {x: -883, y: 544}
+  m_SizeDelta: {x: 1041.04, y: 429.76}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1724575755
 MonoBehaviour:
@@ -12802,7 +12802,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Smelt
+  m_text: 'Ice Smelt:
+
+    <size=60%>The Smith Digga</size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1c57e9ab7843f964a8585c80d6bdfc38, type: 2}
   m_sharedMaterial: {fileID: -3905051204768372398, guid: 1c57e9ab7843f964a8585c80d6bdfc38, type: 2}
@@ -12811,8 +12813,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294926848
+  m_fontColor: {r: 0, g: 0.38447738, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12829,8 +12831,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 203.47
-  m_fontSizeBase: 203.47
+  m_fontSize: 196.8
+  m_fontSizeBase: 196.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12839,7 +12841,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 3.2
+  m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -13196,6 +13198,141 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741309585}
   m_CullTransparentMesh: 1
+--- !u!1 &1744987986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1744987987}
+  - component: {fileID: 1744987989}
+  - component: {fileID: 1744987988}
+  m_Layer: 5
+  m_Name: Title (TMP) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1744987987
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744987986}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2078251911}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 261, y: -503}
+  m_SizeDelta: {x: 686.56, y: 27.94}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &1744987988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744987986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: (Digga means bro in German, we have a German teammate don't worry guys!)
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 1c57e9ab7843f964a8585c80d6bdfc38, type: 2}
+  m_sharedMaterial: {fileID: -3905051204768372398, guid: 1c57e9ab7843f964a8585c80d6bdfc38, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 18.45
+  m_fontSizeBase: 60.3
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1744987989
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744987986}
+  m_CullTransparentMesh: 1
 --- !u!1 &1750629921
 GameObject:
   m_ObjectHideFlags: 0
@@ -13413,8 +13550,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -327.1}
-  m_SizeDelta: {x: 849.98, y: 126.64}
+  m_AnchoredPosition: {x: 0, y: -329}
+  m_SizeDelta: {x: 956.54, y: 126.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1788114416
 MonoBehaviour:
@@ -13436,8 +13573,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Each upgrades cost money, so plan carefully what you want in order to beat
-    the deadline!
+  m_text: Each upgrades cost money, so plan carefully which upgrades you need in
+    order to meet the deadline!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
   m_sharedMaterial: {fileID: -3905051204768372398, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
@@ -13591,8 +13728,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810911561}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16, y: -465, z: -9719.999}
-  m_LocalScale: {x: 191.2056, y: 191.2056, z: 191.2056}
+  m_LocalPosition: {x: 696, y: -273, z: -9719.999}
+  m_LocalScale: {x: 138.45903, y: 138.45903, z: 138.45903}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2078251911}
@@ -14033,13 +14170,13 @@ MonoBehaviour:
   m_text: '<size=110%>THINGS TO REMEMBER:</size>
 
 
-    Every day has a <u>time limit
+    Each day has a <u>time limit
     of 5 minutes</u>. When the timer runs out, you receive your income and start
     the next day.
 
 
-    Become a Master Icesmith within a month (31 days) or you
-    will get a <u>GAME OVER!!!</u>'
+    You must become a Master Icesmith within a month (31 days)
+    or you will get a <u>GAME OVER!!!</u>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
   m_sharedMaterial: {fileID: -3905051204768372398, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
@@ -15479,6 +15616,7 @@ RectTransform:
   - {fileID: 445798351}
   - {fileID: 1810911563}
   - {fileID: 1724575754}
+  - {fileID: 1744987987}
   - {fileID: 1048455036}
   - {fileID: 883500954}
   - {fileID: 1674288402}
@@ -15633,7 +15771,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'In Special Order, deliver specific weapon and receive fixed rewards.
+  m_text: 'In Special Order, deliver specific weapons and receive fixed rewards.
 
 
     (You''ll
@@ -16013,8 +16151,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "There are bigger rewards\nin the deeper levels! \nBut can you\nget to
-    there?"
+  m_text: "There are bigger rewards\nin the deeper levels! \nBut can you\nget there?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}
   m_sharedMaterial: {fileID: -3905051204768372398, guid: 02e70b5318be1a44d9d17decd6ec4cb6, type: 2}

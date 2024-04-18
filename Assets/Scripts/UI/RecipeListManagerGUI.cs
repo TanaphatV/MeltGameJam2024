@@ -86,6 +86,10 @@ public class RecipeListManagerGUI : MonoBehaviour
     {
         if (gfx.activeSelf)
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                ClosePanel();
+            }
             if (Input.GetKeyDown(KeyCode.W))
             {
                 if (selectingIndex > 0)
@@ -191,6 +195,7 @@ public class RecipeListManagerGUI : MonoBehaviour
         //ProcessingStation shortCut;
         onSelectedItemToCreate(recipeSocketList[selectingIndex].GetItemSO, isSelectNormal);
         qteManager.OpenPanel(station, this);
+        qteManager.GetQTEMoldPanel.SetMoldImage(recipeSocketList[selectingIndex].GetItemSO);
         ClosePanel();
         //resourceUI.UpdateMaterialList();
     }

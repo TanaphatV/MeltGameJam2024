@@ -13,6 +13,8 @@ public class BaseQTEManager : MonoBehaviour
 
     #region GETTER
     public ProcessingStation GetStation => station;
+    public RecipeListManagerGUI GetRecipePanel => recipePanel;
+    public QTEMoldingPanel GetQTEMoldPanel => qteMoldingPanel;
     #endregion
 
     private void Awake()

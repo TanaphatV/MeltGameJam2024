@@ -17,7 +17,12 @@ public class MainCharacterHUDManager : MonoBehaviour
     [SerializeField] private GameObject materialList;
     [SerializeField] private GameObject hpHorizontal;
     [SerializeField] private Image hpIcon;
+    [SerializeField] private Image reputationIcon;
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI dayCountText;
+    [SerializeField] private TextMeshProUGUI repuScoreRatioText;
+    [SerializeField] private Image reputationBar;
+    [SerializeField] private List<Sprite> plaqueSpriteList = new List<Sprite>();
 
     [SerializeField] private PlayerCombat _playerCombat;
 
@@ -43,6 +48,10 @@ public class MainCharacterHUDManager : MonoBehaviour
     private void Update()
     {
         timerText.text = TimeManager.instance.GetTimerText();
+        dayCountText.text = "Day " + TimeManager.instance.DayCount.ToString();
+        repuScoreRatioText.text = ReputationManager.instance.GetReputationPoint.ToString() + "/" + ReputationManager.instance.GetRequireCurrentRankReputationAmount().ToString();
+        reputationBar.fillAmount = ReputationManager.instance.GetReputationPoint / 1050f;
+        reputationIcon.sprite = plaqueSpriteList[ReputationManager.instance.currentRank];
     }
 
     public void OnHPValueChange(int remainingHP)

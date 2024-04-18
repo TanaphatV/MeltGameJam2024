@@ -23,6 +23,12 @@ public class TimeManager : MonoBehaviour
     public UnityAction onDayEnd;
     float timer;
     public bool pause = false;
+    private int dayCount = 1;
+    public int DayCount
+    {
+        get { return dayCount; }
+        set { dayCount = value; }
+    }
 
 
     private void Awake()
@@ -51,7 +57,7 @@ public class TimeManager : MonoBehaviour
         else
         {
             if (onDayEnd != null)
-                onDayEnd();
+                onDayEnd(); DayCount++;
             timer = dayLength;
         }
     }

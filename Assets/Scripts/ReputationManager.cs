@@ -34,6 +34,7 @@ public class ReputationManager : MonoBehaviour
     private ReputationMilestoneBonus currentBonus;
     public ReputationMilestoneBonus bonus => currentBonus;
     public List<ReputationMilestoneBonus> mileStoneBonus;
+    public float GetReputationPoint => reputation;
 
     private void Awake()
     {
@@ -46,6 +47,11 @@ public class ReputationManager : MonoBehaviour
     void Start()
     {
 
+    }
+
+    public float GetRequireCurrentRankReputationAmount()
+    {
+        return mileStoneBonus[currentRank + 1].requiredReputation;
     }
 
     public void IncreaseReputation(float amount)

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Wagon : InteractableObject
 {
     [SerializeField] private WagonPriceDealHUDManager hud;
+    [SerializeField] private List<GameObject> wagonLevels;
     List<ItemInfo> items = new List<ItemInfo>();
     public ItemSO itemInDemand { get; private set; }
     private void Start()
@@ -18,6 +19,7 @@ public class Wagon : InteractableObject
     {
         List<ItemSO> itemList = RecipeSingletonManager.Instance.GetResource.craftableItems;
         itemInDemand = itemList[Random.Range(0, itemList.Count)];
+        UpdateWagonFillLevelSprite();
     }
 
     protected override void InteractBehavior(PlayerInteract playerInteract)
@@ -29,6 +31,11 @@ public class Wagon : InteractableObject
                 Debug.Log("Not item");
                 return;
             }
+            else if (playerInteract.GetHoldingItem().status == ItemStatus.WIP)
+            {
+                Debug.Log("Item Not Frozen yet!");
+                return;
+            }
             else if(items.Count < PlayerStats.instance.wagonStorage)
             {
                 Item item = playerInteract.TakeItem();
@@ -36,24 +43,43 @@ public class Wagon : InteractableObject
                 hud.OpenPanel();
                 hud.InitPanel(item, this, itemInfo);
                 items.Add(itemInfo);
+                UpdateWagonFillLevelSprite();
                 Destroy(item.gameObject);
             }
         }
         
     }
 
+    int currentWagonFillLevel = 0;
+    void UpdateWagonFillLevelSprite()
+    {
+        float fill = (float)items.Count / (float)PlayerStats.instance.wagonStorage;
+        int previousFillLevel = currentWagonFillLevel;
+        currentWagonFillLevel = 0;
+        for (int i = 1; i < 3; i++)
+        {
+            if(fill > (i) * 0.33f)
+                currentWagonFillLevel = i;
+        }
+        if(previousFillLevel != currentWagonFillLevel)
+        {
+            wagonLevels[previousFillLevel].SetActive(false);
+            wagonLevels[currentWagonFillLevel].SetActive(true);
+        }
+    }
+
     public string GetSellChanceMessage(ItemInfo item)
     {
         float chance = GetSellProbability(item);
 
-        if (chance < 1)
+        if (chance < 0.1f)
             return "PEOPLE WILL NOT BUY THIS";
-        else if (chance < 30)
+        else if (chance < 0.3f)
             return "I REALLY don't like the chance...";
-        else if (chance < 60)
+        else if (chance < 0.6f)
             return "This might not sell...";
-        else if (chance < 1)
-            return "This will probably sell!";
+        else if (chance < 1.0f)
+            return "This will likely sell!";
         else 
             return "This WILL sell!";
 

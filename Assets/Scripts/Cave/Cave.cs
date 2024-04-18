@@ -9,11 +9,22 @@ public class Cave : MonoBehaviour
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject parent;
     [SerializeField] LadderHole ladder;
+    [SerializeField] BoxCollider2D spawnArea;
     OreDropChanceSO dropChanceSO;
     List<OreVein> oreVeinList = new List<OreVein>();
     List<OreVein> activeOreVein = new List<OreVein>();
     List<Enemy> enemies =  new List<Enemy>();
     [SerializeField] Enemy enemyPrefab;
+
+    Bounds bound;
+    Vector3 RandomPointInBounds()
+    {
+        return new Vector3(
+            Random.Range(bound.min.x, bound.max.x),
+            Random.Range(bound.min.y, bound.max.y),
+            0
+        );
+    }
 
     public Vector3 GetSpawnPoint()
     {
@@ -43,6 +54,8 @@ public class Cave : MonoBehaviour
     }
     public void InitCave()
     {
+        bound = spawnArea.bounds;
+        spawnArea.enabled = false;
         for(int i = 0; i < enemies.Count; i++)
         {
             if(enemies[i] != null)
@@ -55,6 +68,7 @@ public class Cave : MonoBehaviour
         for (int i = 0; i < enemyCount; i++)
         {
             Enemy enemy = Instantiate(enemyPrefab, parent.transform);
+            enemy.transform.position = spawnArea.transform.position + RandomPointInBounds();
             enemy.materialDrop = dropChanceSO.GetRandomizedMaterialDrop();
             enemies.Add(enemy);
         }

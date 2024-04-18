@@ -1767,10 +1767,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 863546165889790787}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 7506138558403631865}
+        m_TargetAssemblyTypeName: WagonPriceDealHUDManager, Assembly-CSharp
+        m_MethodName: ClosePanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2615,6 +2615,7 @@ MonoBehaviour:
   inputField: {fileID: 4185086311113598338}
   customerPreferText: {fileID: 3404177615584857140}
   gfx: {fileID: 863546165889790787}
+  confirmSellButton: {fileID: 2295861596029416611}
 --- !u!1 &8945528258132498495
 GameObject:
   m_ObjectHideFlags: 0

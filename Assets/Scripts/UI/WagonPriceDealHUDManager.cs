@@ -12,6 +12,7 @@ public class WagonPriceDealHUDManager : MonoBehaviour
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private TextMeshProUGUI customerPreferText;
     [SerializeField] private GameObject gfx;
+    [SerializeField] private Button confirmSellButton;
 
     private Wagon wagon;
     private Wagon.ItemInfo iteminfo;
@@ -26,6 +27,8 @@ public class WagonPriceDealHUDManager : MonoBehaviour
         gfx.SetActive(false);
         inputField.contentType = TMP_InputField.ContentType.IntegerNumber;
         inputField.onValueChanged.AddListener(delegate { OnInputFieldValueChanged(); });
+        inputField.text = "0";
+        customerPreferText.text = "";
     }
 
     public void InitPanel(Item item, Wagon wagon, Wagon.ItemInfo iteminfo)
@@ -53,17 +56,27 @@ public class WagonPriceDealHUDManager : MonoBehaviour
     public void OpenPanel()
     {
         gfx.SetActive(true);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>().SetPlayerPause(true);
     }
     public void ClosePanel()
     {
         gfx.SetActive(false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteract>().SetPlayerPause(false);
     }
 
     void OnInputFieldValueChanged()
     {
         string newText = inputField.text;
 
-        if (int.TryParse(newText, out int result))
+        if (newText == "" || newText == "0")
+        {
+            savedInput = "0";
+            priceSet = 0;
+            inputField.text = "";
+            customerPreferText.text = "";
+            confirmSellButton.interactable = false;
+        }
+        else if (int.TryParse(newText, out int result))
         {
             if (result > 9999)
             {
@@ -73,6 +86,7 @@ public class WagonPriceDealHUDManager : MonoBehaviour
             priceSet = result;
             inputField.text = priceSet.ToString();
             customerPreferText.text = GetSellChanceMessageForThisPrice();
+            confirmSellButton.interactable = true;
         }
         else
         {
@@ -88,6 +102,7 @@ public class WagonPriceDealHUDManager : MonoBehaviour
             savedInput = priceSet.ToString();
             inputField.text = savedInput;
             customerPreferText.text = GetSellChanceMessageForThisPrice();
+            confirmSellButton.interactable = true;
         }
         
     }
@@ -99,6 +114,7 @@ public class WagonPriceDealHUDManager : MonoBehaviour
             savedInput = priceSet.ToString();
             inputField.text = savedInput;
             customerPreferText.text = GetSellChanceMessageForThisPrice();
+            confirmSellButton.interactable = true;
         }
     }
 }

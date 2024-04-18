@@ -25,7 +25,15 @@ public class PlayerInteract : MonoBehaviour
         else if (pickedObject)
             PutDownObject();
     }
-        
+
+    private void Update()
+    {
+        if (!playerController.isFacingRight)
+            objectLiftingTransform.localScale = new Vector3(1, 1, 1);
+        else
+            objectLiftingTransform.localScale = new Vector3(-1, 1, 1);
+    }
+
 
     public void PickUpObject(PickableObject po)
     {

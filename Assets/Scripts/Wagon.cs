@@ -34,7 +34,7 @@ public class Wagon : InteractableObject
                 Item item = playerInteract.TakeItem();
                 ItemInfo itemInfo = new ItemInfo(item.itemSo, item.price, item.reputationReward);
                 hud.OpenPanel();
-                hud.InitPanel(item);
+                hud.InitPanel(item, this, itemInfo);
                 items.Add(itemInfo);
                 Destroy(item.gameObject);
             }

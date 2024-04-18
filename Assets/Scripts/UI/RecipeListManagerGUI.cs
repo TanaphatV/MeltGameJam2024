@@ -96,8 +96,7 @@ public class RecipeListManagerGUI : MonoBehaviour
                     {
                         minimumShow--;
                         maximumshow--;
-                        verticalLayout.GetComponent<RectTransform>().localPosition = new Vector3(verticalLayout.GetComponent<RectTransform>().localPosition.x,
-                            verticalLayout.GetComponent<RectTransform>().localPosition.y - 200, verticalLayout.GetComponent<RectTransform>().localPosition.z);
+                        StartCoroutine(MoveVerticalPanel(verticalLayout.GetComponent<RectTransform>().localPosition.y, verticalLayout.GetComponent<RectTransform>().localPosition.y - 200));
                     }
                     ChooseMode();
                     DisplayScrollListButton();
@@ -113,8 +112,7 @@ public class RecipeListManagerGUI : MonoBehaviour
                     {
                         minimumShow++;
                         maximumshow++;
-                        verticalLayout.GetComponent<RectTransform>().localPosition = new Vector3(verticalLayout.GetComponent<RectTransform>().localPosition.x,
-                            verticalLayout.GetComponent<RectTransform>().localPosition.y + 200, verticalLayout.GetComponent<RectTransform>().localPosition.z);
+                        StartCoroutine(MoveVerticalPanel(verticalLayout.GetComponent<RectTransform>().localPosition.y, verticalLayout.GetComponent<RectTransform>().localPosition.y+200));
                     }
                     ChooseMode();
                     DisplayScrollListButton();
@@ -167,6 +165,26 @@ public class RecipeListManagerGUI : MonoBehaviour
         }
         
     }
+
+    private IEnumerator MoveVerticalPanel(float start, float end)
+    {
+        float elapsedTime = 0.0f;
+        while (elapsedTime < 0.15f)
+        {
+            float t = elapsedTime / 0.15f;
+            float posY = Mathf.Lerp(start, end, t);
+
+            Vector3 newPosition = verticalLayout.GetComponent<RectTransform>().localPosition;
+            newPosition.y = posY;
+            verticalLayout.GetComponent<RectTransform>().localPosition = newPosition;
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        verticalLayout.GetComponent<RectTransform>().localPosition = new Vector3(verticalLayout.GetComponent<RectTransform>().localPosition.x, 
+            end, verticalLayout.GetComponent<RectTransform>().localPosition.z);
+    }
+
 
     private void ExecuteQTEFlow()
     {

@@ -34,7 +34,7 @@ public class QTETemperaturePanel : MonoBehaviour
         isStartMinigame = false;
         resultPanel.GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
 
-        Debug.Log("QTETempProcessing");
+        //Debug.Log("QTETempProcessing");
 
         GenerateCell(greatCellCount, softCellCount);
 

@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour, IHitable
     [SerializeField] MaterialDrop materialDropPrefab;
     [SerializeField] float dropRadius;
     public MaterialContainer materialDrop;
+    public Cave cave;
 
     bool stun = false;
     Transform target;
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour, IHitable
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     // Update is called once per frame
@@ -44,9 +46,25 @@ public class Enemy : MonoBehaviour, IHitable
             Chase();
         }
     }
-
+    bool reachedSpot = true;
+    Vector3 patrolTarget;
     void Patrol()
     {
+        if(!reachedSpot)
+        {
+            GoToPosition(patrolTarget);
+            UpdateFacingDirection(patrolTarget);
+            if(Vector2.Distance(patrolTarget,transform.position) < 1)
+            {
+                reachedSpot = true;
+            }
+        }
+        else
+        {
+            patrolTarget = cave.GetRandomSpawnPoint();
+            reachedSpot = false;
+        }
+
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position,detectRange);
         foreach(var col in cols)
         {
@@ -59,9 +77,25 @@ public class Enemy : MonoBehaviour, IHitable
 
     }
 
+    void UpdateFacingDirection(Vector3 targetPosition)
+    {
+        float difference = targetPosition.x - transform.position.x;
+
+        if (difference > 0)
+            transform.localScale = new Vector3(-1,1,1);
+        else
+            transform.localScale = new Vector3(1, 1, 1);
+    }
+
     void Chase()
     {
-        Vector2 direction = target.position - transform.position;
+        GoToPosition(target.position);
+        UpdateFacingDirection(target.position);
+    }
+
+    void GoToPosition(Vector3 pos)
+    {
+        Vector2 direction = pos - transform.position;
         rb.MovePosition(rb.position + direction.normalized * moveSpeed * Time.deltaTime);
     }
 

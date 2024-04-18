@@ -17,13 +17,14 @@ public class Cave : MonoBehaviour
     [SerializeField] Enemy enemyPrefab;
 
     Bounds bound;
-    Vector3 RandomPointInBounds()
+    public Vector3 GetRandomSpawnPoint()
     {
-        return new Vector3(
+        Vector3 point = new Vector3(
             Random.Range(bound.min.x, bound.max.x),
             Random.Range(bound.min.y, bound.max.y),
             0
-        );
+        ) + spawnArea.transform.position;
+        return point;
     }
 
     public Vector3 GetSpawnPoint()
@@ -68,7 +69,8 @@ public class Cave : MonoBehaviour
         for (int i = 0; i < enemyCount; i++)
         {
             Enemy enemy = Instantiate(enemyPrefab, parent.transform);
-            enemy.transform.position = spawnArea.transform.position + RandomPointInBounds();
+            enemy.cave = this;
+            enemy.transform.position = GetRandomSpawnPoint();
             enemy.materialDrop = dropChanceSO.GetRandomizedMaterialDrop();
             enemies.Add(enemy);
         }

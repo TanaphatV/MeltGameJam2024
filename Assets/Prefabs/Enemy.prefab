@@ -156,8 +156,8 @@ MonoBehaviour:
   hp: 5
   damage: 1
   knockForce: 10
-  detectRange: 4
-  moveSpeed: 1
+  detectRange: 4.74
+  moveSpeed: 5
   rb: {fileID: 1154310442758155320}
   breakParticlePrefab: {fileID: 2711290324104845896, guid: 144c8c9b4977a7a44bb9ea3c9ee6bf25, type: 3}
   materialDropPrefab: {fileID: 6568529954224307114, guid: 86414512a0f543f45aa48aaf9e4b166c, type: 3}
@@ -165,6 +165,7 @@ MonoBehaviour:
   materialDrop:
     material: {fileID: 0}
     amount: 0
+  cave: {fileID: 0}
 --- !u!50 &1154310442758155320
 Rigidbody2D:
   serializedVersion: 4

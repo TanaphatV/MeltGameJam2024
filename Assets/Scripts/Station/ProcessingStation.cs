@@ -8,6 +8,13 @@ public enum CraftingStatus
     Completed,
     Failed
 }
+public enum MinigameResult
+{
+    Nothing,
+    Fail,
+    Good,
+    Perfect
+}
 
 public class ProcessingStation : InteractableObject
 {
@@ -15,9 +22,12 @@ public class ProcessingStation : InteractableObject
     protected ItemSO itemToCreate;
     bool isHigh = false;
     private RecipeListManagerGUI recipePanel;
+    [SerializeField] private GameObject failPanel;
+    [SerializeField] private GameObject qtePanel;
 
     //private BaseQTEManager moldUI;
     public CraftingStatus currentItemCraftingStatus = CraftingStatus.Nothing;
+    public MinigameResult currentMinigameResult = MinigameResult.Nothing;
 
     private void Start()
     {
@@ -74,23 +84,45 @@ public class ProcessingStation : InteractableObject
             Debug.LogError("No PlayerInteract has been assigned!");
         }
         playerInteract.SetPlayerPause(true);
-        currentItemCraftingStatus = CraftingStatus.Nothing;
+        ResetQTEStatus();
 
         yield return new WaitForEndOfFrame();
         recipePanel.OpenPanel(this);
 
-        //if minigame completed properly, CreateItem
-        while (currentItemCraftingStatus == CraftingStatus.Nothing)
+        while (currentItemCraftingStatus == CraftingStatus.Nothing && currentMinigameResult == MinigameResult.Nothing)
         {
             yield return new WaitForEndOfFrame();
         }
-        Debug.Log(currentItemCraftingStatus);
+        Debug.Log("Result: " + currentItemCraftingStatus + " with " + currentMinigameResult + " grade");
         if (currentItemCraftingStatus == CraftingStatus.Completed)
         {
             Debug.Log(itemToCreate);
-            CreateItem(itemToCreate, isHigh,true);
+            switch (currentMinigameResult)
+            {
+                case MinigameResult.Fail:
+                    break;
+                case MinigameResult.Good:
+                    CreateItem(itemToCreate, isHigh, false);
+                    break;
+                case MinigameResult.Perfect:
+                    CreateItem(itemToCreate, isHigh, true);
+                    break;
+            }
+        }
+        else
+        {
+            Debug.Log("Fail to create an item");
+            failPanel.SetActive(true);
+            qtePanel.SetActive(false);
+            //Do some ui popup;
         }
         playerInteract.SetPlayerPause(false);
+        ResetQTEStatus();
+    }
+
+    private void ResetQTEStatus()
+    {
         currentItemCraftingStatus = CraftingStatus.Nothing;
+        currentMinigameResult = MinigameResult.Nothing;
     }
 }

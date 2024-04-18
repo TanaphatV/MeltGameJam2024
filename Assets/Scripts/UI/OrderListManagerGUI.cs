@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OrderListManagerGUI : MonoBehaviour
 {
@@ -8,21 +9,30 @@ public class OrderListManagerGUI : MonoBehaviour
     [SerializeField] GameObject gfx;
     [SerializeField] OrderSocketGUI orderSocketTemplate;
     List<OrderSocketGUI> orderSocketList = new List<OrderSocketGUI>();
+    [SerializeField] private Button closeButton;
     // Start is called before the first frame update
     void Start()
     {
         gfx.SetActive(false);
         orderSocketTemplate.gameObject.SetActive(false);
+        closeButton.onClick.AddListener(ClosePanel);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ClosePanel();
+        }
     }
     public void OpenPanel()
     {
         gfx.SetActive(true);
+    }
+    public void ClosePanel()
+    {
+        gfx.SetActive(false);
     }
 
     public void InitPanel(List<SpecialOrder> specialOrderList)
@@ -47,9 +57,5 @@ public class OrderListManagerGUI : MonoBehaviour
             else
                 orderSocketList[i].gameObject.SetActive(false);
         }
-    }
-    public void ClosePanel()
-    {
-        gfx.SetActive(false);
     }
 }

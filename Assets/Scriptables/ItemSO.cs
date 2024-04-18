@@ -11,6 +11,7 @@ public class ItemSO : ScriptableObject
     public int marketPrice;
     public int highQualityPrice;
     public int reputationReward;
+    public Sprite moldSprite;
     [Header("Recipe")]
     public List<MaterialContainer> normalQualityRecipe;
     public List<MaterialContainer> highQualityRecipe;

@@ -18,6 +18,7 @@ MonoBehaviour:
   marketPrice: 50
   highQualityPrice: 100
   reputationReward: 26
+  moldSprite: {fileID: 21300000, guid: 8c9147706cf4cd44abbe724a49d63784, type: 3}
   normalQualityRecipe:
   - material: {fileID: 11400000, guid: e2827b85e42cf9f4192f3b7e36672869, type: 2}
     amount: 2

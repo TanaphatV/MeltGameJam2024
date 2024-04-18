@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class QTEMoldingPanel : MonoBehaviour
@@ -14,11 +15,21 @@ public class QTEMoldingPanel : MonoBehaviour
     [SerializeField] private Image goodScoreImage;
     [SerializeField] private Image failScoreImage;
     [SerializeField] private Image waterSurfaceImage;
+    [SerializeField] private Image moldImage;
     private float minimumGoodScore;
     private float maximumGoodScore;
     [SerializeField] private Button nextButton;
     private BaseQTEManager qteManager;
     private float decreaseDifVal = 0;
+
+    private void Start()
+    {
+        //qteManager.GetRecipePanel.onSelectedItemToCreate += SetMoldImage;
+    }
+    private void OnDisable()
+    {
+        //qteManager.GetRecipePanel.onSelectedItemToCreate -= SetMoldImage;
+    }
 
     public IEnumerator Init(float minimumGoodScore, float maximumGoodScore, BaseQTEManager bm)
     {
@@ -38,6 +49,11 @@ public class QTEMoldingPanel : MonoBehaviour
 
         yield return EnableMouseInput();
     }
+    public void SetMoldImage(ItemSO item)
+    {
+        Debug.Log("Set Mold");
+        moldImage.sprite = item.moldSprite;
+    }
 
     public void DecreaseDifficulty()
     {
@@ -50,7 +66,10 @@ public class QTEMoldingPanel : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                StartHolding();
+                if (!EventSystem.current.IsPointerOverGameObject())
+                {
+                    StartHolding();
+                }
             }
             if (Input.GetMouseButtonUp(0))
             {
@@ -81,12 +100,14 @@ public class QTEMoldingPanel : MonoBehaviour
             isStartMinigame = false;
             if (value > minimumGoodScore && value < maximumGoodScore)
             {
-                Debug.Log("Nice");
+                Debug.Log("Too much too less!");
                 StartCoroutine(qteManager.StartQTEControlTemperature());
             }
             else
             {
+                Debug.Log("Too much too less!");
                 qteManager.GetStation.currentItemCraftingStatus = CraftingStatus.Failed;
+                qteManager.GetStation.currentMinigameResult = MinigameResult.Fail;
             }
             
         }

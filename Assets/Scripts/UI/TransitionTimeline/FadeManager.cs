@@ -29,19 +29,15 @@ public class FadeManager : MonoBehaviour
     {
 
     }
-    public void StartFade(float fadeTime,float fadeInDelay, UnityAction onFadeInDone = null)
+    public void StartFade(float fadeTime,float fadeInDelay, UnityAction onFadeInDone = null,UnityAction onFadeDone = null)
     {
         if(!fading)
-            StartCoroutine(FadeIE(fadeTime, fadeInDelay, onFadeInDone));
+            StartCoroutine(FadeIE(fadeTime, fadeInDelay, onFadeInDone, onFadeDone));
     }
 
     bool fading = false;
-    public bool FadeDone()
-    {
-        return fading;
-    }
 
-    IEnumerator FadeIE(float fadeTime,float fadeInDelay,UnityAction onFadeInDone)
+    IEnumerator FadeIE(float fadeTime,float fadeInDelay,UnityAction onFadeInDone,UnityAction onFadeDone)
     {
         fading = true;
         alpha = 0;
@@ -59,6 +55,8 @@ public class FadeManager : MonoBehaviour
             ChangeFaderAlpha(-fadeSpeed * Time.deltaTime);
             yield return null;
         }
+        if (onFadeDone != null)
+            onFadeDone();
         fading = false;
     }
     float alpha;

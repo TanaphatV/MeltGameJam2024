@@ -44,12 +44,12 @@ public class TransitionManager : MonoBehaviour
         else if(collision.tag == "MineEntrance")
         {
             playerController.isInDungeon = true;
-            StartCoroutine(TransitionToMineIE(mineExit.position + (Vector3.up), "InsideMine"));
+            TransitionToMine(mineExit.position + (Vector3.up), "InsideMine");
         }
         else if(collision.tag == "MineExit")
         {
             playerController.isInDungeon = false;
-            StartCoroutine(TransitionToMineIE(mineEntrace.position + (Vector3.down * 2), "InsideWorkshop"));
+            TransitionToMine(mineEntrace.position + (Vector3.down * 2), "InsideWorkshop");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -61,16 +61,16 @@ public class TransitionManager : MonoBehaviour
         }
     }
 
-    IEnumerator TransitionToMineIE(Vector3 destination, string cameraState = null)
+    void TransitionToMine(Vector3 destination, string cameraState = null)
     {
         playerController.pause = true;
-        UnityAction temp = () => { 
+        UnityAction temp = () => {
             transform.position = destination;
             if (cameraState != null)
                 _cameraAnimator.Play(cameraState);
-         };
-        FadeManager.Instance.StartFade(fadeSpeed,fadeDelay, temp);
-        yield return new WaitUntil(() => { return FadeManager.Instance.FadeDone(); });
-        playerController.pause = false;
+        };
+
+        playerController.pause = true;
+        FadeManager.Instance.StartFade(1.0f, 0.2f, temp, () => { playerController.pause = false; });
     }
 }

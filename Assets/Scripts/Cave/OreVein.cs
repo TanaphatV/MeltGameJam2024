@@ -8,6 +8,7 @@ public class OreVein : MonoBehaviour, IHitable
     [SerializeField] int hitsNeeded;
     [SerializeField] float dropRadius;
     [SerializeField] MaterialDrop materialDropPrefab;
+    [SerializeField] ParticleSystem miningParticle;
     int hitLeft;
 
     public UnityAction onBreak;
@@ -15,6 +16,7 @@ public class OreVein : MonoBehaviour, IHitable
     public void Hit()
     {
         hitLeft -= PlayerStats.instance.mining;
+        miningParticle.Play();
         if (hitLeft <= 0)
             Break();
     }

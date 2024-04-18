@@ -13,6 +13,7 @@ public class WagonPriceDealHUDManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI customerPreferText;
     [SerializeField] private GameObject gfx;
     [SerializeField] private Button confirmSellButton;
+    
 
     private Wagon wagon;
     private Wagon.ItemInfo iteminfo;
@@ -52,6 +53,11 @@ public class WagonPriceDealHUDManager : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
+        
+    }
+
+    private void Update()
+    {
         
     }
 

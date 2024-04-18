@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Wagon : InteractableObject
 {
     [SerializeField] private WagonPriceDealHUDManager hud;
     [SerializeField] private List<GameObject> wagonLevels;
     List<ItemInfo> items = new List<ItemInfo>();
+    [SerializeField] private TextMeshProUGUI demandItemText;
     public ItemSO itemInDemand { get; private set; }
     private void Start()
     {
@@ -19,6 +21,7 @@ public class Wagon : InteractableObject
     {
         List<ItemSO> itemList = RecipeSingletonManager.Instance.GetResource.craftableItems;
         itemInDemand = itemList[Random.Range(0, itemList.Count)];
+        demandItemText.text = "Today <b>" + itemInDemand.itemName + "</b> are in high demand!";
         UpdateWagonFillLevelSprite();
     }
 

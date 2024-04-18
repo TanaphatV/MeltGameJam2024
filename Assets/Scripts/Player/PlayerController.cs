@@ -46,10 +46,23 @@ public class PlayerController : MonoBehaviour
         {
             if (movement.magnitude > Mathf.Epsilon)
             {
-                animationController.ChangeAnimState("walk_side", isFacingRight);
+                if (playerInteract.pickedObject != null)
+                {
+                    animationController.ChangeAnimState("carry_walk", isFacingRight);
+                }
+                else
+                    animationController.ChangeAnimState("walk_side", isFacingRight);
             }
             else
-                animationController.ChangeAnimState("idle_side", isFacingRight);
+            {
+                if (playerInteract.pickedObject != null)
+                {
+                    animationController.ChangeAnimState("carry_idle", isFacingRight);
+                }
+                else
+                    animationController.ChangeAnimState("idle_side", isFacingRight);
+
+            }
 
             if (!isInDungeon)
                 WorkShopBehavior();

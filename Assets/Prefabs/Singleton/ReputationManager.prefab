@@ -48,17 +48,17 @@ MonoBehaviour:
   mileStoneBonus:
   - requiredReputation: 0
     icon: {fileID: 0}
-    specialOrderPayMultiplier: 0
-    wagonBuyProbabilityMultiplier: 1
+    specialOrderPayMultiplier: 0.75
+    wagonBuyProbabilityIncrease: 0
   - requiredReputation: 50
     icon: {fileID: 0}
-    specialOrderPayMultiplier: 0
-    wagonBuyProbabilityMultiplier: 1.2
+    specialOrderPayMultiplier: 1
+    wagonBuyProbabilityIncrease: 20
   - requiredReputation: 250
     icon: {fileID: 0}
-    specialOrderPayMultiplier: 0
-    wagonBuyProbabilityMultiplier: 1.4
+    specialOrderPayMultiplier: 1.5
+    wagonBuyProbabilityIncrease: 40
   - requiredReputation: 750
     icon: {fileID: 0}
-    specialOrderPayMultiplier: 0
-    wagonBuyProbabilityMultiplier: 10
+    specialOrderPayMultiplier: 10
+    wagonBuyProbabilityIncrease: 100

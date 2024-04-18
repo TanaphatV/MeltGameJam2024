@@ -43,6 +43,7 @@ public class ShopWindowManager : MonoBehaviour
 
     private void Start()
     {
+        gfx.SetActive(false);
         wagonSpaceButton.onClick.AddListener(() => UpgradeWagonSpace(shop.wagon[wagonLv - 1] as StorageUpgrade));
         pickaxeButton.onClick.AddListener(() => UpgradePickaxe(shop.pickAxe[pickaxeLv - 1] as PickaxeUpgrade));
         freezeReduceButton.onClick.AddListener(() => UpgradeFreezeReduce(shop.freezer[freezeLv - 1] as FreezerUpgrade));

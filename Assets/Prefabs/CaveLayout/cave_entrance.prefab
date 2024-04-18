@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2322129621215169150}
   - component: {fileID: 2322129621215169151}
+  - component: {fileID: 3480408308603061148}
   m_Layer: 0
   m_Name: cave_entrance
   m_TagString: Untagged
@@ -85,6 +86,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!68 &3480408308603061148
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2322129621215169148}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0.2
+  m_Points:
+  - {x: 2.023468, y: -10.761248}
+  - {x: -1.7993412, y: -10.7947235}
+  - {x: -1.7563343, y: -3.68998}
+  - {x: -2.454256, y: -3.0030794}
+  - {x: -5.13995, y: -1.6961641}
+  - {x: -5.8160343, y: -0.8304095}
+  - {x: -6.0512257, y: 1.1075277}
+  - {x: -5.2576694, y: 2.9870276}
+  - {x: -4.1179085, y: 4.311554}
+  - {x: -1.8390388, y: 5.3289275}
+  - {x: 0.1282463, y: 5.7235036}
+  - {x: 3.0177574, y: 5.2512984}
+  - {x: 3.9412098, y: 4.395856}
+  - {x: 6.0656824, y: 2.8157263}
+  - {x: 6.305807, y: 0.5633726}
+  - {x: 4.987417, y: -1.6327224}
+  - {x: 2.1408854, y: -3.2849553}
+  - {x: 2.21768, y: -10.761177}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1001 &2322129620878967877
 PrefabInstance:
   m_ObjectHideFlags: 0

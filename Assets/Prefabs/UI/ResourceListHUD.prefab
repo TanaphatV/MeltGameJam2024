@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verticalLayout: {fileID: 4251975729761947693}
-  currentMoney: {fileID: 0}
+  currentMoney: {fileID: 4251975728061243421}
   materialSocketTemplate: {fileID: 3822192786106358654}
 --- !u!1 &4251975728061243423
 GameObject:
@@ -345,6 +345,7 @@ MonoBehaviour:
   materialIcon: {fileID: 4251975728875121873}
   materialName: {fileID: 0}
   materialAmount: {fileID: 4251975728061243421}
+  showName: 0
 --- !u!1 &4251975729761947693
 GameObject:
   m_ObjectHideFlags: 0

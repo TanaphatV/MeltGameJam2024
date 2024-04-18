@@ -1764,6 +1764,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 419120719940262246, guid: 0a98c926788565e419e2e45c5f2a29b0, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 419120719940262297, guid: 0a98c926788565e419e2e45c5f2a29b0, type: 3}
       propertyPath: m_Name
       value: ShopHUD_Canvas

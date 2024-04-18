@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemBasePrefab: {fileID: 5910575362512725754, guid: 24f8e76e231673d499ed375fb867b230, type: 3}
-  recipePanel: {fileID: 9177476904104290475}
   currentItemCraftingStatus: 0
 --- !u!61 &3504599655783292723
 BoxCollider2D:
@@ -339,6 +338,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9112486053112669053, guid: 40b942c0c6751144b86c13aa65990eb4, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9112486053166191355, guid: 40b942c0c6751144b86c13aa65990eb4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -608,17 +611,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9177476904104290475 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9112486053112669027, guid: 40b942c0c6751144b86c13aa65990eb4, type: 3}
-  m_PrefabInstance: {fileID: 84160295324847048}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df688cc6e3738c744ba5f6cb17d7a637, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &9177476904104290484 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9112486053112669052, guid: 40b942c0c6751144b86c13aa65990eb4, type: 3}
@@ -634,6 +626,10 @@ PrefabInstance:
     - target: {fileID: 2108283919836328716, guid: 42951b142b110cb4caca21edd58074a1, type: 3}
       propertyPath: m_Name
       value: QTEminigameHUD_Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108283919836328719, guid: 42951b142b110cb4caca21edd58074a1, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2108283919836328720, guid: 42951b142b110cb4caca21edd58074a1, type: 3}
       propertyPath: m_Pivot.x

@@ -1228,6 +1228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shop
       objectReference: {fileID: 0}
+    - target: {fileID: 5452973737908041449, guid: d9b0df74d3da8db41bb12f023d782a6c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9b0df74d3da8db41bb12f023d782a6c, type: 3}
 --- !u!1001 &1919550114
@@ -1309,6 +1313,10 @@ PrefabInstance:
       propertyPath: testMats.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 096a2204b8d7d7b4198cca6751eb57ca, type: 2}
+    - target: {fileID: 6749843190496870361, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}
+      propertyPath: dayLength
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 8683666997248686237, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}
       propertyPath: maxHp
       value: 5

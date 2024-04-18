@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour, IHitable
     [SerializeField] float detectRange;
     [SerializeField] float moveSpeed;
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] ParticleSystem breakParticlePrefab;
     [SerializeField] MaterialDrop materialDropPrefab;
     [SerializeField] float dropRadius;
     public MaterialContainer materialDrop;
@@ -90,6 +91,8 @@ public class Enemy : MonoBehaviour, IHitable
 
     void Death()
     {
+        ParticleSystem p = Instantiate(breakParticlePrefab);
+        p.transform.position = transform.position;
         for (int i = 0; i < materialDrop.amount; i++)
         {
             MaterialDrop temp = Instantiate(materialDropPrefab);

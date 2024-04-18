@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1154310441222324608}
   - component: {fileID: 1154310441222324614}
+  - component: {fileID: 8843035284000927798}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -83,7 +84,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
+--- !u!95 &8843035284000927798
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154310441222324611}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 730417a6ec72add439702c495b2d2d9e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1154310442758155301
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +159,7 @@ MonoBehaviour:
   detectRange: 4
   moveSpeed: 1
   rb: {fileID: 1154310442758155320}
+  breakParticlePrefab: {fileID: 2711290324104845896, guid: 144c8c9b4977a7a44bb9ea3c9ee6bf25, type: 3}
   materialDropPrefab: {fileID: 6568529954224307114, guid: 86414512a0f543f45aa48aaf9e4b166c, type: 3}
   dropRadius: 2
   materialDrop:

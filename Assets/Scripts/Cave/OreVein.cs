@@ -38,7 +38,7 @@ public class OreVein : MonoBehaviour, IHitable
         for (int i = 0; i < materialContainer.amount; i++)
         {
             MaterialDrop temp = Instantiate(materialDropPrefab);
-            temp.gameObject.transform.position = transform.position;
+            temp.gameObject.transform.position = transform.position + Vector3.up;
             temp.Init(materialContainer.material, Random.insideUnitCircle * dropRadius);
         }
         if (onBreak != null)

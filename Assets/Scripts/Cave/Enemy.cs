@@ -96,7 +96,7 @@ public class Enemy : MonoBehaviour, IHitable
         for (int i = 0; i < materialDrop.amount; i++)
         {
             MaterialDrop temp = Instantiate(materialDropPrefab);
-            temp.gameObject.transform.position = transform.position;
+            temp.gameObject.transform.position = transform.position + Vector3.up;
             temp.Init(materialDrop.material, Random.insideUnitCircle * dropRadius);
         }
         gameObject.SetActive(false);

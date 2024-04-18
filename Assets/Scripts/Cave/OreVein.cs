@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class OreVein : MonoBehaviour, IHitable
 {
     [SerializeField] MaterialContainer materialContainer;
@@ -9,6 +9,9 @@ public class OreVein : MonoBehaviour, IHitable
     [SerializeField] float dropRadius;
     [SerializeField] MaterialDrop materialDropPrefab;
     int hitLeft;
+
+    public UnityAction onBreak;
+
     public void Hit()
     {
         hitLeft -= PlayerStats.instance.mining;
@@ -20,7 +23,10 @@ public class OreVein : MonoBehaviour, IHitable
     {
         hitLeft = hitsNeeded;
         this.materialContainer = materialContainer;
+        onBreak = null;
     }
+
+
 
     void Break()
     {
@@ -30,6 +36,8 @@ public class OreVein : MonoBehaviour, IHitable
             temp.gameObject.transform.position = transform.position;
             temp.Init(materialContainer.material, Random.insideUnitCircle * dropRadius);
         }
+        if (onBreak != null)
+            onBreak();
         gameObject.SetActive(false);
     }
 

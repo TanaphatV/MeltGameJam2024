@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using UnityEngine.Events;
 public class PlayerCombat : MonoBehaviour
 {
     public Vector2 attackSize;
@@ -12,11 +12,25 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] PlayerController playerController;
     [SerializeField] AnimationController animationController;
-    int hp;
+    int currentHp;
+
+    public UnityAction<int> onHpChange;
+
+    private void Start()
+    {
+        TimeManager.instance.onDayEnd += Init;
+    }
+
+    public void SetHp(int hp)
+    {
+        currentHp = hp;
+        if (onHpChange != null)
+            onHpChange(hp);
+    }
 
     public void Init()
     {
-        hp = PlayerStats.instance.maxHp;
+        SetHp(PlayerStats.instance.maxHp);
     }
 
     bool mouseDirectionIsRight;
@@ -54,8 +68,8 @@ public class PlayerCombat : MonoBehaviour
     {
         if (invulnerable || dead)
             return;
-        hp -= damage;
-        if(hp <= 0)
+        SetHp(currentHp - damage);
+        if (currentHp <= 0)
         {
             Death();
             return;

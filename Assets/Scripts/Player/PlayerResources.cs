@@ -57,7 +57,8 @@ public class PlayerResources : MonoBehaviour
 
     void ClearMaterial()
     {
-        foreach(var mat in materialDictionary.Keys)
+        List<MaterialSO> newList = new List<MaterialSO>(materialDictionary.Keys);
+        foreach(MaterialSO mat in newList)
         {
             materialDictionary[mat] = 0;
             OnMaterialAmountChange(mat);

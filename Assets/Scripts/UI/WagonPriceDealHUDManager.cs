@@ -18,6 +18,7 @@ public class WagonPriceDealHUDManager : MonoBehaviour
     private Wagon.ItemInfo iteminfo;
 
     private int priceSet = 0;
+    private bool isConfirmPrice;
     public int GetCurrentPriceSet => priceSet;
 
     private string savedInput = "";
@@ -29,14 +30,16 @@ public class WagonPriceDealHUDManager : MonoBehaviour
         inputField.onValueChanged.AddListener(delegate { OnInputFieldValueChanged(); });
         inputField.text = "0";
         customerPreferText.text = "";
+        confirmSellButton.onClick.AddListener(() => SetConfirmPrice(true));
     }
 
-    public void InitPanel(Item item, Wagon wagon, Wagon.ItemInfo iteminfo)
+    public IEnumerator InitPanel(Item item, Wagon wagon, Wagon.ItemInfo iteminfo)
     {
         this.wagon = wagon;
         this.iteminfo = iteminfo;
         itemName.text = item.itemSo.itemName;
         itemIcon.sprite = item.itemSo.itemSprite;
+        isConfirmPrice = false;
         if (item.highQuality)
         {
             qualityText.text = "High Quality";
@@ -45,6 +48,16 @@ public class WagonPriceDealHUDManager : MonoBehaviour
         {
             qualityText.text = "Low Quality";
         }
+        while (!isConfirmPrice)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        
+    }
+
+    public void SetConfirmPrice(bool isConfirm)
+    {
+        isConfirmPrice = isConfirm;
     }
 
     public string GetSellChanceMessageForThisPrice()

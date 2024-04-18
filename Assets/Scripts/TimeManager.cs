@@ -31,7 +31,7 @@ public class TimeManager : MonoBehaviour
     }
     void Start()
     {
-        //StartCoroutine(TimerIE());
+        timer = dayLength;
     }
     public string GetTimerText()
     {

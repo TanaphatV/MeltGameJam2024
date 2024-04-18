@@ -38,16 +38,24 @@ public class Wagon : InteractableObject
             }
             else if(items.Count < PlayerStats.instance.wagonStorage)
             {
-                Item item = playerInteract.TakeItem();
-                ItemInfo itemInfo = new ItemInfo(item.itemSo, item.price, item.reputationReward);
-                hud.OpenPanel();
-                hud.InitPanel(item, this, itemInfo);
-                items.Add(itemInfo);
-                UpdateWagonFillLevelSprite();
-                Destroy(item.gameObject);
+
+                StartCoroutine(MoveItemToWagon(playerInteract));
             }
         }
         
+    }
+
+    public IEnumerator MoveItemToWagon(PlayerInteract playerInteract)
+    {
+        Item item = playerInteract.TakeItem();
+        ItemInfo itemInfo = new ItemInfo(item.itemSo, item.price, item.reputationReward);
+        hud.OpenPanel();
+        yield return hud.InitPanel(item, this, itemInfo);
+
+        Debug.Log(itemInfo.price);
+        items.Add(itemInfo);
+        UpdateWagonFillLevelSprite();
+        Destroy(item.gameObject);
     }
 
     int currentWagonFillLevel = 0;

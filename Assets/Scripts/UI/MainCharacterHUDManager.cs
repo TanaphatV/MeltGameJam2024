@@ -42,7 +42,6 @@ public class MainCharacterHUDManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(TimeManager.instance.GetTimerText());
         timerText.text = TimeManager.instance.GetTimerText();
     }
 

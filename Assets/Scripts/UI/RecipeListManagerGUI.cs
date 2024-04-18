@@ -137,7 +137,7 @@ public class RecipeListManagerGUI : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 recipeSocketList[selectingIndex].ButtonInvoke(isSelectNormal);
-                CheckMaterialResource();
+                //CheckMaterialResource();
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -161,7 +161,7 @@ public class RecipeListManagerGUI : MonoBehaviour
         }
         else
         {
-            //Debug.LogError;
+            Debug.Log("Not enough");
         }
         
     }

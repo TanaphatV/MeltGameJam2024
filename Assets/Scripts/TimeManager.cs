@@ -33,7 +33,14 @@ public class TimeManager : MonoBehaviour
     {
         StartCoroutine(TimerIE());
     }
-
+    public string GetTimerText()
+    {
+        int intTime = (int)timer;
+        int minute =  intTime/ 60;
+        int seconds = intTime - (minute*60);
+        string text = minute + ":" + seconds;
+        return text;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -43,15 +50,15 @@ public class TimeManager : MonoBehaviour
     {
         while(true)
         {
-            while (timer < dayLength)
+            while (timer > 0)
             {
                 yield return new WaitUntil(() => { return !pause; });
-                timer += Time.deltaTime;
+                timer -= Time.deltaTime;
                 yield return null;
             }
             if (onDayEnd != null)
                 onDayEnd();
-            timer = 0;
+            timer = dayLength;
         }
     }
 }

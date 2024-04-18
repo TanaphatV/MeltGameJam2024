@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.VFX;
-enum ItemStatus
+public enum ItemStatus
 {
     WIP,
     Completed
@@ -15,7 +15,7 @@ public class Item : PickableObject, IBarSubject
     [SerializeField] Transform spriteParent;
     [SerializeField] Collider2D physicalCollider;
     [SerializeField] ParticleSystem sparkle;
-    ItemStatus status;
+    public ItemStatus status { get; private set; }
     float timeRequired;
     float timePassedInFreezer;
     bool isInFreezer = false;

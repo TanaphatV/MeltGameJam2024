@@ -49,11 +49,11 @@ public class PlayerInteract : MonoBehaviour
 
     public Item TakeItem()
     {
-        if (pickedObject is Item)
+        Item item = GetHoldingItem();
+        if (item != null)
         {
-            Item temp = (Item)pickedObject;
             pickedObject = null;
-            return temp;
+            return item;
         }
         else
             return null;
@@ -61,14 +61,13 @@ public class PlayerInteract : MonoBehaviour
 
     public Item GetHoldingItem()
     {
-        if (pickedObject == null)
+        if (pickedObject is Item)
+        {
+            Item temp = (Item)pickedObject;
+            return temp;
+        }
+        else
             return null;
-        if (pickedObject is not Item)
-            return null; 
-        
-        Item temp = (Item)pickedObject;
-        pickedObject = null;
-        return temp;
     }
 
     public void SetPlayerPause(bool pause)

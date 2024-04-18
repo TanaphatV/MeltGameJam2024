@@ -19,12 +19,13 @@ public class MaterialDrop : MonoBehaviour
         resourceUIController = FindObjectOfType<ResourceUIController>();
     }
 
-    public void Init(MaterialSO material)
+    public void Init(MaterialSO material,Vector3 position)
     {
         this.material = material;
         spriteRenderer.sprite = material.icon;
+        transform.position += position;
     }
-    float startTime;
+
     // Update is called once per frame
     void Update()
     {
@@ -32,8 +33,6 @@ public class MaterialDrop : MonoBehaviour
         {
             Vector3 difference = resourceUIController.GetWorldPositionFromMaterialUI(material) - transform.position;
             Vector3 direction = difference.normalized;
-
-
 
             speed += acceleration * Time.deltaTime;
             velocity = Vector3.ClampMagnitude(direction * speed, maxSpeed);
@@ -52,12 +51,12 @@ public class MaterialDrop : MonoBehaviour
             {
                 if (col.CompareTag("Player"))
                 {
-                    startTime = Time.time;
                     goToUI = true;
                 }
             }
         }
     }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, radius);

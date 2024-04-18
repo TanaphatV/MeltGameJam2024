@@ -221,7 +221,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &5030825198531032918
 Animator:
   serializedVersion: 5
@@ -301,7 +301,7 @@ MonoBehaviour:
   playerInteract: {fileID: 8947257739544460657}
   playerCombat: {fileID: 1220178908661681659}
   animationController: {fileID: 8889837092336080845}
-  isInDungeon: 0
+  isInDungeon: 1
   isFacingRight: 0
   pause: 0
 --- !u!114 &8947257739544460657

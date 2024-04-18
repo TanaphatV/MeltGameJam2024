@@ -138,6 +138,7 @@ MonoBehaviour:
   moveSpeed: 1
   rb: {fileID: 1154310442758155320}
   materialDropPrefab: {fileID: 6568529954224307114, guid: 86414512a0f543f45aa48aaf9e4b166c, type: 3}
+  dropRadius: 2
   materialDrop:
     material: {fileID: 0}
     amount: 0

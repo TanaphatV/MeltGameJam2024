@@ -5475,5 +5475,66 @@ PrefabInstance:
       propertyPath: m_Name
       value: HighQualitySparkles
       objectReference: {fileID: 0}
+    - target: {fileID: 5151100704789109391, guid: 7b81b67d2e11ebd4fb1c6ad75b9e95d0, type: 3}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b81b67d2e11ebd4fb1c6ad75b9e95d0, type: 3}
+--- !u!1001 &7882362335104125939
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7882362334988359576, guid: f33464b4656ec5246a84cf3344cbbcd3, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882362334988359576, guid: f33464b4656ec5246a84cf3344cbbcd3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.0374411
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882362334988359576, guid: f33464b4656ec5246a84cf3344cbbcd3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.62162787
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882362334988359576, guid: f33464b4656ec5246a84cf3344cbbcd3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.49834782
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882362334988359576, guid: f33464b4656ec5246a84cf3344cbbcd3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882362334988359576, guid: f33464b4656ec5246a84cf3344cbbcd3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882362334988359576, guid: f33464b4656ec5246a84cf3344cbbcd3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882362334988359576, guid: f33464b4656ec5246a84cf3344cbbcd3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882362334988359576, guid: f33464b4656ec5246a84cf3344cbbcd3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882362334988359576, guid: f33464b4656ec5246a84cf3344cbbcd3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882362334988359576, guid: f33464b4656ec5246a84cf3344cbbcd3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882362334988359579, guid: f33464b4656ec5246a84cf3344cbbcd3, type: 3}
+      propertyPath: m_Name
+      value: IceShardsParticles
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f33464b4656ec5246a84cf3344cbbcd3, type: 3}

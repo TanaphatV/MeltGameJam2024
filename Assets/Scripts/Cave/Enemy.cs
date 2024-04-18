@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour, IHitable
     [SerializeField] float moveSpeed;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] MaterialDrop materialDropPrefab;
+    [SerializeField] float dropRadius;
     public MaterialContainer materialDrop;
 
     bool stun = false;
@@ -26,7 +27,6 @@ public class Enemy : MonoBehaviour, IHitable
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -93,8 +93,10 @@ public class Enemy : MonoBehaviour, IHitable
         for (int i = 0; i < materialDrop.amount; i++)
         {
             MaterialDrop temp = Instantiate(materialDropPrefab);
-            temp.Init(materialDrop.material);
+            temp.gameObject.transform.position = transform.position;
+            temp.Init(materialDrop.material, Random.insideUnitCircle * dropRadius);
         }
+        gameObject.SetActive(false);
         Destroy(gameObject);
     }
 

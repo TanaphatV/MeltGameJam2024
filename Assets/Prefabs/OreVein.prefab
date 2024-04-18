@@ -50,7 +50,7 @@ MonoBehaviour:
     material: {fileID: 0}
     amount: 0
   hitsNeeded: 5
-  dropRadius: 2
+  dropRadius: 1
   materialDropPrefab: {fileID: 6568529954224307114, guid: 86414512a0f543f45aa48aaf9e4b166c, type: 3}
 --- !u!61 &3413860190684893149
 BoxCollider2D:

@@ -8,15 +8,27 @@ public class Cave : MonoBehaviour
     public int enemyCount;
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject parent;
-    [SerializeField] GameObject ladderGO;
-    [SerializeField] OreDropChanceSO dropChanceSO;
+    [SerializeField] LadderHole ladder;
+    OreDropChanceSO dropChanceSO;
     List<OreVein> oreVeinList = new List<OreVein>();
     List<OreVein> activeOreVein = new List<OreVein>();
     List<Enemy> enemies =  new List<Enemy>();
     [SerializeField] Enemy enemyPrefab;
 
+    public Vector3 GetSpawnPoint()
+    {
+        return spawnPoint.position;
+    }
+    public Vector3 GetReturnPosition()
+    {
+        return ladder.GetReturnPosition();
+    }
 
-    private void Start()
+    public void SetOreDropChance(OreDropChanceSO dropChanceSO)
+    {
+        this.dropChanceSO = dropChanceSO;
+    }
+    private void Awake()
     {
         foreach(Transform child in parent.transform)
         {
@@ -27,7 +39,7 @@ public class Cave : MonoBehaviour
                 temp.gameObject.SetActive(false);
             }
         }
-        InitCave();
+        //InitCave();
     }
     public void InitCave()
     {
@@ -39,7 +51,7 @@ public class Cave : MonoBehaviour
             }
         }
         enemies = new List<Enemy>();
-        ladderGO.SetActive(false);
+        this.ladder.gameObject.SetActive(false);
         for (int i = 0; i < enemyCount; i++)
         {
             Enemy enemy = Instantiate(enemyPrefab, parent.transform);
@@ -64,8 +76,8 @@ public class Cave : MonoBehaviour
             tempVein.Init(dropChanceSO.GetRandomizedMaterialDrop());
             if (ladder)
             {
-                ladderGO.transform.position = tempVein.transform.position;
-                tempVein.onBreak += () => { ladderGO.SetActive(true); };
+                this.ladder.transform.position = tempVein.transform.position;
+                tempVein.onBreak += () => { this.ladder.gameObject.SetActive(true); };
             }
             ladder = false;
             tempList.RemoveAt(randomIndex);

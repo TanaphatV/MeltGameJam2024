@@ -114,7 +114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &887236048595819808
 RectTransform:
   m_ObjectHideFlags: 0
@@ -303,4 +303,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d24390e902dc24c8a1d2b3617d454b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionDay: {fileID: 887236048595819809}
+  fader: {fileID: 887236047528248716}

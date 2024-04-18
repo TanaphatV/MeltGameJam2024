@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Freezer
   - Workshop
+  - MineEntrance
+  - MineExit
   layers:
   - Default
   - TransparentFX

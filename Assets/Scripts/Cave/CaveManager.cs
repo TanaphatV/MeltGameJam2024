@@ -21,4 +21,14 @@ public class CaveManager : MonoBehaviour
     
     List<Cave> CaveLayoutPrefabs = new List<Cave>();
 
+
+    public void GoToNextCave()
+    {
+
+    }
+
+    public void GoToPreviousCave()
+    {
+
+    }
 }

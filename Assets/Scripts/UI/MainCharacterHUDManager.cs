@@ -19,16 +19,23 @@ public class MainCharacterHUDManager : MonoBehaviour
 
     private List<Image> hpIconList = new List<Image>();
 
+    private int currentHp;
+
     private void Start()
     {
         hpIcon.gameObject.SetActive(false);
-
+        currentHp = PlayerStats.instance.maxHp;
         for (int i = 0; i < PlayerStats.instance.maxHp; i++)
         {
             Image newHpIcon = Instantiate(hpIcon, hpHorizontal.transform);
             newHpIcon.gameObject.SetActive(true);
             hpIconList.Add(newHpIcon);
         }
+    }
+
+    public void OnHPValueChange(int remainingHP)
+    {
+        //SubOn UnityAction from PlayerStat
     }
 
     public void ToggleRecipeListHUD(bool isOpen)

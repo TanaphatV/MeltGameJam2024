@@ -45,24 +45,17 @@ public class Wagon : InteractableObject
     public string GetSellChanceMessage(ItemInfo item)
     {
         float chance = GetSellProbability(item);
-        if (chance >= 1.0f)
-        {
-            return "This WILL sell!";
-        }
-        else if (chance >= 60)
-        {
-            return "This will probably sell!";
-        }
-        else if (chance >= 30)
-        {
-            return "This might not sell...";
-        }
-        else if (chance >= 1)
-        {
-            return "I REALLY don't like the chance...";
-        }
-        else
+
+        if (chance < 1)
             return "PEOPLE WILL NOT BUY THIS";
+        else if (chance < 30)
+            return "I REALLY don't like the chance...";
+        else if (chance < 60)
+            return "This might not sell...";
+        else if (chance < 1)
+            return "This will probably sell!";
+        else 
+            return "This WILL sell!";
 
     }
 

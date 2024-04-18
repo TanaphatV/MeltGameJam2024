@@ -25,6 +25,7 @@ public class CaveManager : MonoBehaviour
 
     List<Cave> caveList = new List<Cave>();
 
+
     int currentFloor = -1;
     private void Awake()
     {

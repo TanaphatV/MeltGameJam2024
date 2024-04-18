@@ -37,7 +37,7 @@ public class PlayerCombat : MonoBehaviour
     public void Attack()
     {
         FindMouseDirection();
-        playerController.pause = true; ;
+        playerController.pause = true; 
         animationController.onAnimationEnd += OnAttackEnd;
         animationController.ChangeAnimState("attack_side", mouseDirectionIsRight,true);
         playerController.isFacingRight = mouseDirectionIsRight;

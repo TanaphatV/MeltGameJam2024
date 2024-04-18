@@ -1339,6 +1339,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1600568563}
     - target: {fileID: 3434184211339674201, guid: bf5df4b061287fc44b9564803d84988d, type: 3}
+      propertyPath: fadeDelay
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434184211339674201, guid: bf5df4b061287fc44b9564803d84988d, type: 3}
+      propertyPath: fadeSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434184211339674201, guid: bf5df4b061287fc44b9564803d84988d, type: 3}
       propertyPath: mineEntrace
       value: 
       objectReference: {fileID: 1338045930}

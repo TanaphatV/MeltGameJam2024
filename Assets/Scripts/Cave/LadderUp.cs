@@ -8,7 +8,14 @@ public class LadderUp : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.transform.position = CaveManager.instance.GoToPreviousCave();
+            StartCoroutine(GotoPrevCaveIE(collision));
         }
+    }
+    IEnumerator GotoPrevCaveIE(Collision2D collision)
+    {
+        collision.gameObject.GetComponent<PlayerController>().pause = true;
+        FadeManager.Instance.StartFade(1.0f, 0.2f, () => { collision.gameObject.transform.position = CaveManager.instance.GoToPreviousCave(); });
+        yield return new WaitUntil(() => { return FadeManager.Instance.FadeDone(); });
+        collision.gameObject.GetComponent<PlayerController>().pause = false;
     }
 }

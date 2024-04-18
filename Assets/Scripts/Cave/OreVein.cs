@@ -5,13 +5,21 @@ using UnityEngine;
 public class OreVein : MonoBehaviour, IHitable
 {
     [SerializeField] MaterialContainer materialContainer;
-    public int hitsNeeded;
+    [SerializeField] int hitsNeeded;
+    [SerializeField] float dropRadius;
     [SerializeField] MaterialDrop materialDropPrefab;
+    int hitLeft;
     public void Hit()
     {
-        hitsNeeded -= PlayerStats.instance.mining;
-        if (hitsNeeded <= 0)
+        hitLeft -= PlayerStats.instance.mining;
+        if (hitLeft <= 0)
             Break();
+    }
+
+    public void Init(MaterialContainer materialContainer)
+    {
+        hitLeft = hitsNeeded;
+        this.materialContainer = materialContainer;
     }
 
     void Break()
@@ -19,9 +27,10 @@ public class OreVein : MonoBehaviour, IHitable
         for(int i = 0; i < materialContainer.amount; i++)
         {
             MaterialDrop temp = Instantiate(materialDropPrefab);
-            temp.Init(materialContainer.material);
+            temp.gameObject.transform.position = transform.position;
+            temp.Init(materialContainer.material, Random.insideUnitCircle * dropRadius);
         }
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     void Start()
@@ -33,5 +42,10 @@ public class OreVein : MonoBehaviour, IHitable
     void Update()
     {
         
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, dropRadius);
     }
 }

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce87334206fbba64cbb655868f36d7ca, type: 3}
+  m_Name: Floor1DropChance
+  m_EditorClassIdentifier: 
+  amountSpread:
+  - amount: 2
+    chance: 0.2
+  - amount: 1
+    chance: 0.8
+  typeSpread:
+  - material: {fileID: 11400000, guid: e2827b85e42cf9f4192f3b7e36672869, type: 2}
+    chance: 0.8
+  - material: {fileID: 11400000, guid: 98f8786b742e33342b8333192e515ca1, type: 2}
+    chance: 0.2

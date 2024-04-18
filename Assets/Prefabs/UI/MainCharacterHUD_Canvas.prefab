@@ -1207,6 +1207,8 @@ MonoBehaviour:
   materialList: {fileID: 4109079332844074586}
   hpHorizontal: {fileID: 5992299723074706743}
   hpIcon: {fileID: 3503480846698859235}
+  timerText: {fileID: 3440800744680331558}
+  _playerCombat: {fileID: 0}
 --- !u!1 &4109079331600570678
 GameObject:
   m_ObjectHideFlags: 0

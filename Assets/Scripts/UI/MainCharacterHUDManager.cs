@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public enum MainHUD
 {
@@ -16,6 +17,9 @@ public class MainCharacterHUDManager : MonoBehaviour
     [SerializeField] private GameObject materialList;
     [SerializeField] private GameObject hpHorizontal;
     [SerializeField] private Image hpIcon;
+    [SerializeField] private TextMeshProUGUI timerText;
+
+    [SerializeField] private PlayerCombat _playerCombat;
 
     private List<Image> hpIconList = new List<Image>();
 
@@ -23,6 +27,9 @@ public class MainCharacterHUDManager : MonoBehaviour
 
     private void Start()
     {
+        _playerCombat = FindAnyObjectByType<PlayerCombat>();
+        
+        _playerCombat.onHpChange += OnHPValueChange;
         hpIcon.gameObject.SetActive(false);
         currentHp = PlayerStats.instance.maxHp;
         for (int i = 0; i < PlayerStats.instance.maxHp; i++)
@@ -33,27 +40,30 @@ public class MainCharacterHUDManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        Debug.Log(TimeManager.instance.GetTimerText());
+        timerText.text = TimeManager.instance.GetTimerText();
+    }
+
     public void OnHPValueChange(int remainingHP)
     {
-        //SubOn UnityAction from PlayerStat
+        for (int i = 0; i < hpIconList.Count; i++)
+        {
+            if(i < remainingHP)
+            {
+                hpIconList[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                hpIconList[i].gameObject.SetActive(false);
+            }
+            
+        }
     }
 
     public void ToggleRecipeListHUD(bool isOpen)
     {
         moneyHUD.SetActive(!isOpen);
-    }
-
-    private void Update()
-    {
-        //if (PlayerResources.instance.hp > 0 && PlayerStats.instance.maxHp != 0 && hpIconList.Count < PlayerStats.instance.maxHp)
-        //{
-        //    Image newHpIcon = Instantiate(hpIcon, hpHorizontal.transform);
-        //    newHpIcon.gameObject.SetActive(true);
-        //    hpIconList.Add(newHpIcon);
-        //}else if (PlayerResources.instance.hp < hpIconList.Count)
-        //{
-        //    Destroy(hpIconList[0].gameObject);
-        //    hpIconList.RemoveAt(0);
-        //}
     }
 }

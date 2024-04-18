@@ -35,10 +35,10 @@ public class TimeManager : MonoBehaviour
     }
     public string GetTimerText()
     {
-        int intTime = (int)timer;
+        int intTime = Mathf.FloorToInt( timer);
         int minute =  intTime/ 60;
         int seconds = intTime - (minute*60);
-        string text = minute + ":" + seconds;
+        string text = minute.ToString() + ":" + seconds.ToString();
         return text;
     }
     // Update is called once per frame
@@ -50,6 +50,8 @@ public class TimeManager : MonoBehaviour
     {
         while(true)
         {
+            yield return null;
+            float timer = dayLength;
             while (timer > 0)
             {
                 yield return new WaitUntil(() => { return !pause; });

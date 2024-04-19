@@ -12,13 +12,21 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] PlayerController playerController;
     [SerializeField] AnimationController animationController;
+    DeathScreenUI deathScreen;
     int currentHp;
 
     public UnityAction<int> onHpChange;
 
     private void Start()
     {
+        deathScreen = FindObjectOfType<DeathScreenUI>();
         TimeManager.instance.onDayEnd += Init;
+        TimeManager.instance.onDayEnd += DayEndDeath;
+    }
+
+    void DayEndDeath()
+    {
+        Death("from lack of sleep");
     }
 
     public void SetHp(int hp)
@@ -31,6 +39,7 @@ public class PlayerCombat : MonoBehaviour
     public void Init()
     {
         SetHp(PlayerStats.instance.maxHp);
+        
     }
 
     bool mouseDirectionIsRight;
@@ -71,7 +80,8 @@ public class PlayerCombat : MonoBehaviour
         SetHp(currentHp - damage);
         if (currentHp <= 0)
         {
-            Death();
+            TimeManager.instance.onDayEnd -= DayEndDeath;
+            Death("Trying to fend off goobers");
             return;
         }
 
@@ -82,11 +92,32 @@ public class PlayerCombat : MonoBehaviour
         StartCoroutine(InvulnerabilityIE());
     }
     bool dead = false;
-    void Death()
+    void Death(string reason)
     {
         dead = true;
         playerController.pause = true;
         animationController.ChangeAnimState("dead",mouseDirectionIsRight);
+        StartCoroutine(DeathIE(reason));
+    }
+
+    IEnumerator DeathIE(string reason)
+    {
+        UnityAction temp = () =>
+        {
+            Respawn();
+        };
+
+        yield return new WaitForSeconds(0.5f);
+        deathScreen.StartFade(reason,temp);
+
+    }
+
+    void Respawn()
+    {
+        TransitionManager.instance.TransitionBetweenZone(new Vector3(8, 0, 0),"InsideWorkshop",false);
+        CaveManager.instance.GoBackToTop();
+        TimeManager.instance.DayEnd();
+        TimeManager.instance.onDayEnd += DayEndDeath;
     }
 
     IEnumerator HitStunIE()
@@ -134,6 +165,16 @@ public class PlayerCombat : MonoBehaviour
             mouseDirectionIsRight = true;
         else
             mouseDirectionIsRight = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Bed")
+        {
+            TimeManager.instance.onDayEnd -=  DayEndDeath;
+            TimeManager.instance.DayEnd();
+            TimeManager.instance.onDayEnd += DayEndDeath;
+        }
     }
 
     private void OnDrawGizmosSelected()

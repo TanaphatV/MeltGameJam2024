@@ -61,22 +61,34 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer > 0 & !pauseTimer)
+        if (timer > 0)
         {
-            timer -= Time.deltaTime;
+            if(!pauseTimer)
+                timer -= Time.deltaTime;
         }
         else
         {
             DayEnd();
         }
     }
+    //public void DayEndWithoutFade()
+    //{
+    //    timer = dayLength;
+    //    if (onDayEnd != null)
+    //    {
+    //        onDayEnd(); 
+    //        DayCount++;
+    //    }
+    //}
     public void DayEnd()
     {
         pauseTimer = true;
         playerController.pause = true;
-        if (onDayEnd != null)
-            onDayEnd(); DayCount++;
         timer = dayLength;
+        if (onDayEnd != null)
+        {
+            onDayEnd(); DayCount++;
+        }
         FadeManager.Instance.StartFade(1.5f, 0.5f, null, () =>
           {
               pauseTimer = false;

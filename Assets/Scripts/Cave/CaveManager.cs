@@ -20,6 +20,7 @@ public class CaveManager : MonoBehaviour
     #endregion
     [SerializeField] Transform CavePosition;
     [SerializeField] GameObject caveEntrance;
+    [SerializeField] Transform caveExit;
     [SerializeField] List<Cave> CaveLayoutPrefabs = new List<Cave>();
     [SerializeField] List<CaveInfoSpread> floorDropChances = new List<CaveInfoSpread>();
 
@@ -33,7 +34,7 @@ public class CaveManager : MonoBehaviour
     }
     private void Start()
     {
-        //TimeManager.instance.onDayEnd += RefreshCaveLayout;
+        TimeManager.instance.onDayEnd += RefreshCaveLayout;
         RefreshCaveLayout();
     }
 
@@ -55,6 +56,13 @@ public class CaveManager : MonoBehaviour
             caveList.Add(temp);
             Debug.Log("NEW CAVE");
         }
+    }
+
+    public void GoBackToTop()
+    {
+        caveList[currentFloor].SetCaveActive(false);
+        caveEntrance.SetActive(true);
+       // currentFloor = -1;
     }
 
     public  Vector3 GoToNextCave()
@@ -87,6 +95,6 @@ public class CaveManager : MonoBehaviour
             return caveList[currentFloor].GetReturnPosition();
         }
         else
-            return caveEntrance.GetComponentInChildren<LadderHole>().GetReturnPosition();
+            return caveExit.position;
     }
 }

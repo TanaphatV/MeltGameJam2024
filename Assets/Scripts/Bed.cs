@@ -8,7 +8,7 @@ public class Bed : MonoBehaviour
     {
        if(collision.gameObject.CompareTag("Player"))
         {
-            TimeManager.instance.DayEnd();
+            //TimeManager.instance.DayEnd();
         }
     }
 }

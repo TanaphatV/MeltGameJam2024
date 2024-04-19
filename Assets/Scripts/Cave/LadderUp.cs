@@ -10,7 +10,7 @@ public class LadderUp : MonoBehaviour
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             player.pause = true;
-            FadeManager.Instance.StartFade(1.0f, 0.2f, () => { collision.gameObject.transform.position = CaveManager.instance.GoToPreviousCave(); }, () => { player.pause = false; });
+            FadeManager.Instance.StartFade(1.0f, 0.2f, () => { player.gameObject.transform.position = CaveManager.instance.GoToPreviousCave(); }, () => { player.pause = false; });
         }
     }
 }

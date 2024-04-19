@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577389687166923785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.01, y: 6.01, z: 0}
+  m_LocalPosition: {x: -6.01, y: 5.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -297,8 +297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49395b4733738d1429c075638a8b2174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oreCount: 4
-  enemyCount: 4
   spawnPoint: {fileID: 6185810459765205597}
   parent: {fileID: 1677407583180118380}
   ladder: {fileID: 3079321856179095700}

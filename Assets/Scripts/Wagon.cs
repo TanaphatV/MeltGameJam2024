@@ -69,8 +69,10 @@ public class Wagon : InteractableObject
         currentWagonFillLevel = 0;
         for (int i = 1; i < 3; i++)
         {
-            if(fill > (i) * 0.33f)
+            if (fill > (i) * 0.33f)
                 currentWagonFillLevel = i;
+            else
+                break;
         }
         if(previousFillLevel != currentWagonFillLevel)
         {

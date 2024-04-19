@@ -35,6 +35,10 @@ public class Item : PickableObject, IBarSubject
     public void Init(ItemSO itemSO)
     {
         this.itemSo = itemSO;
+        TimeManager.instance.onDayEnd += () =>
+        {
+            Destroy(gameObject);
+        };
         timeRequired = itemSO.timeNeededtoFreeze - PlayerStats.instance.freezerWaitTimeReduction;
         if (timeRequired <= 0)
             timeRequired = 3;

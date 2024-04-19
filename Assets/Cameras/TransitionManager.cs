@@ -44,12 +44,12 @@ public class TransitionManager : MonoBehaviour
         else if(collision.tag == "MineEntrance")
         {
             playerController.isInDungeon = true;
-            TransitionToMine(mineExit.position + (Vector3.up), "InsideMine");
+            TransitionBetweenZone(mineExit.position + (Vector3.up), "InsideMine");
         }
         else if(collision.tag == "MineExit")
         {
             playerController.isInDungeon = false;
-            TransitionToMine(mineEntrace.position + (Vector3.down * 2), "InsideWorkshop");
+            TransitionBetweenZone(mineEntrace.position + (Vector3.down * 2), "InsideWorkshop");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -61,7 +61,7 @@ public class TransitionManager : MonoBehaviour
         }
     }
 
-    void TransitionToMine(Vector3 destination, string cameraState = null)
+    public void TransitionBetweenZone(Vector3 destination, string cameraState = null)
     {
         playerController.pause = true;
         UnityAction temp = () => {

@@ -20,10 +20,12 @@ public class TimeManager : MonoBehaviour
     #endregion
 
     [SerializeField] float dayLength;
+    [SerializeField] Transform bed;
     public UnityAction onDayEnd;
     float timer;
-    public bool pause = false;
+    PlayerController playerController;
     private int dayCount = 1;
+    public bool pause = false;
     public int DayCount
     {
         get { return dayCount; }
@@ -38,6 +40,7 @@ public class TimeManager : MonoBehaviour
     void Start()
     {
         timer = dayLength;
+        playerController = FindObjectOfType<PlayerController>();
     }
     public string GetTimerText()
     {
@@ -53,7 +56,7 @@ public class TimeManager : MonoBehaviour
         return text;
     }
 
-    public int GetMinuteTimer => Mathf.FloorToInt(timer)/60;
+    public int GetMinuteTimer => Mathf.FloorToInt(timer) / 60;
     public bool pauseTimer;
     // Update is called once per frame
     void Update()
@@ -64,33 +67,20 @@ public class TimeManager : MonoBehaviour
         }
         else
         {
-            if (onDayEnd != null)
-                onDayEnd(); DayCount++;
-            timer = dayLength;
-
+            DayEnd();
         }
     }
-    //IEnumerator DayEndIE()
-    //{
-        
-    //}
-
-
-    IEnumerator TimerIE()
+    public void DayEnd()
     {
-        while(true)
-        {
-            yield return null;
-            float timer = dayLength;
-            while (timer > 0)
-            {
-                yield return new WaitUntil(() => { return !pause; });
-                timer -= Time.deltaTime;
-                yield return null;
-            }
-            if (onDayEnd != null)
-                onDayEnd();
-            timer = dayLength;
-        }
+        pauseTimer = true;
+        playerController.pause = true;
+        if (onDayEnd != null)
+            onDayEnd(); DayCount++;
+        timer = dayLength;
+        FadeManager.Instance.StartFade(1.5f, 0.5f, null, () =>
+          {
+              pauseTimer = false;
+              playerController.pause = false;
+          });
     }
 }

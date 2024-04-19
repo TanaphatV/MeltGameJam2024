@@ -6330,7 +6330,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8683666997248686237, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}
       propertyPath: wagonStorage
-      value: 10
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8683666997248686237, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}
+      propertyPath: reputationGainModifier
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}

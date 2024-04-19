@@ -15,6 +15,7 @@ public class Wagon : InteractableObject
         TimeManager.instance.onDayEnd += SellItem;
         TimeManager.instance.onDayEnd += RefreshWagon;
         RefreshWagon();
+        UpdateWagonFillLevelSprite();
     }
 
     void RefreshWagon()
@@ -65,6 +66,7 @@ public class Wagon : InteractableObject
     void UpdateWagonFillLevelSprite()
     {
         float fill = (float)items.Count / (float)PlayerStats.instance.wagonStorage;
+        Debug.Log(fill);
         int previousFillLevel = currentWagonFillLevel;
         currentWagonFillLevel = 0;
         for (int i = 1; i < 3; i++)

@@ -56,7 +56,7 @@ public class ReputationManager : MonoBehaviour
 
     public void IncreaseReputation(float amount)
     {
-        reputation += amount;
+        reputation += (amount * PlayerStats.instance.reputationGainModifier);
         if(reputation >= mileStoneBonus[currentRank + 1].requiredReputation)
         {
             currentRank++;

@@ -440,6 +440,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7951843498082618235, guid: 20917e366f44153468294e4d88bf4891, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8553850736383039544, guid: 20917e366f44153468294e4d88bf4891, type: 3}
       propertyPath: m_Name
       value: WorldValueBar

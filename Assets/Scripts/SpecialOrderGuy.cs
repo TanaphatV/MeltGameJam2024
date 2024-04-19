@@ -63,7 +63,7 @@ public class SpecialOrderGuy : InteractableObject
             if (order != null) 
             {
                 order.completed = true;
-                playerInteract.TakeItem();
+                Destroy(playerInteract.TakeItem().gameObject);
                 PlayerResources.instance.coin += order.payout;
                 ReputationManager.instance.IncreaseReputation(temp.reputationReward);
             }

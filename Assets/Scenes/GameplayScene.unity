@@ -2485,7 +2485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 611598914998674642, guid: 626ed5aaeae341c4fbfe35e8a5f37179, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 618379137691882957, guid: 626ed5aaeae341c4fbfe35e8a5f37179, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2709,7 +2709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7546868154387911403, guid: 626ed5aaeae341c4fbfe35e8a5f37179, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7796227927669177732, guid: 626ed5aaeae341c4fbfe35e8a5f37179, type: 3}
       propertyPath: m_IsActive
@@ -6294,7 +6294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6336962402976451800, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}
       propertyPath: isDebugingMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6336962402976451800, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}
       propertyPath: testMats.Array.size
@@ -6322,7 +6322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8683666997248686237, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}
       propertyPath: wagonStorage
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}

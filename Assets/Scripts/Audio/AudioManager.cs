@@ -107,7 +107,7 @@ public class AudioManager : MonoBehaviour
     {
         float timer = 0f;
         float initialVolume1 = bgmSource.volume;
-        float initialVolume2 = bgmSource2.volume;
+        float initialVolume2 = 1.0f;
         bgmSource2.mute = false;
 
         while (timer < 1f)

@@ -94,65 +94,36 @@ public class AudioManager : MonoBehaviour
     }
 
     // Method to blend from current BGM to a new BGM
-    public void BlendBGM(string name)
+    [ContextMenu("Blend")]
+    public void StartBlend()
     {
-        Sound newBGM = Array.Find(bgmSounds, x => x.soundName == name);
-        if (newBGM == null)
-        {
-            Debug.Log("New BGM not found");
-            return;
-        }
-
         if (blendCoroutine != null)
         {
             StopCoroutine(blendCoroutine);
         }
-        blendCoroutine = StartCoroutine(BlendBGMCoroutine(newBGM.clip));
+        blendCoroutine = StartCoroutine(BlendAudioSources());
     }
-    [ContextMenu("Blend")]
-    public void BlendTest()
-    {
-        blendCoroutine = StartCoroutine(BlendBGMCoroutine(testclip));
-    }
-
-    private IEnumerator BlendBGMCoroutine(AudioClip newBGMClip)
+    private IEnumerator BlendAudioSources()
     {
         float timer = 0f;
-        float initialVolume = bgmSource.volume;
+        float initialVolume1 = bgmSource.volume;
+        float initialVolume2 = bgmSource2.volume;
+        bgmSource2.mute = false;
 
-        while (timer < bgmVolume / 2f)
+        while (timer < 1f)
         {
-            float t = timer / (bgmVolume / 2f);
-            float oldVolume = Mathf.Lerp(initialVolume, 0f, t);
-            float newVolume = Mathf.Lerp(0f, bgmVolume, t);
-
-            bgmSource.volume = oldVolume;
-            bgmSource2.volume = newVolume;
-
+            float t = timer / 1f;
+            bgmSource.volume = Mathf.Lerp(initialVolume1, 0f, t);
+            bgmSource2.volume = Mathf.Lerp(0f, initialVolume2, t);
             timer += Time.deltaTime;
             yield return null;
         }
 
-        // Switch to the new BGM track
-        bgmSource.Stop();
-        bgmSource.clip = newBGMClip;
-        bgmSource.Play();
+        // Ensure volumes are set to the correct final values
+        bgmSource.volume = 0f;
+        bgmSource2.volume = initialVolume2;
 
-        // Continue blending to full volume for the new BGM track
-        timer = 0f;
-        while (timer < bgmVolume / 2f)
-        {
-            float t = timer / (bgmVolume / 2f);
-            float oldVolume = Mathf.Lerp(0f, initialVolume, t);
-            float newVolume = Mathf.Lerp(bgmVolume, 0f, t);
-
-            bgmSource.volume = oldVolume;
-            bgmSource2.volume = newVolume;
-
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
+        // Reset coroutine
         blendCoroutine = null;
     }
 }

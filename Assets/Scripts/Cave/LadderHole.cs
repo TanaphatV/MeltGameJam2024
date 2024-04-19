@@ -14,6 +14,7 @@ public class LadderHole : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            AudioManager.Instance.PlaySFX("Ladder1");
             player.pause = true;
             FadeManager.Instance.StartFade(1.0f, 0.2f, () => { player.gameObject.transform.position = CaveManager.instance.GoToNextCave(); }, () => { player.pause = false; });
         }

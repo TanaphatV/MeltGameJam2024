@@ -101,7 +101,6 @@ public class Enemy : MonoBehaviour, IHitable
 
     public void Hit()
     {
-        Debug.Log("Hit");
         AudioManager.Instance.PlaySFX("Hit3");
         if(hp <= 0)
             return;

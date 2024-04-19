@@ -17,6 +17,7 @@ public class OreVein : MonoBehaviour, IHitable
     public void Hit()
     {
         hitLeft -= PlayerStats.instance.mining;
+        AudioManager.Instance.PlaySFX("DigOre");
         miningParticle.Play();
         if (hitLeft <= 0)
             Break();
@@ -34,6 +35,7 @@ public class OreVein : MonoBehaviour, IHitable
     void Break()
     {
         ParticleSystem p = Instantiate(breakParticlePrefab);
+        AudioManager.Instance.PlaySFX("Scatter" + (Random.Range(1,4).ToString()));
         p.transform.position = transform.position + new Vector3(-0.14f, 2.12f, 0);
         for (int i = 0; i < materialContainer.amount; i++)
         {

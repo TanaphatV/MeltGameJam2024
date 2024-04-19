@@ -172,6 +172,7 @@ public class PlayerCombat : MonoBehaviour
         if(collision.gameObject.tag == "Bed")
         {
             TimeManager.instance.onDayEnd -=  DayEndDeath;
+            AudioManager.Instance.PlaySFX("Sleep");
             TimeManager.instance.DayEnd();
             TimeManager.instance.onDayEnd += DayEndDeath;
         }

@@ -74,6 +74,7 @@ public class SpecialOrderGuy : InteractableObject
     IEnumerator InteractIE(PlayerInteract playerInteract)
     {
         playerInteract.SetPlayerPause(true);
+        orderListManagerGUI.InitPanel(specialOrders);
         orderListManagerGUI.OpenPanel();
         yield return new WaitUntil(() => { return Input.GetKeyDown(KeyCode.Escape); });
         playerInteract.SetPlayerPause(false);

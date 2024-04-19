@@ -21,7 +21,7 @@ public class CaveManager : MonoBehaviour
     [SerializeField] Transform CavePosition;
     [SerializeField] GameObject caveEntrance;
     [SerializeField] List<Cave> CaveLayoutPrefabs = new List<Cave>();
-    [SerializeField] List<OreDropChanceSO> floorDropChances = new List<OreDropChanceSO>();
+    [SerializeField] List<CaveInfoSpread> floorDropChances = new List<CaveInfoSpread>();
 
     List<Cave> caveList = new List<Cave>();
 
@@ -50,7 +50,7 @@ public class CaveManager : MonoBehaviour
             Cave temp = Instantiate(CaveLayoutPrefabs[Random.Range(0, CaveLayoutPrefabs.Count)]);
             temp.transform.position = CavePosition.position;
             temp.SetOreDropChance(floorDropChances[i]);
-            temp.InitCave();
+            temp.InitCave(i == 3);
             temp.SetCaveActive(false);
             caveList.Add(temp);
             Debug.Log("NEW CAVE");

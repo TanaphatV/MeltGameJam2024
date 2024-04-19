@@ -17,10 +17,20 @@ public struct MaterialTypeDropChance
 }
 
 [CreateAssetMenu(fileName = "OreDropChance", menuName = "ScriptableObjects/OreDropChance")]
-public class OreDropChanceSO : ScriptableObject
+public class CaveInfoSpread : ScriptableObject
 {
+    [Header("Entity Spawn Count")]
+    public int enemyCount;
+    public int minOreCount;
+    public int maxOreCount;
+    [Header("Ore Drop")]
     public List<MaterialAmountDropChance> amountSpread;
     public List<MaterialTypeDropChance> typeSpread;
+
+    public int GetRandomizeOreCount()
+    {
+        return Random.Range(minOreCount, maxOreCount + 1);
+    }
     public MaterialContainer GetRandomizedMaterialDrop()
     {
         int dropAmount = 0;

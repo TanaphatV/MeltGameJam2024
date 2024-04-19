@@ -34,17 +34,17 @@ public class PlayerResources : MonoBehaviour
     {
         _instance = this;
         materialDictionary = new Dictionary<MaterialSO, int>();
+        resourceSO = RecipeSingletonManager.Instance.GetResource;
+
+        foreach (var mat in resourceSO.pickableOres)
+        {
+            materialDictionary.Add(mat, 0);
+        }
     }
     private void Start()
     {
         hp = PlayerStats.instance.maxHp;
         TimeManager.instance.onDayEnd += ClearMaterial;
-        resourceSO = RecipeSingletonManager.Instance.GetResource;
-        
-        foreach (var mat in resourceSO.pickableOres)
-        {
-            materialDictionary.Add(mat, 0);
-        }
 
         if (isDebugingMode)
         {

@@ -13,9 +13,9 @@ public class ResourceUIController : MonoBehaviour
 
     void Start()
     {
+        Init();
         PlayerResources.instance.onMaterialAmountChange += UpdateMaterial;
         materialSocketTemplate.gameObject.SetActive(false);
-        Init();
         //UpdateMaterialList();
     }
 

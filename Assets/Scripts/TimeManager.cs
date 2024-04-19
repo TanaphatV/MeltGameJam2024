@@ -41,10 +41,15 @@ public class TimeManager : MonoBehaviour
     }
     public string GetTimerText()
     {
-        int intTime = Mathf.FloorToInt( timer);
-        int minute =  intTime/ 60;
-        int seconds = intTime - (minute*60);
-        string text = minute.ToString() + ":" + seconds.ToString();
+        int intTime = Mathf.FloorToInt(timer);
+
+        // Calculate minutes and seconds
+        int minutes = intTime / 60;
+        int seconds = intTime % 60;
+
+        // Format the timer text
+        string text = minutes.ToString("D2") + ":" + seconds.ToString("D2");
+
         return text;
     }
     // Update is called once per frame

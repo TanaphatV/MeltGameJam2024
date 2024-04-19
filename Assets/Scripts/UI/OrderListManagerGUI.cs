@@ -33,6 +33,7 @@ public class OrderListManagerGUI : MonoBehaviour
     public void ClosePanel()
     {
         gfx.SetActive(false);
+        FindAnyObjectByType<PlayerInteract>().SetPlayerPause(false);
     }
 
     public void InitPanel(List<SpecialOrder> specialOrderList)

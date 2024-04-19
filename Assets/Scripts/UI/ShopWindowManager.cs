@@ -65,6 +65,7 @@ public class ShopWindowManager : MonoBehaviour
     public void ClosePanel()
     {
         gfx.SetActive(false);
+        FindAnyObjectByType<PlayerInteract>().SetPlayerPause(false);
     }
     private void Update()
     {

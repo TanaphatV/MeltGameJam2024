@@ -80,6 +80,7 @@ public class RecipeListManagerGUI : MonoBehaviour
     public void ClosePanel()
     {
         gfx.SetActive(false);
+        FindAnyObjectByType<PlayerInteract>().SetPlayerPause(false);
     }
 
     private void Update()
@@ -189,6 +190,40 @@ public class RecipeListManagerGUI : MonoBehaviour
             end, verticalLayout.GetComponent<RectTransform>().localPosition.z);
     }
 
+    public void OnClickPrev()
+    {
+        if (selectingIndex > 0)
+        {
+            
+            recipeSocketList[selectingIndex].UnselectAll();
+            selectingIndex--;
+            if (selectingIndex < minimumShow)
+            {
+                StartCoroutine(MoveVerticalPanel(verticalLayout.GetComponent<RectTransform>().localPosition.y, verticalLayout.GetComponent<RectTransform>().localPosition.y - 200));
+                minimumShow--;
+                maximumshow--;
+            }
+            ChooseMode();
+            DisplayScrollListButton();
+        }
+    }
+    public void OnClickNext()
+    {
+        if (selectingIndex < recipeSocketList.Count - 1)
+        {
+            
+            recipeSocketList[selectingIndex].UnselectAll();
+            selectingIndex++;
+            if (selectingIndex > maximumshow)
+            {
+                StartCoroutine(MoveVerticalPanel(verticalLayout.GetComponent<RectTransform>().localPosition.y, verticalLayout.GetComponent<RectTransform>().localPosition.y + 200));
+                minimumShow++;
+                maximumshow++;
+            }
+            ChooseMode();
+            DisplayScrollListButton();
+        }
+    }
 
     private void ExecuteQTEFlow()
     {

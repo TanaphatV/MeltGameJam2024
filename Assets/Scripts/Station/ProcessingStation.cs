@@ -38,6 +38,7 @@ public class ProcessingStation : InteractableObject
     }
     protected override void InteractBehavior(PlayerInteract playerInteract)
     {
+        AudioManager.Instance.PlaySFX("Pickaxe");
         StartCoroutine(InteractRoutine(playerInteract));
     }
 

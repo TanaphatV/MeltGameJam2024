@@ -68,7 +68,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: aedf9f44cb600d94fb0befdc3369bb5d, type: 3}
   - soundName: ToolBreak2
     clip: {fileID: 8300000, guid: b5c49b6b83ab2614c91e762c6db344c6, type: 3}
-  - soundName: WaterPour
+  - soundName: WaterPour1
     clip: {fileID: 8300000, guid: bca757f7e8d879d419f8443286051f67, type: 3}
   - soundName: WaterPour2
     clip: {fileID: 8300000, guid: 14503c6c40344a34f90bc39f59c42e0b, type: 3}
@@ -145,12 +145,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 968c568e24e4e224396eb9de6c5099d6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

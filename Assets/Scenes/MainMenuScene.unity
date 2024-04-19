@@ -12209,6 +12209,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManagerSingleton
       objectReference: {fileID: 0}
+    - target: {fileID: 2462355863718774838, guid: 7478506cd1eb54d438c8d590b604daf8, type: 3}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2462355863718774838, guid: 7478506cd1eb54d438c8d590b604daf8, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7478506cd1eb54d438c8d590b604daf8, type: 3}
 --- !u!1 &1412498911

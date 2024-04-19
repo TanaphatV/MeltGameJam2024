@@ -37,6 +37,7 @@ public class QTETemperaturePanel : MonoBehaviour
         //Debug.Log("QTETempProcessing");
 
         GenerateCell(greatCellCount + decreaseDifVal+ decreaseDifVal, softCellCount + decreaseDifVal);
+        AudioManager.Instance.PlaySFX("FirePlace");
 
         yield return StartCoroutine(StickMove(-215, 215));
         yield return new WaitForSeconds(1.0f);
@@ -148,6 +149,7 @@ public class QTETemperaturePanel : MonoBehaviour
 
         yield return new WaitForSeconds(2.0f);
 
+        AudioManager.Instance.sfxSource.Stop();
         gfx.SetActive(false);
         resultPanel.SetActive(false);
         gameObject.SetActive(false);
@@ -162,6 +164,7 @@ public class QTETemperaturePanel : MonoBehaviour
 
         yield return new WaitForSeconds(2.0f);
 
+        AudioManager.Instance.sfxSource.Stop();
         gfx.SetActive(false);
         resultPanel.SetActive(false);
         gameObject.SetActive(false);

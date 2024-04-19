@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; private set; }
 
     public Sound[] sfxSounds, bgmSounds;
-    public AudioSource bgmSource, sfxSource;
+    public AudioSource bgmSource, sfxSource, bgmSource2;
 
     private float bgmVolume = 1f;
     private float sfxVolume = 1f;
@@ -120,18 +120,39 @@ public class AudioManager : MonoBehaviour
         float timer = 0f;
         float initialVolume = bgmSource.volume;
 
-        while (timer < bgmVolume)
+        while (timer < bgmVolume / 2f)
         {
-            float t = timer / bgmVolume;
-            bgmSource.volume = Mathf.Lerp(initialVolume, 0f, t);
+            float t = timer / (bgmVolume / 2f);
+            float oldVolume = Mathf.Lerp(initialVolume, 0f, t);
+            float newVolume = Mathf.Lerp(0f, bgmVolume, t);
+
+            bgmSource.volume = oldVolume;
+            bgmSource2.volume = newVolume;
+
             timer += Time.deltaTime;
             yield return null;
         }
 
+        // Switch to the new BGM track
         bgmSource.Stop();
-        bgmSource.volume = initialVolume;
         bgmSource.clip = newBGMClip;
         bgmSource.Play();
+
+        // Continue blending to full volume for the new BGM track
+        timer = 0f;
+        while (timer < bgmVolume / 2f)
+        {
+            float t = timer / (bgmVolume / 2f);
+            float oldVolume = Mathf.Lerp(0f, initialVolume, t);
+            float newVolume = Mathf.Lerp(bgmVolume, 0f, t);
+
+            bgmSource.volume = oldVolume;
+            bgmSource2.volume = newVolume;
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
         blendCoroutine = null;
     }
 }

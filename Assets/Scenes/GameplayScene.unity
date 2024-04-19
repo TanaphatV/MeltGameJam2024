@@ -1958,6 +1958,8 @@ MonoBehaviour:
   bgmSounds: []
   bgmSource: {fileID: 104020118}
   sfxSource: {fileID: 1823143859}
+  bgmSource2: {fileID: 0}
+  testclip: {fileID: 0}
 --- !u!1 &639819651
 GameObject:
   m_ObjectHideFlags: 0

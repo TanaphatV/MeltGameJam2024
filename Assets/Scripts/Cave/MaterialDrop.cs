@@ -11,7 +11,7 @@ public class MaterialDrop : MonoBehaviour
     [SerializeField]MaterialSO material;
     float speed;
     Vector3 velocity;
-    bool goToUI = false;
+    public bool goToUI = false;
     ResourceUIController resourceUIController;
     // Start is called before the first frame update
     void Start()

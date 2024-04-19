@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 2462355863718774839}
   - component: {fileID: 2462355863718774838}
   m_Layer: 0
-  m_Name: BGMSourceBlend
+  m_Name: BGMSourceBronze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

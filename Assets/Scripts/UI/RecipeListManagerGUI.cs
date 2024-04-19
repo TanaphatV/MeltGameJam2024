@@ -92,6 +92,8 @@ public class RecipeListManagerGUI : MonoBehaviour
         if (selectingIndex > 3)
         {
             Debug.Log("move to");
+            minimumShow = 1;
+            maximumshow = 4;
             yield return StartCoroutine(MoveVerticalPanel(verticalLayout.GetComponent<RectTransform>().localPosition.y, verticalLayout.GetComponent<RectTransform>().localPosition.y + 200));
         }
         else if (selectingIndex == 0)

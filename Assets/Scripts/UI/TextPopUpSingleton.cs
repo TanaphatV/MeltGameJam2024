@@ -32,22 +32,11 @@ public class TextPopUpSingleton : MonoBehaviour
     public void ShowUIPanel(Vector3 mousePosition)
     {
         uiPanelInstance.SetActive(true);
-        uiPanelInstance.transform.position = mousePosition;
+        uiPanelInstance.transform.position = Input.mousePosition;
     }
 
     public void HideUIPanel()
     {
         uiPanelInstance.SetActive(false);
-    }
-    public void OnMouseEnter()
-    {
-        Vector3 mousePosition = Input.mousePosition;
-        ShowUIPanel(mousePosition);
-    }
-
-    // Method to handle mouse exit
-    public void OnMouseExit()
-    {
-        HideUIPanel();
     }
 }

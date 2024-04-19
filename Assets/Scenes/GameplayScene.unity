@@ -5475,6 +5475,10 @@ PrefabInstance:
       propertyPath: dayLength
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 8683666997248686237, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}
+      propertyPath: maxHp
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}
 --- !u!4 &9132577656269855112

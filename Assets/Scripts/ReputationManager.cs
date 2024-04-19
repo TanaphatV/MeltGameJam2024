@@ -60,6 +60,18 @@ public class ReputationManager : MonoBehaviour
         if(reputation >= mileStoneBonus[currentRank + 1].requiredReputation)
         {
             currentRank++;
+            switch (currentRank)
+            {
+                case 1:
+                    AudioManager.Instance.StartBlendBGM(AudioManager.Instance.currentAudioPlay, AudioManager.Instance.bgmSourceBronze);
+                    AudioManager.Instance.currentReputationBGM = AudioManager.Instance.bgmSourceBronze;
+                    break;
+                case 2:
+                    AudioManager.Instance.StartBlendBGM(AudioManager.Instance.currentAudioPlay, AudioManager.Instance.bgmSourceSilver);
+                    AudioManager.Instance.currentReputationBGM = AudioManager.Instance.bgmSourceSilver;
+                    break;
+            }
+            
             currentBonus = mileStoneBonus[currentRank];
         }
 

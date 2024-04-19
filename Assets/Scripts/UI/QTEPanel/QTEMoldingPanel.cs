@@ -10,7 +10,7 @@ public class QTEMoldingPanel : MonoBehaviour
     private float value = 0f;
     private float value2 = 0f;
     private Coroutine holdCoroutine;
-    private bool isStartMinigame;
+    public bool isStartMinigame;
     [SerializeField] private Image fillWaterImg;
     [SerializeField] private Image goodScoreImage;
     [SerializeField] private Image failScoreImage;
@@ -28,7 +28,7 @@ public class QTEMoldingPanel : MonoBehaviour
     }
     private void OnDisable()
     {
-        //qteManager.GetRecipePanel.onSelectedItemToCreate -= SetMoldImage;
+        //StopAllCoroutines();
     }
 
     public IEnumerator Init(float minimumGoodScore, float maximumGoodScore, BaseQTEManager bm)

@@ -118,6 +118,7 @@ public class ProcessingStation : InteractableObject
             qtePanel.SetActive(false);
             //Do some ui popup;
         }
+        AudioManager.Instance.StartBlendBGM(AudioManager.Instance.currentAudioPlay, AudioManager.Instance.currentReputationBGM);
         playerInteract.SetPlayerPause(false);
         ResetQTEStatus();
     }

@@ -44,6 +44,8 @@ public class BaseQTEManager : MonoBehaviour
     {
         recipePanel.OpenPanel(station);
         panel.SetActive(false);
+        qteMoldingPanel.StopAllCoroutines();
+        qteMoldingPanel.isStartMinigame = false;
         FindAnyObjectByType<PlayerInteract>().SetPlayerPause(true);
     }
 
@@ -61,6 +63,7 @@ public class BaseQTEManager : MonoBehaviour
         int newMinimum = Random.Range(60, 85);
         int newMax = newMinimum + Random.Range(5, 10);
         qteMoldingPanel.gameObject.SetActive(true);
+        AudioManager.Instance.StartBlendBGM(AudioManager.Instance.currentAudioPlay, AudioManager.Instance.bgmSourceMinigame);
         yield return qteMoldingPanel.Init(newMinimum, newMax, this);
         qteMoldingPanel.gameObject.SetActive(false);
 

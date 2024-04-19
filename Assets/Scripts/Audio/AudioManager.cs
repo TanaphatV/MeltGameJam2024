@@ -7,10 +7,14 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; private set; }
 
     public Sound[] sfxSounds, bgmSounds;
-    public AudioSource bgmSource, sfxSource, bgmSource2;
+    public AudioSource sfxSource, bgmSourceNon, bgmSourceBronze, bgmSourceSilver, bgmSourceMinigame;
 
-    private float bgmVolume = 1f;
-    private float sfxVolume = 1f;
+    public AudioSource currentAudioPlay;
+
+    public AudioSource currentReputationBGM;
+
+    private float bgmVolume = 0.5f;
+    private float sfxVolume = 0.5f;
 
     private Coroutine blendCoroutine;
 
@@ -31,13 +35,18 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        PlayBGM("Champ");
+        //PlayBGM("Champ");
+        currentAudioPlay = bgmSourceNon;
+        currentReputationBGM = bgmSourceNon;
     }
 
     public void SetBGMVolume(float volume)
     {
         bgmVolume = Mathf.Clamp01(volume);
-        bgmSource.volume = bgmVolume;
+        bgmSourceNon.volume = bgmVolume;
+        bgmSourceBronze.volume = bgmVolume;
+        bgmSourceSilver.volume = bgmVolume;
+        bgmSourceMinigame.volume = bgmVolume;
     }
 
     public void SetSFXVolume(float volume)
@@ -48,7 +57,7 @@ public class AudioManager : MonoBehaviour
 
     public void ToggleBGM()
     {
-        bgmSource.mute = !bgmSource.mute;
+        bgmSourceNon.mute = !bgmSourceNon.mute;
     }
 
     public void ToggleSFX()
@@ -75,8 +84,8 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            bgmSource.clip = s.clip;
-            bgmSource.Play();
+            bgmSourceNon.clip = s.clip;
+            bgmSourceNon.Play();
         }
     }
 
@@ -95,35 +104,38 @@ public class AudioManager : MonoBehaviour
 
     // Method to blend from current BGM to a new BGM
     [ContextMenu("Blend")]
-    public void StartBlend()
+    public void StartBlendBGM(AudioSource prevBGMSource, AudioSource nextBGMSource)
     {
         if (blendCoroutine != null)
         {
             StopCoroutine(blendCoroutine);
         }
-        blendCoroutine = StartCoroutine(BlendAudioSources());
+        if(prevBGMSource != nextBGMSource)
+        {
+            blendCoroutine = StartCoroutine(BlendAudioSources(prevBGMSource, nextBGMSource));
+        }
     }
-    private IEnumerator BlendAudioSources()
+    private IEnumerator BlendAudioSources(AudioSource prevBGMSource, AudioSource nextBGMSource)
     {
         float timer = 0f;
-        float initialVolume1 = bgmSource.volume;
-        float initialVolume2 = 1.0f;
-        bgmSource2.mute = false;
+        float initialVolume1 = prevBGMSource.volume;
+        float initialVolume2 = bgmVolume;
+        nextBGMSource.mute = false;
 
         while (timer < 1f)
         {
             float t = timer / 1f;
-            bgmSource.volume = Mathf.Lerp(initialVolume1, 0f, t);
-            bgmSource2.volume = Mathf.Lerp(0f, initialVolume2, t);
+            prevBGMSource.volume = Mathf.Lerp(initialVolume1, 0f, t);
+            nextBGMSource.volume = Mathf.Lerp(0f, initialVolume2, t);
             timer += Time.deltaTime;
             yield return null;
         }
 
-        // Ensure volumes are set to the correct final values
-        bgmSource.volume = 0f;
-        bgmSource2.volume = initialVolume2;
+        prevBGMSource.volume = 0f;
+        prevBGMSource.mute = true;
+        nextBGMSource.volume = initialVolume2;
+        currentAudioPlay = nextBGMSource;
 
-        // Reset coroutine
         blendCoroutine = null;
     }
 }

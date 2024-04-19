@@ -32,6 +32,14 @@ public class Item : PickableObject, IBarSubject
         if (isInFreezer)
             IncrementProgress();
     }
+    public void Destroy()
+    {
+        TimeManager.instance.onDayEnd -= () =>
+        {
+            Destroy(gameObject);
+        };
+        Destroy(gameObject);
+    }
     public void Init(ItemSO itemSO)
     {
         this.itemSo = itemSO;

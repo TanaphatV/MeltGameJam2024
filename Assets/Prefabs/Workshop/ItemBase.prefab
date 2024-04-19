@@ -316,6 +316,10 @@ PrefabInstance:
       propertyPath: barDisplayMode
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1070642115399751291, guid: 20917e366f44153468294e4d88bf4891, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3196171280366496171, guid: 20917e366f44153468294e4d88bf4891, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

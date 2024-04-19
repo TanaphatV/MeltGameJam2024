@@ -31,6 +31,7 @@ public class BarObserver : MonoBehaviour
         if (barDisplayMode != BarMode.AlwaysVisble)
             slider.gameObject.SetActive(false);
         subject.onTargetValueChanged += UpdateBar;
+        GetComponent<Canvas>().worldCamera = Camera.main;
     }
     public void UpdateBar(float currentValue,float maxValue)
     {

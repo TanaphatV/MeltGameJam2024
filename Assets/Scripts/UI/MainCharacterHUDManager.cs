@@ -64,7 +64,7 @@ public class MainCharacterHUDManager : MonoBehaviour
         }
         dayCountText.text = "Day " + TimeManager.instance.DayCount.ToString();
         repuScoreRatioText.text = ReputationManager.instance.GetReputationPoint.ToString() + "/" + ReputationManager.instance.GetRequireCurrentRankReputationAmount().ToString();
-        reputationBar.fillAmount = ReputationManager.instance.GetReputationPoint / 1050f;
+        reputationBar.fillAmount = ReputationManager.instance.GetReputationPoint / 750;
         reputationIcon.sprite = plaqueSpriteList[ReputationManager.instance.currentRank];
     }
 

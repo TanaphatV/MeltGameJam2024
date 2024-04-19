@@ -29,7 +29,7 @@ public class ReputationManager : MonoBehaviour
         }
     }
     public int currentRank { get; private set; }
-    private float reputation;
+    [SerializeField] private float reputation;
     public float maxReputation;
     private ReputationMilestoneBonus currentBonus;
     public ReputationMilestoneBonus bonus => currentBonus;

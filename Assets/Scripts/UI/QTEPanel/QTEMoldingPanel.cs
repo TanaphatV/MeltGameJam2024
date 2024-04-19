@@ -84,7 +84,18 @@ public class QTEMoldingPanel : MonoBehaviour
     {
         if (holdCoroutine == null)
         {
-            //Debug.Log("Hold");
+            switch (Random.Range(1, 3))
+            {
+                case 1:
+                    AudioManager.Instance.PlaySFX("WaterPour1");
+                    break;
+                case 2:
+                    AudioManager.Instance.PlaySFX("WaterPour2");
+                    break;
+                case 3:
+                    AudioManager.Instance.PlaySFX("WaterPour3");
+                    break;
+            }
             isHolding = true;
             holdCoroutine = StartCoroutine(HoldCoroutine());
         }

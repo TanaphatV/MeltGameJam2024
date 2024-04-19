@@ -62,6 +62,7 @@ public class SpecialOrderGuy : InteractableObject
             });
             if (order != null) 
             {
+                AudioManager.Instance.PlaySFX("CoinObtain");
                 order.completed = true;
                 Destroy(playerInteract.TakeItem().gameObject);
                 PlayerResources.instance.coin += order.payout;

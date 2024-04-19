@@ -52,6 +52,6 @@ MonoBehaviour:
   - {fileID: 7496806380748407009, guid: b25658cfc5ba9e342a7d5e562afcf8c8, type: 3}
   floorDropChances:
   - {fileID: 11400000, guid: 636417bec31fbea459b1d33894c7f110, type: 2}
-  - {fileID: 11400000, guid: 636417bec31fbea459b1d33894c7f110, type: 2}
-  - {fileID: 11400000, guid: 636417bec31fbea459b1d33894c7f110, type: 2}
-  - {fileID: 11400000, guid: 636417bec31fbea459b1d33894c7f110, type: 2}
+  - {fileID: 11400000, guid: 6c939fee1eb8678478169520ebefced3, type: 2}
+  - {fileID: 11400000, guid: 2c439e1e25cce2b4b8d1dab9dfdc19ad, type: 2}
+  - {fileID: 11400000, guid: 86c95bc232023f0418da0b2b77b366a3, type: 2}

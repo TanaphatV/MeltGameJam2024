@@ -54,10 +54,11 @@ public class TimeManager : MonoBehaviour
     }
 
     public int GetMinuteTimer => Mathf.FloorToInt(timer)/60;
+    public bool pauseTimer;
     // Update is called once per frame
     void Update()
     {
-        if (timer > 0)
+        if (timer > 0 & !pauseTimer)
         {
             timer -= Time.deltaTime;
         }
@@ -66,8 +67,15 @@ public class TimeManager : MonoBehaviour
             if (onDayEnd != null)
                 onDayEnd(); DayCount++;
             timer = dayLength;
+
         }
     }
+    //IEnumerator DayEndIE()
+    //{
+        
+    //}
+
+
     IEnumerator TimerIE()
     {
         while(true)

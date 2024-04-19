@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Cave : MonoBehaviour
 {
-    public int oreCount;
-    public int enemyCount;
     [SerializeField] Transform spawnPoint;
     [SerializeField] GameObject parent;
     [SerializeField] LadderHole ladder;
     [SerializeField] BoxCollider2D spawnArea;
-    OreDropChanceSO dropChanceSO;
+    CaveInfoSpread caveInfoSO;
     List<OreVein> oreVeinList = new List<OreVein>();
     List<OreVein> activeOreVein = new List<OreVein>();
     List<Enemy> enemies =  new List<Enemy>();
@@ -36,9 +34,9 @@ public class Cave : MonoBehaviour
         return ladder.GetReturnPosition();
     }
 
-    public void SetOreDropChance(OreDropChanceSO dropChanceSO)
+    public void SetOreDropChance(CaveInfoSpread dropChanceSO)
     {
-        this.dropChanceSO = dropChanceSO;
+        this.caveInfoSO = dropChanceSO;
     }
     private void Awake()
     {
@@ -53,7 +51,7 @@ public class Cave : MonoBehaviour
         }
         //InitCave();
     }
-    public void InitCave()
+    public void InitCave(bool noLadder = false)
     {
         bound = spawnArea.bounds;
         spawnArea.enabled = false;
@@ -66,12 +64,12 @@ public class Cave : MonoBehaviour
         }
         enemies = new List<Enemy>();
         this.ladder.gameObject.SetActive(false);
-        for (int i = 0; i < enemyCount; i++)
+        for (int i = 0; i < caveInfoSO.enemyCount; i++)
         {
             Enemy enemy = Instantiate(enemyPrefab, parent.transform);
             enemy.cave = this;
             enemy.transform.position = GetRandomSpawnPoint();
-            enemy.materialDrop = dropChanceSO.GetRandomizedMaterialDrop();
+            enemy.materialDrop = caveInfoSO.GetRandomizedMaterialDrop();
             enemies.Add(enemy);
         }
 
@@ -83,14 +81,14 @@ public class Cave : MonoBehaviour
 
         List<OreVein> tempList = new List<OreVein>(oreVeinList);
         bool ladder = true ;
-        for(int i = 0; i < oreCount; i++)
+        for(int i = 0; i < caveInfoSO.GetRandomizeOreCount(); i++)
         {
             int randomIndex = Random.Range(0, tempList.Count);
             OreVein tempVein = tempList[randomIndex];
             tempVein.gameObject.SetActive(true);
             activeOreVein.Add(tempVein);
-            tempVein.Init(dropChanceSO.GetRandomizedMaterialDrop());
-            if (ladder)
+            tempVein.Init(caveInfoSO.GetRandomizedMaterialDrop());
+            if (ladder && !noLadder)
             {
                 this.ladder.transform.position = tempVein.transform.position;
                 tempVein.onBreak += () => { this.ladder.gameObject.SetActive(true); };

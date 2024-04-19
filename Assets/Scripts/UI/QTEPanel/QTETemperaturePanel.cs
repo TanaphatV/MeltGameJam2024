@@ -126,7 +126,7 @@ public class QTETemperaturePanel : MonoBehaviour
         {
             station.currentItemCraftingStatus = CraftingStatus.Failed;
             station.currentMinigameResult = MinigameResult.Fail;
-            StartCoroutine(FailSequence());
+            AudioManager.Instance.sfxSource.Stop();
             Debug.Log("Fail");
         }
     }
@@ -155,20 +155,20 @@ public class QTETemperaturePanel : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private IEnumerator FailSequence()
-    {
-        resultPanel.SetActive(true);
-        resultPanel.GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
-        resultPanel.GetComponentInChildren<TextMeshProUGUI>().text = "Fail!";
-        station.currentItemCraftingStatus = CraftingStatus.Failed;
+    //private IEnumerator FailSequence()
+    //{
+    //    resultPanel.SetActive(true);
+    //    resultPanel.GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
+    //    resultPanel.GetComponentInChildren<TextMeshProUGUI>().text = "Fail!";
+    //    station.currentItemCraftingStatus = CraftingStatus.Failed;
 
-        yield return new WaitForSeconds(2.0f);
+    //    yield return new WaitForSeconds(2.0f);
 
-        AudioManager.Instance.sfxSource.Stop();
-        gfx.SetActive(false);
-        resultPanel.SetActive(false);
-        gameObject.SetActive(false);
-    }
+    //    AudioManager.Instance.sfxSource.Stop();
+    //    gfx.SetActive(false);
+    //    resultPanel.SetActive(false);
+    //    gameObject.SetActive(false);
+    //}
 
 
     public void SuccessCreatingWeapon()

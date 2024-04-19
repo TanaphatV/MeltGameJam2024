@@ -52,6 +52,8 @@ public class TimeManager : MonoBehaviour
 
         return text;
     }
+
+    public int GetMinuteTimer => Mathf.FloorToInt(timer)/60;
     // Update is called once per frame
     void Update()
     {

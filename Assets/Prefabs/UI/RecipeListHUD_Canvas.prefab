@@ -924,6 +924,7 @@ MonoBehaviour:
   prevButton: {fileID: 1095703809902912352}
   nextButton: {fileID: 9129111435233746160}
   resourceUI: {fileID: 0}
+  director: {fileID: 1588082107440356542}
 --- !u!1 &9112486053166191348
 GameObject:
   m_ObjectHideFlags: 0

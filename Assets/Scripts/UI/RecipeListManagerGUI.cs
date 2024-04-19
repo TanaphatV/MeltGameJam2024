@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class RecipeListManagerGUI : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class RecipeListManagerGUI : MonoBehaviour
     [SerializeField] private Button prevButton;
     [SerializeField] private Button nextButton;
     [SerializeField] private ResourceUIController resourceUI;
+    [SerializeField] private PlayableDirector director;
     private ResourceSO resource;
     private List<RecipeSocketGUI> recipeSocketList = new List<RecipeSocketGUI>();
     private int selectingIndex;
@@ -74,18 +76,40 @@ public class RecipeListManagerGUI : MonoBehaviour
 
     public void OpenPanel(ProcessingStation s)
     {
+        Debug.Log("Open Recipe");
         station = s;
         gfx.SetActive(true);
+        StartCoroutine(MoveToSelectSocket());
     }
+
+    private IEnumerator MoveToSelectSocket()
+    {
+        Debug.Log(selectingIndex);
+        while(director.state == PlayState.Playing)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        if (selectingIndex > 3)
+        {
+            Debug.Log("move to");
+            yield return StartCoroutine(MoveVerticalPanel(verticalLayout.GetComponent<RectTransform>().localPosition.y, verticalLayout.GetComponent<RectTransform>().localPosition.y + 200));
+        }
+        else if (selectingIndex == 0)
+        {
+
+        }
+    }
+
     public void ClosePanel()
     {
         gfx.SetActive(false);
         FindAnyObjectByType<PlayerInteract>().SetPlayerPause(false);
     }
 
+    #region input
     private void Update()
     {
-        if (gfx.activeSelf)
+        if (gfx.activeSelf && director.state != PlayState.Playing)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -150,6 +174,7 @@ public class RecipeListManagerGUI : MonoBehaviour
             }
         }
     }
+    #endregion
 
     public void CheckMaterialResource()
     {
@@ -192,34 +217,36 @@ public class RecipeListManagerGUI : MonoBehaviour
 
     public void OnClickPrev()
     {
-        if (selectingIndex > 0)
+        if (selectingIndex > 0 && director.state != PlayState.Playing)
         {
-            
+            StartCoroutine(MoveVerticalPanel(verticalLayout.GetComponent<RectTransform>().localPosition.y, verticalLayout.GetComponent<RectTransform>().localPosition.y - 200));
             recipeSocketList[selectingIndex].UnselectAll();
             selectingIndex--;
-            if (selectingIndex < minimumShow)
-            {
-                StartCoroutine(MoveVerticalPanel(verticalLayout.GetComponent<RectTransform>().localPosition.y, verticalLayout.GetComponent<RectTransform>().localPosition.y - 200));
-                minimumShow--;
-                maximumshow--;
-            }
+            minimumShow--;
+            maximumshow--;
+            //if (selectingIndex < minimumShow)
+            //{
+                
+                
+            //}
             ChooseMode();
             DisplayScrollListButton();
         }
     }
     public void OnClickNext()
     {
-        if (selectingIndex < recipeSocketList.Count - 1)
+        if (selectingIndex < recipeSocketList.Count - 1 && director.state != PlayState.Playing)
         {
-            
+            StartCoroutine(MoveVerticalPanel(verticalLayout.GetComponent<RectTransform>().localPosition.y, verticalLayout.GetComponent<RectTransform>().localPosition.y + 200));
             recipeSocketList[selectingIndex].UnselectAll();
             selectingIndex++;
-            if (selectingIndex > maximumshow)
-            {
-                StartCoroutine(MoveVerticalPanel(verticalLayout.GetComponent<RectTransform>().localPosition.y, verticalLayout.GetComponent<RectTransform>().localPosition.y + 200));
-                minimumShow++;
-                maximumshow++;
-            }
+            minimumShow++;
+            maximumshow++;
+            //if (selectingIndex > maximumshow)
+            //{
+                
+                
+            //}
             ChooseMode();
             DisplayScrollListButton();
         }

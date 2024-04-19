@@ -44,6 +44,7 @@ public class BaseQTEManager : MonoBehaviour
     {
         recipePanel.OpenPanel(station);
         panel.SetActive(false);
+        FindAnyObjectByType<PlayerInteract>().SetPlayerPause(true);
     }
 
     public void OpenPanel(ProcessingStation _ps, RecipeListManagerGUI gui)

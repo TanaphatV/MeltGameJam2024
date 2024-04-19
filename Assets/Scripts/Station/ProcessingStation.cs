@@ -21,6 +21,7 @@ public class ProcessingStation : InteractableObject
     public Item itemBasePrefab;
     protected ItemSO itemToCreate;
     bool isHigh = false;
+    [SerializeField] Transform output;
     private RecipeListManagerGUI recipePanel;
     [SerializeField] private GameObject failPanel;
     [SerializeField] private GameObject qtePanel;
@@ -48,7 +49,7 @@ public class ProcessingStation : InteractableObject
         temp.perfectMinigame = perfectMinigame;
         temp.highQuality = highQuality;
         temp.reputationReward = ReputationRewardCalculation(itemSO, highQuality, perfectMinigame);
-        temp.transform.position = transform.position;
+        temp.transform.position = output.position;
         temp.Init(itemSO);
     }
 

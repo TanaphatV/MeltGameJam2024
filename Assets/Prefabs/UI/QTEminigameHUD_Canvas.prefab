@@ -2096,6 +2096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fef119daa3fd44a9a459a2feedb83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStartMinigame: 0
   fillWaterImg: {fileID: 2108283920150999502}
   goodScoreImage: {fileID: 2108283921277906873}
   failScoreImage: {fileID: 2108283921056164607}

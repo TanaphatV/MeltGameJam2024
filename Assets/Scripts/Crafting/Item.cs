@@ -34,18 +34,14 @@ public class Item : PickableObject, IBarSubject
     }
     public void Destroy()
     {
-        TimeManager.instance.onDayEnd -= () =>
-        {
-            Destroy(gameObject);
-        };
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     public void Init(ItemSO itemSO)
     {
         this.itemSo = itemSO;
         TimeManager.instance.onDayEnd += () =>
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         };
         timeRequired = itemSO.timeNeededtoFreeze - PlayerStats.instance.freezerWaitTimeReduction;
         if (timeRequired <= 0)

@@ -78,6 +78,8 @@ public class PlayerCombat : MonoBehaviour
         if (invulnerable || dead)
             return;
         SetHp(currentHp - damage);
+        AudioManager.Instance.PlaySFX("Hurt" + UnityEngine.Random.Range(1,5).ToString());
+
         if (currentHp <= 0)
         {
             TimeManager.instance.onDayEnd -= DayEndDeath;

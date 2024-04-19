@@ -60,7 +60,8 @@ public class CaveManager : MonoBehaviour
 
     public void GoBackToTop()
     {
-        caveList[currentFloor].SetCaveActive(false);
+        if(currentFloor != -1)
+            caveList[currentFloor].SetCaveActive(false);
         caveEntrance.SetActive(true);
        // currentFloor = -1;
     }

@@ -59,7 +59,7 @@ public class Wagon : InteractableObject
         Debug.Log(itemInfo.price);
         items.Add(itemInfo);
         UpdateWagonFillLevelSprite();
-        Destroy(item.gameObject);
+        item.Destroy();
     }
 
     int currentWagonFillLevel = 0;

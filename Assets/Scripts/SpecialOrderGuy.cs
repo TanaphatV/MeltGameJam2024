@@ -64,7 +64,7 @@ public class SpecialOrderGuy : InteractableObject
             {
                 AudioManager.Instance.PlaySFX("CoinObtain");
                 order.completed = true;
-                Destroy(playerInteract.TakeItem().gameObject);
+                playerInteract.TakeItem().Destroy();
                 PlayerResources.instance.coin += order.payout;
                 ReputationManager.instance.IncreaseReputation(temp.reputationReward);
             }

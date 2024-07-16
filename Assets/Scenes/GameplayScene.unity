@@ -6032,5 +6032,17 @@ PrefabInstance:
       propertyPath: reputationGainModifier
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8768293049838554734, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}
+      propertyPath: mileStoneBonus.Array.data[1].wagonBuyProbabilityIncrease
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768293049838554734, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}
+      propertyPath: mileStoneBonus.Array.data[2].wagonBuyProbabilityIncrease
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768293049838554734, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}
+      propertyPath: mileStoneBonus.Array.data[3].wagonBuyProbabilityIncrease
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}

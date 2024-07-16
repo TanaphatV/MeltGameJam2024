@@ -33,6 +33,9 @@ public class PlayerResources : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+    }
+    private void Start()
+    {
         materialDictionary = new Dictionary<MaterialSO, int>();
         resourceSO = RecipeSingletonManager.Instance.GetResource;
 
@@ -40,9 +43,8 @@ public class PlayerResources : MonoBehaviour
         {
             materialDictionary.Add(mat, 0);
         }
-    }
-    private void Start()
-    {
+        FindObjectOfType<ResourceUIController>().Init();
+
         hp = PlayerStats.instance.maxHp;
         TimeManager.instance.onDayEnd += ClearMaterial;
 
@@ -67,7 +69,7 @@ public class PlayerResources : MonoBehaviour
 
     public Dictionary<MaterialSO, int> GetMaterialDictionary()
     {
-        return new Dictionary<MaterialSO, int>(materialDictionary);
+        return materialDictionary;
     }
 
     public bool HaveEnoughMaterial(MaterialSO material, int amount)

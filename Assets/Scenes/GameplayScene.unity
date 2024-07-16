@@ -5998,7 +5998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6336962402976451800, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}
       propertyPath: isDebugingMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6336962402976451800, guid: 2d0ad3a65483e39449cba85e1d022924, type: 3}
       propertyPath: testMats.Array.size

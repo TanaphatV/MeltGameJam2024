@@ -13,13 +13,10 @@ public class ResourceUIController : MonoBehaviour
 
     void Start()
     {
-        Init();
-        PlayerResources.instance.onMaterialAmountChange += UpdateMaterial;
-        materialSocketTemplate.gameObject.SetActive(false);
-        //UpdateMaterialList();
+       
     }
 
-    private void Init()
+    public void Init()
     {
         foreach (var material in PlayerResources.instance.GetMaterialDictionary().Keys)
         {
@@ -28,6 +25,8 @@ public class ResourceUIController : MonoBehaviour
             newMatGUI.gameObject.SetActive(true);
             matUIList.Add(material,newMatGUI);
         }
+        PlayerResources.instance.onMaterialAmountChange += UpdateMaterial;
+        materialSocketTemplate.gameObject.SetActive(false);
     }
 
     public Vector3 GetWorldPositionFromMaterialUI(MaterialSO materialSO)
